@@ -1,7 +1,14 @@
 import styled from 'styled-components';
 
 export default function Home() {
-  return <Wrapper>안녕하시오리까</Wrapper>;
+  return (
+    <Wrapper>
+      이건 홈 화면 내용 이건 홈 화면 내용 이건 홈 화면 내용 이건 홈 화면 내용
+      이건 홈 화면 내용 이건 홈 화면 내용 이건 홈 화면 내용 이건 홈 화면 내용
+      이건 홈 화면 내용 이건 홈 화면 내용 이건 홈 화면 내용 이건 홈 화면 내용
+      이건 홈 화면 내용 이건 홈 화면 내용 이건 홈 화면 내용
+    </Wrapper>
+  );
 }
 
 const Wrapper = styled.div``;

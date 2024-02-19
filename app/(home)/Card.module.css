@@ -3,7 +3,15 @@
   flex-flow: column nowrap;
   width: 300px;
   background: #1e1e1e;
-  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.05);
+  transition:
+    transform 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out;
+}
+
+.li:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1);
 }
 
 .figure {

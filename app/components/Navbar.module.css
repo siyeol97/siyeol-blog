@@ -1,0 +1,8 @@
+.nav {
+  padding: 0 10px;
+  gap: 3px;
+}
+
+.nav li {
+  margin-bottom: 10px;
+}

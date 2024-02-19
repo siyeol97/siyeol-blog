@@ -18,6 +18,7 @@ module.exports = {
         trailingComma: 'es5',
         singleQuote: true,
         jsxSingleQuote: true,
+        singleAttributePerLine: true,
       },
     ],
     'react/react-in-jsx-scope': 'off',

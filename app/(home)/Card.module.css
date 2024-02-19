@@ -1,0 +1,60 @@
+.li {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 300px;
+  background: #1e1e1e;
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.04);
+}
+
+.figure {
+  position: relative;
+  width: 100%;
+  height: 170px;
+  background: #ffffff;
+}
+
+.card_main_text {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.card_article {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.5;
+}
+
+.article_title {
+  margin-bottom: 4px;
+  -webkit-line-clamp: 1;
+  color: #ececec;
+  font-size: 20px;
+}
+
+.article_body {
+  margin-bottom: 24px;
+  -webkit-line-clamp: 3;
+  color: #d9d9d9;
+}
+
+.card_bottom {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 16px;
+}
+
+.by {
+  color: #acacac;
+}
+
+.writer {
+  color: #ececec;
+}
+
+.like_comment {
+  display: flex;
+  gap: 10px;
+  color: #ececec;
+}

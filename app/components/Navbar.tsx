@@ -2,7 +2,7 @@ import styles from './Navbar.module.css';
 
 export default function Navbar() {
   return (
-    <nav className={styles.nav}>
+    <aside className={styles.aside}>
       <ul>
         <li>메뉴 1</li>
         <li>메뉴 2</li>
@@ -12,6 +12,6 @@ export default function Navbar() {
         <li>메뉴 6</li>
         <li>메뉴 7</li>
       </ul>
-    </nav>
+    </aside>
   );
 }

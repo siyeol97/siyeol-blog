@@ -10,6 +10,7 @@ export default function Header() {
       <nav>
         <ul>
           <li>
+            <Link href={'/write'}>새 글 쓰기</Link>
             <button>로그인</button>
           </li>
         </ul>

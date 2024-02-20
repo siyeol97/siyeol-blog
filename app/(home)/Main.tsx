@@ -7,7 +7,7 @@ export interface Post {
   title: string;
   content: string;
 }
-export default async function Main() {
+export default async function MainPage() {
   const data = await getPostData();
   const postItem: Post[] = data.map((post) => {
     return {

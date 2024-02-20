@@ -1,8 +1,13 @@
 import Image from 'next/image';
 import defaultImage from '@/public/next.svg';
 import styles from './Card.module.css';
+import { Post } from './Main';
 
-export default function Card() {
+interface Props {
+  post: Post;
+}
+
+export default function Card({ post }: Props) {
   return (
     <li className={styles.li}>
       <figure className={styles.figure}>
@@ -15,14 +20,10 @@ export default function Card() {
       </figure>
       <div className={styles.card_main_text}>
         <h4 className={`${styles.card_article} ${styles.article_title} `}>
-          제목 입니다. 제목 입니다. 제목 입니다.
+          {post.title}
         </h4>
         <p className={`${styles.card_article} ${styles.article_body}`}>
-          임시본문 내용 입니다. 임시본문 내용 입니다. 임시본문 내용 입니다.
-          임시본문 내용 입니다. 임시본문 내용 입니다. 임시본문 내용 입니다.
-          임시본문 내용 입니다. 임시본문 내용 입니다. 임시본문 내용
-          입니다.임시본문 내용 입니다.임시본문 내용 입니다.임시본문 내용
-          입니다.임시본문 내용 입니다.임시본문 내용 입니다.임시본문 내용 입니다.
+          {post.content}
         </p>
       </div>
       <div className={styles.card_bottom}>

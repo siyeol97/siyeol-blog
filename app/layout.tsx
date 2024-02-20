@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang='ko'>
       <body className={inter.className}>
         <Header />
-        <div style={{ display: 'flex' }}>
+        <div>
           <Navbar />
           {children}
         </div>

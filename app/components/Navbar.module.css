@@ -1,8 +1,15 @@
-.aside {
-  padding: 0 10px;
-  gap: 3px;
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
 }
 
-.aside li {
-  margin-bottom: 10px;
+.nav ul {
+  display: flex;
+  gap: 10px;
+}
+
+.nav li {
+  display: inline;
 }

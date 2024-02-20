@@ -1,4 +1,4 @@
-import { connectDB } from '@/utils/database';
+import { getPostData } from '@/utils/getData';
 import Card from './Card';
 import styles from './Main.module.css';
 
@@ -7,14 +7,6 @@ export interface Post {
   title: string;
   content: string;
 }
-
-const getPostData = async () => {
-  const client = await connectDB;
-  const db = client.db('siyeol_blog');
-  const result = await db.collection('blog_post').find().toArray();
-  return result;
-};
-
 export default async function Main() {
   const data = await getPostData();
   const postItem: Post[] = data.map((post) => {

@@ -1,21 +1,12 @@
-import { getPostData } from '@/utils/getData';
 import Card from './Card';
 import styles from './Main.module.css';
+import { Post } from './page';
 
-export interface Post {
-  id: string;
-  title: string;
-  content: string;
+interface Props {
+  postItem: Post[];
 }
-export default async function MainPage() {
-  const data = await getPostData();
-  const postItem: Post[] = data.map((post) => {
-    return {
-      id: post._id.toString(),
-      title: post.title,
-      content: post.content,
-    };
-  });
+
+export default async function MainPage({ postItem }: Props) {
   return (
     <section className={styles.section}>
       <ul className={styles.ul}>

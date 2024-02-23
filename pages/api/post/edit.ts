@@ -21,6 +21,7 @@ export default async function handler(
         .collection('blog_post')
         .updateOne({ _id: new ObjectId(req.body._id) }, { $set: changedPost });
       res.redirect(302, `/post/${req.body._id}`);
+      return;
     }
   } catch (error) {
     res.status(500).json({ error: 'failed to load' });

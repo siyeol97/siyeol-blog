@@ -18,6 +18,7 @@ export default async function handler(
       const result = await db.collection('blog_post').insertOne(req.body);
       const { insertedId } = result;
       res.redirect(302, `/post/${insertedId.toString()}`);
+      return;
     }
   } catch (error) {
     res.status(500).json({ error: 'failed to load' });

@@ -3,7 +3,3 @@ interface Post {
   title: string;
   content: string;
 }
-
-interface Props {
-  postItem: Post[];
-}

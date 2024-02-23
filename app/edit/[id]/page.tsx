@@ -5,5 +5,5 @@ export default function EditPage({
 }: {
   params: { id: string };
 }) {
-  return <Edit id={id} />;
+  return <Edit _id={id} />;
 }

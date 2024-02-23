@@ -1,8 +1,8 @@
 import { getSinglePost } from '@/utils/getData';
 import styles from './Edit.module.css';
 
-export default async function Edit({ id }: { id: string }) {
-  const result = await getSinglePost(id);
+export default async function Edit({ _id }: { _id: string }) {
+  const result = await getSinglePost(_id);
   return (
     <section className={styles.section}>
       <form

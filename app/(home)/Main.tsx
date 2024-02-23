@@ -1,6 +1,5 @@
 import Card from './Card';
 import styles from './Main.module.css';
-import { Post } from './page';
 
 interface Props {
   postItem: Post[];
@@ -12,7 +11,7 @@ export default async function MainPage({ postItem }: Props) {
       <ul className={styles.ul}>
         {postItem.map((post) => (
           <Card
-            key={post.id}
+            key={post._id}
             post={post}
           />
         ))}

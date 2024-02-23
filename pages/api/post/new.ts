@@ -15,8 +15,10 @@ export default async function handler(
       }
       const client = await connectDB;
       const db = client.db('siyeol_blog');
-      await db.collection('blog_post').insertOne(req.body);
-      res.redirect(302, '/');
+      const result = await db.collection('blog_post').insertOne(req.body);
+      const { insertedId } = result;
+      res.redirect(302, `/post/${insertedId.toString()}`);
+      return;
     }
   } catch (error) {
     res.status(500).json({ error: 'failed to load' });

@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import defaultImage from '@/public/next.svg';
 import styles from './Card.module.css';
-import { Post } from './Main';
 import Link from 'next/link';
 
 interface Props {
@@ -11,7 +10,7 @@ interface Props {
 export default function Card({ post }: Props) {
   return (
     <li className={styles.li}>
-      <Link href={`/post/${post.id}`}>
+      <Link href={`/post/${post._id}`}>
         <figure className={styles.figure}>
           <Image
             fill
@@ -21,7 +20,7 @@ export default function Card({ post }: Props) {
           />
         </figure>
       </Link>
-      <Link href={`/post/${post.id}`}>
+      <Link href={`/post/${post._id}`}>
         <div className={styles.card_main_text}>
           <h4 className={`${styles.card_article} ${styles.article_title} `}>
             {post.title}

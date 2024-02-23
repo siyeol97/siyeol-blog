@@ -1,16 +1,17 @@
 import { getSinglePost } from '@/utils/getData';
+import PostContent from './PostContent';
 
 export default async function PostPage({
   params: { id },
 }: {
   params: { id: string };
 }) {
-  const data = await getSinglePost(id);
+  const res = await getSinglePost(id);
+  const data = {
+    _id: res!._id.toString(),
+    title: res!.title,
+    content: res!.content,
+  };
 
-  return (
-    <div>
-      <h3>{data!.title}</h3>
-      <p>{data!.content}</p>
-    </div>
-  );
+  return <PostContent data={data} />;
 }

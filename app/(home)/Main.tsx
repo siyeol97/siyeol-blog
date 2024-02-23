@@ -1,27 +1,17 @@
-import { getPostData } from '@/utils/getData';
 import Card from './Card';
 import styles from './Main.module.css';
 
-export interface Post {
-  id: string;
-  title: string;
-  content: string;
+interface Props {
+  postItem: Post[];
 }
-export default async function MainPage() {
-  const data = await getPostData();
-  const postItem: Post[] = data.map((post) => {
-    return {
-      id: post._id.toString(),
-      title: post.title,
-      content: post.content,
-    };
-  });
+
+export default function MainPage({ postItem }: Props) {
   return (
     <section className={styles.section}>
       <ul className={styles.ul}>
         {postItem.map((post) => (
           <Card
-            key={post.id}
+            key={post._id}
             post={post}
           />
         ))}

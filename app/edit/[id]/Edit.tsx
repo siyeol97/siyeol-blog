@@ -1,4 +1,4 @@
-import { getSinglePost } from '@/utils/getData';
+import getSinglePost from '@/utils/getData';
 import styles from './Edit.module.css';
 
 export default async function Edit({ _id }: { _id: string }) {

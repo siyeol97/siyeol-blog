@@ -1,7 +1,7 @@
 import { authOptions } from '@/pages/api/auth/[...nextauth]';
 import { getServerSession } from 'next-auth';
 
-const getUserSession = async () => {
+const getUserData = async () => {
   const session = await getServerSession(authOptions);
   const userData = {
     name: session?.user?.name,
@@ -11,4 +11,4 @@ const getUserSession = async () => {
   return userData;
 };
 
-export default getUserSession;
+export default getUserData;

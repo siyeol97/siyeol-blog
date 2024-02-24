@@ -1,11 +1,10 @@
+import getUserData from '@/utils/getUserData';
 import Link from 'next/link';
 import LoginButton from './LoginButton';
-
 import LogoutButton from './LogoutButton';
-import getUserSession from '@/utils/getUserSession';
 
 export default async function Session() {
-  const userData = await getUserSession();
+  const userData = await getUserData();
   return (
     <div>
       {userData.name ? (

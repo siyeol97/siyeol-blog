@@ -6,9 +6,10 @@ import Link from 'next/link';
 
 interface Props {
   data: Post;
+  isSameUser: boolean;
 }
 
-export default function PostContent({ data }: Props) {
+export default function PostContent({ data, isSameUser }: Props) {
   const router = useRouter();
   const deletePost = async () => {
     try {
@@ -30,8 +31,12 @@ export default function PostContent({ data }: Props) {
         <h1>{data!.title}</h1>
         <p>{data!.content}</p>
       </div>
-      <Link href={`/edit/${data._id}`}>글 수정</Link>
-      <button onClick={deletePost}>글 삭제</button>
+      {isSameUser ? (
+        <>
+          <Link href={`/edit/${data._id}`}>글 수정</Link>
+          <button onClick={deletePost}>글 삭제</button>
+        </>
+      ) : null}
     </section>
   );
 }

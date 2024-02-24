@@ -13,6 +13,7 @@ export default async function HomePage() {
       _id: post._id.toString(),
       title: post.title,
       content: post.content,
+      author: post.author,
     };
   });
   return <Main postItem={postItem} />;

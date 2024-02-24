@@ -3,11 +3,15 @@ import { getServerSession } from 'next-auth';
 
 const getUserData = async () => {
   const session = await getServerSession(authOptions);
+
   const userData = {
     name: session?.user?.name,
     email: session?.user?.email,
-    image: session?.user?.image,
   };
+  // console.log('userData: ', userData);
+  // console.log('==================================');
+  // console.log('session: ', session);
+  // console.log('==================================');
   return userData;
 };
 

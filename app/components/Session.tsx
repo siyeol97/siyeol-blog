@@ -2,9 +2,11 @@ import getUserData from '@/utils/getUserData';
 import Link from 'next/link';
 import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
+import SignupButton from './SignupButton';
 
 export default async function Session() {
   const userData = await getUserData();
+
   return (
     <div>
       {userData.name ? (
@@ -17,6 +19,7 @@ export default async function Session() {
       ) : (
         <>
           <LoginButton />
+          <SignupButton />
         </>
       )}
     </div>

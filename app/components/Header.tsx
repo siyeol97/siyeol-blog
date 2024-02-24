@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import styles from './Header.module.css';
+import Session from './Session';
 
 export default function Header() {
   return (
@@ -7,14 +8,7 @@ export default function Header() {
       <Link href={'/'}>
         <span className={styles.span}>Siyeol&apos;s blog</span>
       </Link>
-      <nav>
-        <ul>
-          <li>
-            <Link href={'/write'}>새 글 쓰기</Link>
-            <button>로그인</button>
-          </li>
-        </ul>
-      </nav>
+      <Session />
     </header>
   );
 }

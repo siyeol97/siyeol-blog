@@ -34,6 +34,7 @@ export default async function handler(
         res.redirect(302, `/post/${req.body._id}`);
         return;
       }
+      throw new Error('잘못된 접근입니다.');
     }
   } catch (error) {
     res.status(500).json({ error: 'failed to load' });

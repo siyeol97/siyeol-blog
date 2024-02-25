@@ -1,4 +1,4 @@
-import getSinglePost from '@/utils/getData';
+import getSinglePost from '@/utils/getSinglePost';
 import PostContent from './PostContent';
 import getUserData from '@/utils/getUserData';
 
@@ -15,7 +15,7 @@ export default async function PostPage({
     content: res!.content,
     author: res!.author,
   };
-  const isSameUser = userData.email === data.author;
+  const isSameUser = userData?.email === data.author;
 
   return (
     <PostContent

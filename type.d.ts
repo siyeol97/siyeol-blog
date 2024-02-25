@@ -4,3 +4,8 @@ interface Post {
   content: string;
   author: string;
 }
+
+interface UserData {
+  name: string;
+  email: string;
+}

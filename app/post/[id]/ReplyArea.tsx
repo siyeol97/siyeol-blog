@@ -1,25 +1,20 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import ReplyComment from './ReplyComment';
 import WriteReply from './WriteReply';
+import useReply from '@/hook/useReply';
 
 export default function ReplyArea({ _id }: { _id: string }) {
-  const [replyData, setReplyData] = useState([]);
-  useEffect(() => {
-    const getReplyData = async () => {
-      const response = await fetch('/api/reply/pid', {
-        method: 'POST',
-        body: _id,
-      });
-      const result = await response.json();
-      setReplyData(result);
-    };
-    getReplyData();
-  }, [_id]);
+  const [replyData, setReplyData] = useReply(_id);
+  const handleWriteReply = (data: Reply[]) => {
+    setReplyData(data);
+  };
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <WriteReply _id={_id} />
+      <WriteReply
+        _id={_id}
+        handleWriteReply={handleWriteReply}
+      />
       <ReplyComment replyData={replyData} />
     </div>
   );

@@ -1,20 +1,31 @@
 'use client';
 
 import Button from '@/components/Button';
-import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
-export default function WriteReply({ _id }: { _id: string }) {
-  const router = useRouter();
+interface Props {
+  _id: string;
+  handleWriteReply: (data: Reply[]) => void;
+}
+
+export default function WriteReply({ _id, handleWriteReply }: Props) {
   const [comment, setComment] = useState('');
 
   const writeReply = async () => {
-    await fetch('/api/reply/new', {
+    const response = await fetch('/api/reply/new', {
       method: 'POST',
       body: JSON.stringify({ comment: comment, _id: _id }),
     });
-
-    router.refresh();
+    if (response.ok) {
+      setComment('');
+      // 댓글 영역 재렌더링
+      const response = await fetch('/api/reply/pid', {
+        method: 'POST',
+        body: _id,
+      });
+      const result: Reply[] = await response.json();
+      handleWriteReply(result);
+    }
   };
 
   return (

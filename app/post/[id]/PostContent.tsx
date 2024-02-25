@@ -17,7 +17,7 @@ export default function PostContent({ data, isSameUser }: Props) {
         </div>
         {isSameUser ? <ControlPost _id={data._id} /> : null}
       </div>
-      <ReplyArea />
+      <ReplyArea _id={data._id} />
     </section>
   );
 }

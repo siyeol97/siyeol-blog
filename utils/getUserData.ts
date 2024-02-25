@@ -6,7 +6,6 @@ const getUserData = async () => {
   if (!session || !session.user) {
     return null;
   }
-  console.log(session);
   const userData: UserData = {
     name: session.user.name!,
     email: session.user.email!,

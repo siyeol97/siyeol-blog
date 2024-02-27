@@ -7,16 +7,12 @@ export default async function handler(
   res: NextApiResponse
 ) {
   try {
-    console.log('댓글 api 요청 들어옴');
     const client = await connectDB;
     const db = client.db('siyeol_blog');
     const result = await db
       .collection('reply')
       .find({ parent_post: new ObjectId(req.body) })
       .toArray();
-    console.log('============');
-    console.log('API 요청완료 !!!!!!!');
-    console.log('============');
     res.status(200).json(result);
     return;
   } catch (error) {

@@ -4,27 +4,27 @@ import Button from '@/components/Button';
 import { useState } from 'react';
 
 interface Props {
-  _id: string;
-  handleWriteReply: (data: Reply[]) => void;
+  post_id: string;
+  handleReply: (reply: Reply[]) => void;
 }
 
-export default function WriteReply({ _id, handleWriteReply }: Props) {
+export default function ReplyWrite({ post_id, handleReply }: Props) {
   const [comment, setComment] = useState('');
 
   const writeReply = async () => {
     const response = await fetch('/api/reply/new', {
       method: 'POST',
-      body: JSON.stringify({ comment: comment, _id: _id }),
+      body: JSON.stringify({ comment: comment, post_id: post_id }),
     });
     if (response.ok) {
       setComment('');
       // 댓글 영역 재렌더링
       const response = await fetch('/api/reply/pid', {
         method: 'POST',
-        body: _id,
+        body: post_id,
       });
-      const result: Reply[] = await response.json();
-      handleWriteReply(result);
+      const replyList: Reply[] = await response.json();
+      handleReply(replyList);
     }
   };
 

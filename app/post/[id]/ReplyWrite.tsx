@@ -8,7 +8,7 @@ interface Props {
   handleWriteReply: (data: Reply[]) => void;
 }
 
-export default function WriteReply({ _id, handleWriteReply }: Props) {
+export default function ReplyWrite({ _id, handleWriteReply }: Props) {
   const [comment, setComment] = useState('');
 
   const writeReply = async () => {

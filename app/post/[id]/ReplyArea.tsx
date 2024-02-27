@@ -1,8 +1,8 @@
 'use client';
 
 import ReplyList from './ReplyList';
-import WriteReply from './WriteReply';
 import useReply from '@/hook/useReply';
+import ReplyWrite from './ReplyWrite';
 
 export default function ReplyArea({
   _id,
@@ -17,7 +17,7 @@ export default function ReplyArea({
   };
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <WriteReply
+      <ReplyWrite
         _id={_id}
         handleWriteReply={handleWriteReply}
       />

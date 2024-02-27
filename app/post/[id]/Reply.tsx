@@ -58,6 +58,22 @@ export default function Reply({
     }
   };
 
+  const handleDeleteRequest = async () => {
+    const response = await fetch('/api/reply/delete', {
+      method: 'DELETE',
+      body: item._id,
+    });
+    if (response.ok) {
+      const response = await fetch('/api/reply/pid', {
+        method: 'POST',
+        body: post_id,
+      });
+      const replyList: Reply[] = await response.json();
+      handleReply(replyList);
+      router.refresh();
+    }
+  };
+
   return (
     <div style={{ display: 'flex' }}>
       {isEditing ? (
@@ -78,7 +94,7 @@ export default function Reply({
       {isAuthor && !isEditing ? (
         <div>
           <button onClick={handleEditClick}>수정</button>
-          <button>삭제</button>
+          <button onClick={handleDeleteRequest}>삭제</button>
         </div>
       ) : null}
     </div>

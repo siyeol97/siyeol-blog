@@ -26,6 +26,7 @@ export default async function handler(
         res.status(200).json('삭제 성공');
         return;
       }
+      throw new Error();
     }
   } catch (error) {
     res.status(500).json({ error: 'failed to delete' });

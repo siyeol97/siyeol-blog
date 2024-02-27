@@ -27,7 +27,7 @@ export default async function handler(
 
       const data = {
         comment: req.body.comment,
-        parent_post: new ObjectId(req.body._id),
+        parent_post: new ObjectId(req.body.post_id),
         author: session.user.email,
       };
 

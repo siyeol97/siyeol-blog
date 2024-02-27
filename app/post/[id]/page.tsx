@@ -9,17 +9,17 @@ export default async function PostPage({
 }) {
   const res = await getSinglePost(id);
   const CurrentUserData = await getUserData();
-  const data = {
+  const post = {
     _id: res!._id.toString(),
     title: res!.title,
     content: res!.content,
     author: res!.author,
   };
-  const isSameUser = CurrentUserData?.email === data.author;
+  const isSameUser = CurrentUserData?.email === post.author;
 
   return (
     <PostContent
-      data={data}
+      post={post}
       isSameUser={isSameUser}
       CurrentUserData={CurrentUserData}
     />

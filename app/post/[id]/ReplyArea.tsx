@@ -5,25 +5,27 @@ import useReply from '@/hook/useReply';
 import ReplyWrite from './ReplyWrite';
 
 export default function ReplyArea({
-  _id,
+  post_id,
   CurrentUserData,
 }: {
-  _id: string;
+  post_id: string;
   CurrentUserData: UserData | null;
 }) {
-  const [replyData, setReplyData] = useReply(_id);
-  const handleWriteReply = (data: Reply[]) => {
-    setReplyData(data);
+  const [replyData, setReplyData] = useReply(post_id);
+  const handleReply = (reply: Reply[]) => {
+    setReplyData(reply);
   };
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <ReplyWrite
-        _id={_id}
-        handleWriteReply={handleWriteReply}
+        post_id={post_id}
+        handleReply={handleReply}
       />
       <ReplyList
+        post_id={post_id}
         replyData={replyData}
         CurrentUserData={CurrentUserData}
+        handleReply={handleReply}
       />
     </div>
   );

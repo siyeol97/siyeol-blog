@@ -12,6 +12,7 @@ export default async function handler(
     if (req.method === 'POST') {
       if (req.body.title === '' || req.body.content === '') {
         res.status(500).json('유효하지 않은 형식 입니다.');
+        return;
       }
       const changedPost = { title: req.body.title, content: req.body.content };
       const client = await connectDB;

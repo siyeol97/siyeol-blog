@@ -3,13 +3,13 @@ import ReplyArea from './ReplyArea';
 import ControlPost from './ControlPost';
 
 interface Props {
-  data: Post;
+  post: Post;
   isSameUser: boolean;
   CurrentUserData: UserData | null;
 }
 
 export default function PostContent({
-  data,
+  post,
   isSameUser,
   CurrentUserData,
 }: Props) {
@@ -17,13 +17,13 @@ export default function PostContent({
     <section className={styles.section}>
       <div style={{ display: 'flex' }}>
         <div className={styles.post_content}>
-          <h1>{data!.title}</h1>
-          <p>{data!.content}</p>
+          <h1>{post!.title}</h1>
+          <p>{post!.content}</p>
         </div>
-        {isSameUser ? <ControlPost _id={data._id} /> : null}
+        {isSameUser ? <ControlPost _id={post._id} /> : null}
       </div>
       <ReplyArea
-        _id={data._id}
+        post_id={post._id}
         CurrentUserData={CurrentUserData}
       />
     </section>

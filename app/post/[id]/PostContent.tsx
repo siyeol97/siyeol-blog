@@ -5,9 +5,14 @@ import ControlPost from './ControlPost';
 interface Props {
   data: Post;
   isSameUser: boolean;
+  CurrentUserData: UserData | null;
 }
 
-export default function PostContent({ data, isSameUser }: Props) {
+export default function PostContent({
+  data,
+  isSameUser,
+  CurrentUserData,
+}: Props) {
   return (
     <section className={styles.section}>
       <div style={{ display: 'flex' }}>
@@ -17,7 +22,10 @@ export default function PostContent({ data, isSameUser }: Props) {
         </div>
         {isSameUser ? <ControlPost _id={data._id} /> : null}
       </div>
-      <ReplyArea _id={data._id} />
+      <ReplyArea
+        _id={data._id}
+        CurrentUserData={CurrentUserData}
+      />
     </section>
   );
 }

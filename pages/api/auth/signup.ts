@@ -20,6 +20,7 @@ export default async function handler(
       res.redirect(302, '/');
       return;
     }
+    return;
   } catch (error) {
     res.status(500).json('failed to sign up');
   }

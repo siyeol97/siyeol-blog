@@ -1,10 +1,16 @@
 'use client';
 
-import ReplyComment from './ReplyComment';
+import ReplyList from './ReplyList';
 import WriteReply from './WriteReply';
 import useReply from '@/hook/useReply';
 
-export default function ReplyArea({ _id }: { _id: string }) {
+export default function ReplyArea({
+  _id,
+  CurrentUserData,
+}: {
+  _id: string;
+  CurrentUserData: UserData | null;
+}) {
   const [replyData, setReplyData] = useReply(_id);
   const handleWriteReply = (data: Reply[]) => {
     setReplyData(data);
@@ -15,7 +21,10 @@ export default function ReplyArea({ _id }: { _id: string }) {
         _id={_id}
         handleWriteReply={handleWriteReply}
       />
-      <ReplyComment replyData={replyData} />
+      <ReplyList
+        replyData={replyData}
+        CurrentUserData={CurrentUserData}
+      />
     </div>
   );
 }

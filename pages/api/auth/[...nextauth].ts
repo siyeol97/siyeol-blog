@@ -6,10 +6,6 @@ import bcrypt from 'bcrypt';
 
 export const authOptions: NextAuthOptions = {
   providers: [
-    GithubProvider({
-      clientId: process.env.GITHUB_SECRET_ID!,
-      clientSecret: process.env.GITHUB_SECRET_KEY!,
-    }),
     CredentialsProvider({
       // 로그인폼 생성
       name: 'credentials',
@@ -43,6 +39,10 @@ export const authOptions: NextAuthOptions = {
         // user = 해당되는 'created_user_account' collection에 저장된 user 정보
         return user;
       },
+    }),
+    GithubProvider({
+      clientId: process.env.GITHUB_SECRET_ID!,
+      clientSecret: process.env.GITHUB_SECRET_KEY!,
     }),
   ],
 

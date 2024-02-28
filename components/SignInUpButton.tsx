@@ -2,21 +2,20 @@
 
 import { signIn } from 'next-auth/react';
 import Link from 'next/link';
-import Button from './Button';
 
 export default function SignInUpButton() {
   return (
     <div>
-      <Button
+      <button
         onClick={() => {
           signIn();
         }}
       >
-        Sign in
-      </Button>
-      <Button>
-        <Link href={'/register'}>Sign up</Link>
-      </Button>
+        로그인
+      </button>
+      <button>
+        <Link href={'/register'}>회원가입</Link>
+      </button>
     </div>
   );
 }

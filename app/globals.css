@@ -83,7 +83,8 @@ summary,
 time,
 mark,
 audio,
-video {
+video,
+button {
   margin: 0;
   padding: 0;
   border: 0;
@@ -165,4 +166,15 @@ h3 {
   font-style: normal;
   font-weight: 400;
   line-height: 30px; /* 125% */
+}
+
+button {
+  background: inherit;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  overflow: visible;
+  cursor: pointer;
+  outline: none;
 }

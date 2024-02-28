@@ -1,6 +1,5 @@
 'use client';
 
-import Button from '@/components/Button';
 import { useState } from 'react';
 
 interface Props {
@@ -40,7 +39,7 @@ export default function ReplyWrite({ post_id, handleReply }: Props) {
             setComment(e.target.value);
           }}
         />
-        <Button onClick={writeReply}>댓글 등록</Button>
+        <button onClick={writeReply}>댓글 등록</button>
       </div>
     </div>
   );

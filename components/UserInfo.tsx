@@ -2,21 +2,25 @@
 
 import { signOut } from 'next-auth/react';
 import Link from 'next/link';
-import Button from './Button';
+import styles from './UserInfo.module.css';
 
 export default function UserInfo({ userData }: { userData: UserData }) {
   return (
-    <div>
+    <div className={styles.wrapper}>
+      <Link
+        href={'/write'}
+        className={styles.write_button}
+      >
+        새 글 쓰기
+      </Link>
       <span>{userData.name}</span>
-      <span>{userData.email}</span>
-      <Link href={'/write'}>새 글 쓰기</Link>
-      <Button
+      <button
         onClick={() => {
           signOut();
         }}
       >
-        Log out
-      </Button>
+        로그아웃
+      </button>
     </div>
   );
 }

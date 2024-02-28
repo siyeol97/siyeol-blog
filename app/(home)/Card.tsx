@@ -1,5 +1,3 @@
-import Image from 'next/image';
-import defaultImage from '@/public/next.svg';
 import styles from './Card.module.css';
 import Link from 'next/link';
 
@@ -11,16 +9,6 @@ export default function Card({ post }: Props) {
   return (
     <li className={styles.li}>
       <Link href={`/post/${post._id}`}>
-        <figure className={styles.figure}>
-          <Image
-            fill
-            src={defaultImage}
-            alt='default-image'
-            priority
-          />
-        </figure>
-      </Link>
-      <Link href={`/post/${post._id}`}>
         <div className={styles.card_main_text}>
           <h4 className={`${styles.card_article} ${styles.article_title} `}>
             {post.title}
@@ -31,13 +19,12 @@ export default function Card({ post }: Props) {
         </div>
       </Link>
       <div className={styles.card_bottom}>
-        <div>
-          <span className={styles.by}>by </span>
-          <span className={styles.writer}>이시열</span>
-        </div>
+        <span className={styles.writer}>
+          by <b>이시열</b>
+        </span>
         <div className={styles.like_comment}>
-          <span>❤ 99</span>
-          <span>💬 140</span>
+          <span>❤ 999</span>
+          <span>💬 999</span>
         </div>
       </div>
     </li>

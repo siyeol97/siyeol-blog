@@ -5,6 +5,7 @@
   border-radius: 10px;
   width: 300px;
   box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1);
+  overflow: hidden;
   transition:
     transform 0.3s ease-in-out,
     box-shadow 0.3s ease-in-out;
@@ -22,9 +23,15 @@
   background: #ffffff;
 }
 
-.card_main_text {
+.card_preview {
   display: flex;
+  position: relative;
   flex-direction: column;
+}
+
+.card_preview_text {
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
   padding: 16px;
 }
 
@@ -36,9 +43,9 @@
 }
 
 .article_title {
-  margin-bottom: 4px;
+  margin-bottom: 7px;
   -webkit-line-clamp: 1;
-  color: #000000;
+  color: #ffffff;
   font-size: 16px;
   font-weight: 500;
 }
@@ -46,7 +53,7 @@
 .article_body {
   margin-bottom: 24px;
   -webkit-line-clamp: 3;
-  color: #495057;
+  color: #fff;
   font-size: 14px;
   height: 65px;
   font-weight: 300;

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styles from './Card.module.css';
 import Link from 'next/link';
 
@@ -9,13 +10,28 @@ export default function Card({ post }: Props) {
   return (
     <li className={styles.li}>
       <Link href={`/post/${post._id}`}>
-        <div className={styles.card_main_text}>
-          <h4 className={`${styles.card_article} ${styles.article_title} `}>
-            {post.title}
-          </h4>
-          <p className={`${styles.card_article} ${styles.article_body}`}>
-            {post.content}
-          </p>
+        <div className={styles.card_preview}>
+          <div className={styles.card_preview_text}>
+            <h4 className={`${styles.card_article} ${styles.article_title} `}>
+              {post.title}
+            </h4>
+            <hr
+              style={{
+                backgroundColor: 'white',
+                border: 'none',
+                height: '0.1px',
+              }}
+            />
+            <p className={`${styles.card_article} ${styles.article_body}`}>
+              {post.content}
+            </p>
+          </div>
+          <Image
+            fill
+            src={'/default-img.jpeg'}
+            alt='default-image'
+            priority
+          />
         </div>
       </Link>
       <div className={styles.card_bottom}>

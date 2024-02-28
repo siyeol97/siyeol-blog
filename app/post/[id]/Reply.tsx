@@ -47,12 +47,12 @@ export default function Reply({
       body: JSON.stringify({ reply_id: item._id, comment: replyValue }),
     });
     if (response.ok) {
-      setIsEditing(false);
       const response = await fetch('/api/reply/pid', {
         method: 'POST',
         body: post_id,
       });
       const replyList: Reply[] = await response.json();
+      setIsEditing(false);
       handleReply(replyList);
       router.refresh();
     }

@@ -2,14 +2,11 @@ import { connectDB } from '@/utils/database';
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GithubProvider from 'next-auth/providers/github';
+import GoogleProvider from 'next-auth/providers/google';
 import bcrypt from 'bcrypt';
 
 export const authOptions: NextAuthOptions = {
   providers: [
-    GithubProvider({
-      clientId: process.env.GITHUB_SECRET_ID!,
-      clientSecret: process.env.GITHUB_SECRET_KEY!,
-    }),
     CredentialsProvider({
       // 로그인폼 생성
       name: 'credentials',
@@ -22,6 +19,7 @@ export const authOptions: NextAuthOptions = {
       // eslint-disable-next-line
       async authorize(credentials): Promise<any> {
         if (!credentials) {
+          console.log(!credentials);
           return null;
         }
         const db = (await connectDB).db('siyeol_blog');
@@ -44,6 +42,15 @@ export const authOptions: NextAuthOptions = {
         return user;
       },
     }),
+    GithubProvider({
+      clientId: process.env.GITHUB_SECRET_ID!,
+      clientSecret: process.env.GITHUB_SECRET_KEY!,
+    }),
+
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET_KEY!,
+    }),
   ],
 
   session: {
@@ -64,6 +71,9 @@ export const authOptions: NextAuthOptions = {
     session: async ({ session }) => {
       return session;
     },
+  },
+  pages: {
+    signIn: '/auth/signin',
   },
 
   secret: process.env.NEXT_AUTH_SECRET_KEY,

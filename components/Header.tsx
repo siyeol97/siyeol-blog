@@ -5,10 +5,12 @@ import Session from './Session';
 export default function Header() {
   return (
     <header className={styles.header}>
-      <Link href={'/'}>
-        <span className={styles.span}>Siyeol&apos;s blog</span>
-      </Link>
-      <Session />
+      <div className={styles.wrapper}>
+        <Link href={'/'}>
+          <span className={styles.span}>Siyeol&apos;s blog</span>
+        </Link>
+        <Session />
+      </div>
     </header>
   );
 }

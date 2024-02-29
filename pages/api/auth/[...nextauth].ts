@@ -19,7 +19,6 @@ export const authOptions: NextAuthOptions = {
       // eslint-disable-next-line
       async authorize(credentials): Promise<any> {
         if (!credentials) {
-          console.log(!credentials);
           return null;
         }
         const db = (await connectDB).db('siyeol_blog');

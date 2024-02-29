@@ -1,12 +1,11 @@
-import getUserData from '@/utils/getUserData';
+import { authOptions } from '@/pages/api/auth/[...nextauth]';
+import { getServerSession } from 'next-auth';
 import SignInUpButton from './SignInUpButton';
 import UserInfo from './UserInfo';
 
 export default async function Session() {
-  const userData = await getUserData();
+  const session = await getServerSession(authOptions);
   return (
-    <div>
-      {userData ? <UserInfo userData={userData} /> : <SignInUpButton />}
-    </div>
+    <div>{session ? <UserInfo session={session} /> : <SignInUpButton />}</div>
   );
 }

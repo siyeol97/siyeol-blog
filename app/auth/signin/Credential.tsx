@@ -30,6 +30,7 @@ export default function Credential() {
           emailRef.current = e.target.value;
         }}
         required
+        autoComplete='user-name'
       />
       <label htmlFor='password'>비밀번호</label>
       <input
@@ -42,6 +43,7 @@ export default function Credential() {
           passwordRef.current = e.target.value;
         }}
         required
+        autoComplete='current-password'
       />
       <button onClick={handleSubmit}>로그인</button>
     </div>

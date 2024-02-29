@@ -28,6 +28,7 @@ export default function Card({ post }: Props) {
           </div>
           <Image
             fill
+            sizes='300px'
             src={'/default-img.jpeg'}
             alt='default-image'
             priority

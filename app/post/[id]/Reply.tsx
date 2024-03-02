@@ -1,11 +1,12 @@
 'use client';
 
 import useHandleReply from '@/hook/useHandleReply';
+import { Session } from 'next-auth';
 
 export interface ReplyProps {
   post_id: string;
   item: Reply;
-  CurrentUserData: UserData | null;
+  session: Session | null;
   updateEditingReply: (_id: string) => void;
   selectedReply: string;
   handleReply: (reply: Reply[]) => void;
@@ -14,12 +15,12 @@ export interface ReplyProps {
 export default function Reply({
   post_id,
   item,
-  CurrentUserData,
+  session,
   updateEditingReply,
   selectedReply,
   handleReply,
 }: ReplyProps) {
-  const isAuthor = item.author === CurrentUserData?.email;
+  const isAuthor = item.author === session?.user?.email;
 
   const { replyValue, isEditing, setReplyValue, handleClick, handleRequest } =
     useHandleReply({

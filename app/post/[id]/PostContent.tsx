@@ -1,18 +1,15 @@
 import styles from './PostContent.module.css';
 import ReplyArea from './ReplyArea';
 import ControlPost from './ControlPost';
+import { Session } from 'next-auth';
 
 interface Props {
   post: Post;
   isSameUser: boolean;
-  CurrentUserData: UserData | null;
+  session: Session | null;
 }
 
-export default function PostContent({
-  post,
-  isSameUser,
-  CurrentUserData,
-}: Props) {
+export default function PostContent({ post, isSameUser, session }: Props) {
   return (
     <section className={styles.section}>
       <div style={{ display: 'flex' }}>
@@ -24,7 +21,7 @@ export default function PostContent({
       </div>
       <ReplyArea
         post_id={post._id}
-        CurrentUserData={CurrentUserData}
+        session={session}
       />
     </section>
   );

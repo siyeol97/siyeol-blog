@@ -20,6 +20,7 @@ export default function ReplyArea({
   return (
     <div className={styles.wrapper}>
       <ReplyWrite
+        replyData={replyData}
         post_id={post_id}
         handleReply={handleReply}
       />

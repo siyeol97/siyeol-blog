@@ -1,17 +1,4 @@
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  width: 100%;
-}
-
-.reply_count {
-  font-size: 1.125rem;
-  font-weight: 500;
-  width: 100%;
-}
-
-.reply_input_area {
+.reply_edit_area {
   width: 100%;
   display: flex;
   align-items: flex-end;
@@ -20,7 +7,7 @@
   gap: 20px;
 }
 
-.reply_input {
+.reply_edit_input {
   resize: none;
   border: none;
   border-radius: 4px;
@@ -32,18 +19,34 @@
   font-family: var(--font-noto-kr);
 }
 
-.button {
+.button_area {
+  display: flex;
+  gap: 16px;
+}
+
+.edit_button {
   border: none;
   border-radius: 4px;
   outline: 1px solid #000;
   padding: 10px 20px;
 }
 
-.button:hover {
+.cancel_button {
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  padding: 10px 20px;
+}
+
+.edit_button:hover {
   background-color: #000;
   color: #fff;
 }
 
-.reply_input:focus {
+.cancel_button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.reply_edit_input:focus {
   outline: 1px solid #000;
 }

@@ -12,7 +12,7 @@ interface Props {
 
 export default function Post({ post, isAuthor, session }: Props) {
   return (
-    <section className={styles.section}>
+    <section className={styles.post}>
       <TitleWrapper
         post={post}
         isAuthor={isAuthor}

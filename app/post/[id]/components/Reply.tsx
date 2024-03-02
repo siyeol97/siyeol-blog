@@ -2,6 +2,10 @@
 
 import useHandleReply from '@/hook/useHandleReply';
 import { Session } from 'next-auth';
+import styles from '../css/Reply.module.css';
+import ReplyAuthor from './ReplyAuthor';
+import Comment from './Comment';
+import ReplyEdit from './ReplyEdit';
 
 export interface ReplyProps {
   post_id: string;
@@ -32,28 +36,25 @@ export default function Reply({
     });
 
   return (
-    <div style={{ display: 'flex' }}>
+    <div className={styles.wrapper}>
+      <ReplyAuthor item={item} />
       {isEditing ? (
-        <div>
-          <input
-            value={replyValue}
-            placeholder='editing'
-            onChange={(e) => {
-              setReplyValue(e.target.value);
-            }}
-          />
-          <button onClick={() => handleRequest('edit')}>확인</button>
-          <button onClick={() => handleClick('cancel')}>취소</button>
-        </div>
+        <ReplyEdit
+          item={item}
+          replyValue={replyValue}
+          setReplyValue={setReplyValue}
+          handleClick={handleClick}
+          handleRequest={handleRequest}
+        />
       ) : (
-        <p>{item.comment}</p>
+        <Comment
+          item={item}
+          isAuthor={isAuthor}
+          isEditing={isEditing}
+          handleClick={handleClick}
+          handleRequest={handleRequest}
+        />
       )}
-      {isAuthor && !isEditing ? (
-        <div>
-          <button onClick={() => handleClick('edit')}>수정</button>
-          <button onClick={() => handleRequest('delete')}>삭제</button>
-        </div>
-      ) : null}
     </div>
   );
 }

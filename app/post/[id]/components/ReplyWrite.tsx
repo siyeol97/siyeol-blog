@@ -4,11 +4,13 @@ import { useState } from 'react';
 import styles from '../css/ReplyWrite.module.css';
 
 interface Props {
+  replyData: Reply[];
   post_id: string;
   handleReply: (reply: Reply[]) => void;
 }
 
-export default function ReplyWrite({ post_id, handleReply }: Props) {
+export default function ReplyWrite({ replyData, post_id, handleReply }: Props) {
+  const replyCount = replyData.length;
   const [comment, setComment] = useState('');
 
   const writeReply = async () => {
@@ -30,7 +32,7 @@ export default function ReplyWrite({ post_id, handleReply }: Props) {
 
   return (
     <div className={styles.wrapper}>
-      <span className={styles.reply_count}>댓글 4개</span>
+      <span className={styles.reply_count}>댓글 {replyCount}개</span>
       <div className={styles.reply_input_area}>
         <textarea
           name='reply'
@@ -40,7 +42,12 @@ export default function ReplyWrite({ post_id, handleReply }: Props) {
             setComment(e.target.value);
           }}
         />
-        <button onClick={writeReply}>댓글 등록</button>
+        <button
+          onClick={writeReply}
+          className={styles.button}
+        >
+          댓글 등록
+        </button>
       </div>
     </div>
   );

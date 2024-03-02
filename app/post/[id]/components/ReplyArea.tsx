@@ -4,6 +4,7 @@ import ReplyList from './ReplyList';
 import useReply from '@/hook/useReply';
 import ReplyWrite from './ReplyWrite';
 import { Session } from 'next-auth';
+import styles from '../css/ReplyArea.module.css';
 
 export default function ReplyArea({
   post_id,
@@ -17,7 +18,7 @@ export default function ReplyArea({
     setReplyData(reply);
   };
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
+    <div className={styles.wrapper}>
       <ReplyWrite
         post_id={post_id}
         handleReply={handleReply}

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import styles from '../css/ReplyWrite.module.css';
 
 interface Props {
   post_id: string;
@@ -28,13 +29,13 @@ export default function ReplyWrite({ post_id, handleReply }: Props) {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <span>댓글 쓰기</span>
-      <div>
-        <input
-          type='text'
+    <div className={styles.wrapper}>
+      <span className={styles.reply_count}>댓글 4개</span>
+      <div className={styles.reply_input_area}>
+        <textarea
           name='reply'
           value={comment}
+          className={styles.reply_input}
           onChange={(e) => {
             setComment(e.target.value);
           }}

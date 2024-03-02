@@ -2,7 +2,9 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-
+* {
+  box-sizing: border-box;
+}
 html,
 body,
 div,
@@ -91,7 +93,6 @@ button {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
-  box-sizing: border-box;
   font-weight: 400;
 }
 /* HTML5 display-role reset for older browsers */
@@ -147,10 +148,10 @@ h1 {
   font-feature-settings:
     'clig' off,
     'liga' off;
-  font-size: 40px;
+  font-size: 48px;
   font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+  font-weight: 600;
+  line-height: 1.5;
 }
 
 h2 {
@@ -184,4 +185,8 @@ button {
   overflow: visible;
   cursor: pointer;
   outline: none;
+}
+
+span {
+  line-height: 1.5;
 }

@@ -1,7 +1,8 @@
 import { authOptions } from '@/pages/api/auth/[...nextauth]';
 import getSinglePost from '@/utils/getSinglePost';
 import { getServerSession } from 'next-auth';
-import PostContent from './PostContent';
+import styles from './css/page.module.css';
+import Post from './components/Post';
 
 export default async function PostPage({
   params: { id },
@@ -16,13 +17,15 @@ export default async function PostPage({
     content: res!.content,
     author: res!.author,
   };
-  const isSameUser = session?.user?.email === post.author;
+  const isAuthor = session?.user?.email === post.author;
 
   return (
-    <PostContent
-      post={post}
-      isSameUser={isSameUser}
-      session={session}
-    />
+    <section className={styles.wrapper}>
+      <Post
+        post={post}
+        isAuthor={isAuthor}
+        session={session}
+      />
+    </section>
   );
 }

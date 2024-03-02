@@ -1,4 +1,5 @@
 import ControlPost from './ControlPost';
+import styles from '../css/PostInfo.module.css';
 
 interface Props {
   post: Post;
@@ -7,14 +8,12 @@ interface Props {
 
 export default function PostInfo({ post, isAuthor }: Props) {
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        width: '100%',
-      }}
-    >
-      <span>siyeol</span>
+    <div className={styles.wrapper}>
+      <div>
+        <span className={styles.author}>
+          by <b>{post.author}</b>
+        </span>
+      </div>
       <div>{isAuthor ? <ControlPost _id={post._id} /> : null}</div>
     </div>
   );

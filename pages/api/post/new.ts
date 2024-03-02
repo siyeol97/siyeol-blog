@@ -19,7 +19,12 @@ export default async function handler(
     const session = await getServerSession(req, res, authOptions);
     const client = await connectDB;
     const db = client.db('siyeol_blog');
-    const data = { ...req.body, author: session?.user?.email };
+    const data = {
+      ...req.body,
+      name: session?.user?.name,
+      author: session?.user?.email,
+      author_image: session?.user?.image,
+    };
     const result = await db.collection('blog_post').insertOne(data);
     const { insertedId } = result;
     res.redirect(302, `/post/${insertedId.toString()}`);

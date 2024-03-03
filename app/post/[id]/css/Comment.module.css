@@ -4,6 +4,12 @@
   align-items: center;
 }
 
+.comment {
+  width: 80%;
+  word-break: keep-all;
+  line-height: 1.5;
+}
+
 .button {
   display: flex;
   align-items: center;

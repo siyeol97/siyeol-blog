@@ -2,6 +2,7 @@
 
 import { signIn } from 'next-auth/react';
 import { useRef } from 'react';
+import styles from './Credential.module.css';
 
 export default function Credential() {
   const emailRef = useRef(null);
@@ -16,14 +17,14 @@ export default function Credential() {
     });
   };
   return (
-    <div>
-      <label htmlFor='email'>이메일</label>
+    <section className={styles.container}>
+      <label htmlFor='email'>Email</label>
       <input
         id='email'
         name='email'
         type='email'
         autoFocus={true}
-        placeholder='이메일 입력해주세요'
+        placeholder='Email *'
         ref={emailRef}
         // eslint-disable-next-line
         onChange={(e: any) => {
@@ -32,11 +33,12 @@ export default function Credential() {
         required
         autoComplete='user-name'
       />
-      <label htmlFor='password'>비밀번호</label>
+      <label htmlFor='password'>Password</label>
       <input
+        id='password'
         name='password'
         type='password'
-        placeholder='비밀번호를 입력해 주세요'
+        placeholder='Password *'
         ref={passwordRef}
         // eslint-disable-next-line
         onChange={(e: any) => {
@@ -46,6 +48,6 @@ export default function Credential() {
         autoComplete='current-password'
       />
       <button onClick={handleSubmit}>로그인</button>
-    </div>
+    </section>
   );
 }

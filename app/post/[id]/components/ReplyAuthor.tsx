@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import styles from '../css/ReplyAuthor.module.css';
 import calculateTime from '@/utils/calculateTime';
+import DefaultAvatar from '@/components/DefaultAvatar';
 
 interface Props {
   reply: Reply;
@@ -19,7 +20,7 @@ export default function ReplyAuthor({ reply }: Props) {
           className={styles.author_avatar}
         />
       ) : (
-        <div className={styles.default_avatar}>{reply.name.slice(-2)}</div>
+        <DefaultAvatar name={reply.name.slice(-2)} />
       )}
       <div className={styles.info_text}>
         <p className={styles.author_name}>{reply.name}</p>

@@ -15,19 +15,6 @@
   border-radius: 50%;
 }
 
-.default_avatar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  width: 30px;
-  height: 30px;
-  border: 1px solid black;
-  font-size: 0.875rem;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
 .info_text {
   display: flex;
   align-items: baseline;

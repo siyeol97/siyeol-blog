@@ -24,7 +24,7 @@
   resize: none;
   border: none;
   border-radius: 4px;
-  outline: 1px solid #f1f3f5;
+  outline: none;
   width: 100%;
   height: 100px;
   padding: 15px 20px;
@@ -32,18 +32,20 @@
   font-family: var(--font-noto-kr);
 }
 
+.reply_input:focus {
+  outline: 1px solid #52796f;
+}
+
 .button {
   border: none;
-  border-radius: 4px;
-  outline: 1px solid #000;
-  padding: 10px 20px;
+  border-radius: 8px;
+  padding: 14px 20px;
+  font-size: 14px;
+  color: #fff;
+  background-color: #52796f;
 }
 
 .button:hover {
-  background-color: #000;
+  background-color: #2f3e46;
   color: #fff;
-}
-
-.reply_input:focus {
-  outline: 1px solid #a3a3a3;
 }

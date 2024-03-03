@@ -1,0 +1,17 @@
+.default_avatar {
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  color: #2f3e46;
+  background-color: #cad2c5;
+  outline: 1px solid 52796f;
+  border-radius: 50%;
+  overflow: hidden;
+  font-size: 12px;
+  font-weight: 500;
+}

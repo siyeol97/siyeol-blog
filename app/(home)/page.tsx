@@ -1,5 +1,5 @@
 import getPostList from '@/utils/getPostList';
-import Main from './Main';
+import MainPage from './components/Main';
 
 export default async function HomePage() {
   const data = await getPostList();
@@ -14,5 +14,5 @@ export default async function HomePage() {
       created_at: post.created_at,
     };
   });
-  return <Main postItem={postItem} />;
+  return <MainPage postItem={postItem} />;
 }

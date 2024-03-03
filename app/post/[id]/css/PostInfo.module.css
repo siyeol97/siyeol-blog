@@ -8,7 +8,7 @@
 .info {
   display: flex;
   justify-content: center;
-  align-items: first baseline;
+  align-items: center;
   color: #868e96;
   gap: 5px;
 }

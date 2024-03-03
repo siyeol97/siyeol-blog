@@ -1,5 +1,5 @@
 import Card from './Card';
-import styles from './Main.module.css';
+import styles from '../css/Main.module.css';
 
 interface Props {
   postItem: Post[];

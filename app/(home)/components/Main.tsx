@@ -5,7 +5,7 @@ interface Props {
   postItem: Post[];
 }
 
-export default function MainPage({ postItem }: Props) {
+export default function Main({ postItem }: Props) {
   return (
     <section className={styles.section}>
       <ul className={styles.ul}>

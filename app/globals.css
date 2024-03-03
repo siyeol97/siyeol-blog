@@ -86,7 +86,8 @@ time,
 mark,
 audio,
 video,
-button {
+button,
+input {
   margin: 0;
   padding: 0;
   border: 0;
@@ -94,6 +95,7 @@ button {
   font: inherit;
   vertical-align: baseline;
   font-weight: 400;
+  font-family: var(--font-noto-kr);
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -189,4 +191,8 @@ button {
 
 span {
   line-height: 1.5;
+}
+
+input::placeholder {
+  font-family: var(--font-noto-kr);
 }

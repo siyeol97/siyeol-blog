@@ -9,7 +9,6 @@ interface Props {
 
 export default function PostInfo({ post, isAuthor }: Props) {
   const createdAt = calculateTime(post.created_at);
-  console.log(post.created_at, createdAt);
   return (
     <div className={styles.wrapper}>
       <span className={styles.info}>

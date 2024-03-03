@@ -23,12 +23,14 @@ export default function Register() {
             name='email'
             type='email'
             placeholder='Email *'
+            autoComplete='user-name'
             required
           />
           <input
             name='password'
             type='password'
             placeholder='Password *'
+            autoComplete='current-password'
             required
           />
           <button>회원가입 하기</button>

@@ -10,7 +10,8 @@ const useReply = (
         method: 'POST',
         body: _id,
       });
-      const result: Reply[] = await response.json();
+      const data: Reply[] = await response.json();
+      const result = data.reverse();
       setReplyData(result);
     };
     getReplyData();

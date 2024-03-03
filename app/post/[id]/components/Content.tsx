@@ -1,3 +1,4 @@
+import { Post } from '@/type';
 import styles from '../css/Content.module.css';
 
 interface Props {

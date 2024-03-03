@@ -27,3 +27,13 @@
   border-radius: 50%;
   overflow: hidden;
 }
+
+.info_text {
+  display: flex;
+  align-items: baseline;
+}
+
+.created_at {
+  margin-left: 8px;
+  font-size: 0.75rem;
+}

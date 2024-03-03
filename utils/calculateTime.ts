@@ -11,6 +11,9 @@ const calculateTime = (created_at: Date) => {
   const timeDifferenceYears = Math.floor(timeDifferenceMonths / 12);
 
   // 경과 시간 설정
+  if (timeDifferenceMinutes < 1) {
+    return '방금';
+  }
   if (timeDifferenceMinutes < 2) {
     return '1분 전';
   }

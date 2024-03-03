@@ -10,7 +10,7 @@ interface Props {
   session: Session | null;
 }
 
-export default function Post({ post, isAuthor, session }: Props) {
+export default function PostDetail({ post, isAuthor, session }: Props) {
   return (
     <section className={styles.post}>
       <TitleWrapper

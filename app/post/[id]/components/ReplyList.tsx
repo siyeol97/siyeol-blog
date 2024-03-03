@@ -19,12 +19,12 @@ export default function ReplyList({
   };
   return (
     <div>
-      {replyData.map((item) => {
+      {replyData.map((reply) => {
         return (
           <Reply
             post_id={post_id}
-            key={item._id}
-            item={item}
+            key={reply._id}
+            reply={reply}
             session={session}
             updateEditingReply={updateEditingReply}
             selectedReply={selectedReply}

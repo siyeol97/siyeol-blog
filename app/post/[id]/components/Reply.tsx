@@ -9,7 +9,7 @@ import ReplyEdit from './ReplyEdit';
 
 export interface ReplyProps {
   post_id: string;
-  item: Reply;
+  reply: Reply;
   session: Session | null;
   updateEditingReply: (_id: string) => void;
   selectedReply: string;
@@ -18,18 +18,18 @@ export interface ReplyProps {
 
 export default function Reply({
   post_id,
-  item,
+  reply,
   session,
   updateEditingReply,
   selectedReply,
   handleReply,
 }: ReplyProps) {
-  const isAuthor = item.author === session?.user?.email;
+  const isAuthor = reply.author === session?.user?.email;
 
   const { replyValue, isEditing, setReplyValue, handleClick, handleRequest } =
     useHandleReply({
       post_id,
-      item,
+      reply,
       updateEditingReply,
       selectedReply,
       handleReply,
@@ -37,10 +37,10 @@ export default function Reply({
 
   return (
     <div className={styles.wrapper}>
-      <ReplyAuthor item={item} />
+      <ReplyAuthor reply={reply} />
       {isEditing ? (
         <ReplyEdit
-          item={item}
+          reply={reply}
           replyValue={replyValue}
           setReplyValue={setReplyValue}
           handleClick={handleClick}
@@ -48,7 +48,7 @@ export default function Reply({
         />
       ) : (
         <Comment
-          item={item}
+          reply={reply}
           isAuthor={isAuthor}
           isEditing={isEditing}
           handleClick={handleClick}

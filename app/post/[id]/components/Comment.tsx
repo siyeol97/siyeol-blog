@@ -3,7 +3,7 @@
 import styles from '../css/Comment.module.css';
 
 interface Props {
-  item: Reply;
+  reply: Reply;
   isAuthor: boolean;
   isEditing: boolean;
   handleClick: (type: string) => void;
@@ -11,7 +11,7 @@ interface Props {
 }
 
 export default function Comment({
-  item,
+  reply,
   isAuthor,
   isEditing,
   handleClick,
@@ -19,7 +19,7 @@ export default function Comment({
 }: Props) {
   return (
     <div className={styles.wrapper}>
-      <p className={styles.comment}>{item.comment}</p>
+      <p className={styles.comment}>{reply.comment}</p>
       {isAuthor && !isEditing ? (
         <div className={styles.button}>
           <button

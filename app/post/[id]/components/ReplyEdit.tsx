@@ -3,7 +3,7 @@
 import styles from '../css/ReplyEdit.module.css';
 
 interface Props {
-  item: Reply;
+  reply: Reply;
   replyValue: string;
   setReplyValue: (value: string) => void;
   handleClick: (type: string) => void;
@@ -11,7 +11,7 @@ interface Props {
 }
 
 export default function ReplyEdit({
-  item,
+  reply,
   replyValue,
   setReplyValue,
   handleRequest,
@@ -32,7 +32,7 @@ export default function ReplyEdit({
         <button
           onClick={() => {
             handleClick('cancel');
-            setReplyValue(item.comment);
+            setReplyValue(reply.comment);
           }}
           className={styles.cancel_button}
         >

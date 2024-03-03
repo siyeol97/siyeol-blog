@@ -1,7 +1,29 @@
 .wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
   margin-bottom: 1.5rem;
 }
 
 .author_name {
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
+.author_avatar {
+  border-radius: 50%;
+}
+
+.default_avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border: 1px solid black;
   font-size: 0.875rem;
+  border-radius: 50%;
+  overflow: hidden;
 }

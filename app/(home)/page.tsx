@@ -8,7 +8,9 @@ export default async function HomePage() {
       _id: post._id.toString(),
       title: post.title,
       content: post.content,
+      name: post.name,
       author: post.author,
+      author_image: post.author_image,
     };
   });
   return <Main postItem={postItem} />;

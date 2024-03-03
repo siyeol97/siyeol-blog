@@ -9,11 +9,9 @@ interface Props {
 export default function PostInfo({ post, isAuthor }: Props) {
   return (
     <div className={styles.wrapper}>
-      <div>
-        <span className={styles.author}>
-          by <b>{post.author}</b>
-        </span>
-      </div>
+      <span className={styles.author}>
+        by <b>{post.name}</b>
+      </span>
       <div>{isAuthor ? <ControlPost _id={post._id} /> : null}</div>
     </div>
   );

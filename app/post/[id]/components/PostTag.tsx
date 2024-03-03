@@ -1,9 +1,5 @@
+import styles from '../css/PostTag.module.css';
+
 export default function PostTag() {
-  return (
-    <div
-      style={{ display: 'flex', justifyContent: 'flex-start', width: '100%' }}
-    >
-      #react #next.js
-    </div>
-  );
+  return <div className={styles.wrapper}>#react #next.js</div>;
 }

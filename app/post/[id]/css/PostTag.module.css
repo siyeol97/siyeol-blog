@@ -1,0 +1,6 @@
+.wrapper {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  line-height: 1.5;
+}

@@ -6,7 +6,7 @@
 }
 
 .write_button {
-  background-color: #52796f;
+  background-color: var(--primary-color-3);
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -15,7 +15,7 @@
 }
 
 .write_button:hover {
-  background-color: #2f3e46;
+  background-color: var(--primary-color-5);
   color: #fff;
 }
 

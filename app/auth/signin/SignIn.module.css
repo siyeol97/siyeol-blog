@@ -19,5 +19,7 @@
 }
 
 .wrapper p a {
+  color: var(--primary-color-5);
+  font-weight: 500;
   margin-left: 5px;
 }

@@ -33,7 +33,7 @@
 }
 
 .reply_input:focus {
-  outline: 1px solid #52796f;
+  outline: 1px solid var(--primary-color-3);
 }
 
 .button {
@@ -42,10 +42,10 @@
   padding: 14px 20px;
   font-size: 14px;
   color: #fff;
-  background-color: #52796f;
+  background-color: var(--primary-color-3);
 }
 
 .button:hover {
-  background-color: #2f3e46;
+  background-color: var(--primary-color-5);
   color: #fff;
 }

@@ -32,7 +32,7 @@
   border: none;
   outline: none;
   border-radius: 4px;
-  background-color: #52796f;
+  background-color: var(--primary-color-3);
   color: #fff;
   padding: 10px 20px;
 }
@@ -45,15 +45,15 @@
 }
 
 .edit_button:hover {
-  background-color: #2f3e46;
+  background-color: var(--primary-color-5);
   color: #fff;
 }
 
 .cancel_button:hover {
-  color: #2f3e46;
-  background-color: #cad2c5;
+  color: var(--primary-color-5);
+  background-color: var(--primary-color-1);
 }
 
 .reply_edit_input:focus {
-  outline: 1px solid #52796f;
+  outline: 1px solid var(--primary-color-3);
 }

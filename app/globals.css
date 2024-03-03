@@ -2,6 +2,14 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+:root {
+  --primary-color-1: #cad2c5;
+  --primary-color-2: #84a98c;
+  --primary-color-3: #52796f;
+  --primary-color-4: #354f52;
+  --primary-color-5: #2f3e46;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -157,14 +165,14 @@ h1 {
 }
 
 h2 {
-  color: var(--Grayscale-60, #000);
+  color: var(--primary-color-5);
   font-feature-settings:
     'clig' off,
     'liga' off;
   font-size: 32px;
   font-style: normal;
   font-weight: 400;
-  line-height: 40px; /* 125% */
+  line-height: 1.5;
 }
 
 h3 {
@@ -175,7 +183,7 @@ h3 {
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
-  line-height: 30px; /* 125% */
+  line-height: 30px;
 }
 
 button {

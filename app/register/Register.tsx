@@ -1,13 +1,12 @@
 import Link from 'next/link';
 import styles from './Register.module.css';
+import MainLogo from '@/components/MainLogo';
 
 export default function Register() {
   return (
     <section className={styles.wrapper}>
       <div className={styles.container}>
-        <h2>
-          <Link href={'/'}>Siyeol&apos;s Blog</Link>
-        </h2>
+        <MainLogo />
         <form
           method='POST'
           action='/api/auth/signup'

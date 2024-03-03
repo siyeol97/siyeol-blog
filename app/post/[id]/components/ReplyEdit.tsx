@@ -23,6 +23,7 @@ export default function ReplyEdit({
         value={replyValue}
         placeholder='댓글을 입력해 주세요'
         className={styles.reply_edit_input}
+        autoFocus
         onChange={(e) => {
           setReplyValue(e.target.value);
         }}

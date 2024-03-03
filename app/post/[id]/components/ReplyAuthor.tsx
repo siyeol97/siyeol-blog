@@ -1,13 +1,11 @@
 import Image from 'next/image';
 import styles from '../css/ReplyAuthor.module.css';
-import { Session } from 'next-auth';
 
 interface Props {
   item: Reply;
-  session: Session | null;
 }
 
-export default function ReplyAuthor({ item, session }: Props) {
+export default function ReplyAuthor({ item }: Props) {
   return (
     <div className={styles.wrapper}>
       {item.author_image ? (
@@ -19,9 +17,7 @@ export default function ReplyAuthor({ item, session }: Props) {
           className={styles.author_avatar}
         />
       ) : (
-        <div className={styles.default_avatar}>
-          {session?.user!.name?.slice(-2)}
-        </div>
+        <div className={styles.default_avatar}>{item.name.slice(-2)}</div>
       )}
 
       <p className={styles.author_name}>{item.name}</p>

@@ -4,10 +4,6 @@
   align-items: center;
 }
 
-.comment {
-  font-weight: 300;
-}
-
 .button {
   display: flex;
   align-items: center;

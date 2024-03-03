@@ -5,6 +5,7 @@ import UserInfo from './UserInfo';
 
 export default async function Session() {
   const session = await getServerSession(authOptions);
+  console.log(session);
   return (
     <div>{session ? <UserInfo session={session} /> : <SignInUpButton />}</div>
   );

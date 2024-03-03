@@ -37,10 +37,7 @@ export default function Reply({
 
   return (
     <div className={styles.wrapper}>
-      <ReplyAuthor
-        item={item}
-        session={session}
-      />
+      <ReplyAuthor item={item} />
       {isEditing ? (
         <ReplyEdit
           item={item}

@@ -18,6 +18,7 @@ export default async function PostPage({
     name: res!.name,
     author: res!.author,
     author_image: res!.author_image,
+    created_at: res!.created_at,
   };
   const isAuthor = session?.user?.email === post.author;
 

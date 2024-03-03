@@ -5,6 +5,7 @@ interface Post {
   name: string;
   author: string;
   author_image: string;
+  created_at: Date;
 }
 interface Reply {
   _id: string;
@@ -13,4 +14,5 @@ interface Reply {
   author: string;
   author_image: string;
   name: string;
+  created_at: Date;
 }

@@ -31,6 +31,7 @@ export default async function handler(
         author: session.user.email,
         author_image: session.user.image,
         name: session.user.name,
+        created_at: new Date(),
       };
 
       await db.collection('reply').insertOne(data);

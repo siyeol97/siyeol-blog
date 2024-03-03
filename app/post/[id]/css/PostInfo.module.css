@@ -5,10 +5,19 @@
   width: 100%;
 }
 
-.author {
+.info {
+  display: flex;
+  justify-content: center;
+  align-items: first baseline;
   color: #868e96;
+  gap: 5px;
 }
 
-.author b {
+.info b {
   font-size: 1.25rem;
+}
+
+.created_at {
+  margin-left: 8px;
+  font-size: 0.875rem;
 }

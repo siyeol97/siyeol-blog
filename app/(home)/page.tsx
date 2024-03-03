@@ -11,6 +11,7 @@ export default async function HomePage() {
       name: post.name,
       author: post.author,
       author_image: post.author_image,
+      created_at: post.created_at,
     };
   });
   return <Main postItem={postItem} />;

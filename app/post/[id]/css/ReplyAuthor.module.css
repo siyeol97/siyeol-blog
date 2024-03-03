@@ -1,0 +1,26 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.author_name {
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
+.author_avatar {
+  border-radius: 50%;
+}
+
+.info_text {
+  display: flex;
+  align-items: baseline;
+}
+
+.created_at {
+  margin-left: 8px;
+  font-size: 0.75rem;
+}

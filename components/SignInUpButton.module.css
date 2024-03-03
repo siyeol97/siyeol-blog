@@ -1,10 +1,13 @@
 .sign_button {
-  outline: 1px solid #000;
-  border-radius: 16px;
-  padding: 6px 14px;
+  outline: none;
+  border: none;
+  font-size: 14px;
+  border-radius: 8px;
+  padding: 10px 20px;
+  background-color: var(--primary-color-3);
+  color: #fff;
 }
 
 .sign_button:hover {
-  background-color: #000;
-  color: #fff;
+  background-color: var(--primary-color-4);
 }

@@ -3,23 +3,23 @@ import { useEffect, useState } from 'react';
 
 const useHandleReply = ({
   post_id,
-  item,
+  reply,
   updateEditingReply,
   selectedReply,
   handleReply,
 }: {
   post_id: string;
-  item: Reply;
+  reply: Reply;
   updateEditingReply: (_id: string) => void;
   selectedReply: string;
   handleReply: (reply: Reply[]) => void;
 }) => {
   const router = useRouter();
   const [isEditing, setIsEditing] = useState(false);
-  const [replyValue, setReplyValue] = useState(item.comment);
+  const [replyValue, setReplyValue] = useState(reply.comment);
 
   useEffect(() => {
-    if (selectedReply !== item._id) {
+    if (selectedReply !== reply._id) {
       setIsEditing(false);
     }
   }, [selectedReply]);
@@ -27,7 +27,7 @@ const useHandleReply = ({
   const handleClick = (type: string) => {
     setIsEditing((prev) => !prev);
     if (type === 'edit') {
-      updateEditingReply(item._id);
+      updateEditingReply(reply._id);
     } else {
       updateEditingReply('');
     }
@@ -38,12 +38,12 @@ const useHandleReply = ({
     if (type === 'delete') {
       req = {
         method: 'DELETE',
-        body: item._id,
+        body: reply._id,
       };
     } else {
       req = {
         method: 'POST',
-        body: JSON.stringify({ reply_id: item._id, comment: replyValue }),
+        body: JSON.stringify({ reply_id: reply._id, comment: replyValue }),
       };
     }
     const response = await fetch(`/api/reply/${type}`, req);

@@ -1,27 +1,23 @@
 import Image from 'next/image';
-import styles from './Card.module.css';
+import styles from '../css/Card.module.css';
 import Link from 'next/link';
+import getReplyList from '@/utils/getReplyList';
 
 interface Props {
   post: Post;
 }
 
-export default function Card({ post }: Props) {
+export default async function Card({ post }: Props) {
+  const replyCount = await getReplyList(post._id);
   return (
-    <li className={styles.li}>
+    <li className={styles.card}>
       <Link href={`/post/${post._id}`}>
         <div className={styles.card_preview}>
           <div className={styles.card_preview_text}>
             <h4 className={`${styles.card_article} ${styles.article_title} `}>
               {post.title}
             </h4>
-            <hr
-              style={{
-                backgroundColor: 'white',
-                border: 'none',
-                height: '0.1px',
-              }}
-            />
+            <hr className={styles.separate_line} />
             <p className={`${styles.card_article} ${styles.article_body}`}>
               {post.content}
             </p>
@@ -37,11 +33,11 @@ export default function Card({ post }: Props) {
       </Link>
       <div className={styles.card_bottom}>
         <span className={styles.writer}>
-          by <b>이시열</b>
+          by <b>{post.name}</b>
         </span>
         <div className={styles.like_comment}>
           <span>❤ 999</span>
-          <span>💬 999</span>
+          <span>💬 {replyCount}</span>
         </div>
       </div>
     </li>

@@ -29,6 +29,9 @@ export default async function handler(
         comment: req.body.comment,
         parent_post: new ObjectId(req.body.post_id),
         author: session.user.email,
+        author_image: session.user.image,
+        name: session.user.name,
+        created_at: new Date(),
       };
 
       await db.collection('reply').insertOne(data);

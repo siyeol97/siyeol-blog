@@ -1,6 +1,8 @@
+import { authOptions } from '@/pages/api/auth/[...nextauth]';
 import getSinglePost from '@/utils/getSinglePost';
-import PostContent from './PostContent';
-import getUserData from '@/utils/getUserData';
+import { getServerSession } from 'next-auth';
+import styles from './css/page.module.css';
+import PostDetail from './components/PostDetail';
 
 export default async function PostPage({
   params: { id },
@@ -8,20 +10,25 @@ export default async function PostPage({
   params: { id: string };
 }) {
   const res = await getSinglePost(id);
-  const CurrentUserData = await getUserData();
-  const post = {
+  const session = await getServerSession(authOptions);
+  const post: Post = {
     _id: res!._id.toString(),
     title: res!.title,
     content: res!.content,
+    name: res!.name,
     author: res!.author,
+    author_image: res!.author_image,
+    created_at: res!.created_at,
   };
-  const isSameUser = CurrentUserData?.email === post.author;
+  const isAuthor = session?.user?.email === post.author;
 
   return (
-    <PostContent
-      post={post}
-      isSameUser={isSameUser}
-      CurrentUserData={CurrentUserData}
-    />
+    <section className={styles.wrapper}>
+      <PostDetail
+        post={post}
+        isAuthor={isAuthor}
+        session={session}
+      />
+    </section>
   );
 }

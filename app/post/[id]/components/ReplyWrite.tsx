@@ -1,13 +1,16 @@
 'use client';
 
 import { useState } from 'react';
+import styles from '../css/ReplyWrite.module.css';
 
 interface Props {
+  replyData: Reply[];
   post_id: string;
   handleReply: (reply: Reply[]) => void;
 }
 
-export default function ReplyWrite({ post_id, handleReply }: Props) {
+export default function ReplyWrite({ replyData, post_id, handleReply }: Props) {
+  const replyCount = replyData.length;
   const [comment, setComment] = useState('');
 
   const writeReply = async () => {
@@ -28,18 +31,23 @@ export default function ReplyWrite({ post_id, handleReply }: Props) {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <span>댓글 쓰기</span>
-      <div>
-        <input
-          type='text'
+    <div className={styles.wrapper}>
+      <span className={styles.reply_count}>댓글 {replyCount}개</span>
+      <div className={styles.reply_input_area}>
+        <textarea
           name='reply'
           value={comment}
+          className={styles.reply_input}
           onChange={(e) => {
             setComment(e.target.value);
           }}
         />
-        <button onClick={writeReply}>댓글 등록</button>
+        <button
+          onClick={writeReply}
+          className={styles.button}
+        >
+          댓글 등록
+        </button>
       </div>
     </div>
   );

@@ -2,8 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 30px;
-  width: 100%;
+  padding: 24px 50px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
 }
 
 .wrapper {

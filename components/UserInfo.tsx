@@ -5,6 +5,7 @@ import Link from 'next/link';
 import styles from './UserInfo.module.css';
 import { Session } from 'next-auth';
 import Image from 'next/image';
+import DefaultAvatar from './DefaultAvatar';
 
 export default function UserInfo({ session }: { session: Session }) {
   return (
@@ -25,9 +26,7 @@ export default function UserInfo({ session }: { session: Session }) {
           />
         </div>
       ) : (
-        <div className={styles.default_avatar}>
-          {session.user!.name?.slice(-2)}
-        </div>
+        <DefaultAvatar name={session.user!.name?.slice(-2)} />
       )}
       <button
         onClick={() => {

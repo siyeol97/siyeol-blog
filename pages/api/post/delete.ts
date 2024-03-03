@@ -19,10 +19,16 @@ export default async function handler(
       if (!post) {
         throw new Error('post not found');
       }
+
       if (post.author === session?.user?.email) {
         await db
           .collection('blog_post')
           .deleteOne({ _id: new ObjectId(req.body) });
+
+        await db
+          .collection('reply')
+          .deleteMany({ parent_post: new ObjectId(req.body) });
+
         res.status(200).json('삭제 성공');
         return;
       }

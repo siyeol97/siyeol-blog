@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import Reply from './Reply';
+import { Session } from 'next-auth';
 
 export default function ReplyList({
   post_id,
   replyData,
-  CurrentUserData,
+  session,
   handleReply,
 }: {
   post_id: string;
   replyData: Reply[];
-  CurrentUserData: UserData | null;
+  session: Session | null;
   handleReply: (reply: Reply[]) => void;
 }) {
   const [selectedReply, setSelectedReply] = useState('');
@@ -18,13 +19,13 @@ export default function ReplyList({
   };
   return (
     <div>
-      {replyData.map((item) => {
+      {replyData.map((reply) => {
         return (
           <Reply
             post_id={post_id}
-            key={item._id}
-            item={item}
-            CurrentUserData={CurrentUserData}
+            key={reply._id}
+            reply={reply}
+            session={session}
             updateEditingReply={updateEditingReply}
             selectedReply={selectedReply}
             handleReply={handleReply}

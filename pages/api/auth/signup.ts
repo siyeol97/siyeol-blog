@@ -10,6 +10,7 @@ export default async function handler(
     if (req.method === 'POST') {
       const client = await connectDB;
       const db = client.db('siyeol_blog');
+
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
       const userAccount = {
         name: req.body.name,

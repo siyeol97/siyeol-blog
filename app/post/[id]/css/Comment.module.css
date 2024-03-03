@@ -1,0 +1,23 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.comment {
+  width: 80%;
+  word-break: keep-all;
+  line-height: 1.5;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.button_text {
+  color: #868e96;
+  font-size: 0.875rem;
+}

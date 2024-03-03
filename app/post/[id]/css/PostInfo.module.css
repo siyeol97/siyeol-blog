@@ -1,0 +1,22 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #868e96;
+  gap: 5px;
+}
+
+.info b {
+  font-size: 1.25rem;
+}
+
+.created_at {
+  font-size: 0.875rem;
+}

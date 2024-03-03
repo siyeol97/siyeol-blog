@@ -2,7 +2,17 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+:root {
+  --primary-color-1: #cad2c5;
+  --primary-color-2: #84a98c;
+  --primary-color-3: #52796f;
+  --primary-color-4: #354f52;
+  --primary-color-5: #2f3e46;
+}
 
+* {
+  box-sizing: border-box;
+}
 html,
 body,
 div,
@@ -84,15 +94,16 @@ time,
 mark,
 audio,
 video,
-button {
+button,
+input {
   margin: 0;
   padding: 0;
   border: 0;
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
-  box-sizing: border-box;
   font-weight: 400;
+  font-family: var(--font-noto-kr);
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -147,21 +158,21 @@ h1 {
   font-feature-settings:
     'clig' off,
     'liga' off;
-  font-size: 40px;
+  font-size: 48px;
   font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+  font-weight: 600;
+  line-height: 1.5;
 }
 
 h2 {
-  color: var(--Grayscale-60, #000);
+  color: var(--primary-color-5);
   font-feature-settings:
     'clig' off,
     'liga' off;
   font-size: 32px;
   font-style: normal;
   font-weight: 400;
-  line-height: 40px; /* 125% */
+  line-height: 1.5;
 }
 
 h3 {
@@ -172,7 +183,7 @@ h3 {
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
-  line-height: 30px; /* 125% */
+  line-height: 30px;
 }
 
 button {
@@ -184,4 +195,12 @@ button {
   overflow: visible;
   cursor: pointer;
   outline: none;
+}
+
+span {
+  line-height: 1.5;
+}
+
+input::placeholder {
+  font-family: var(--font-noto-kr);
 }

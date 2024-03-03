@@ -2,17 +2,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
 }
 
 .write_button {
-  outline: 1px solid #000;
-  border-radius: 16px;
-  padding: 6px 14px;
+  background-color: var(--primary-color-3);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 16px;
+  font-size: 14px;
 }
 
 .write_button:hover {
-  background-color: #000;
+  background-color: var(--primary-color-5);
   color: #fff;
 }
 
@@ -20,18 +23,6 @@
   position: relative;
   width: 40px;
   height: 40px;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
-.default_avatar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  width: 40px;
-  height: 40px;
-  border: 1px solid black;
   border-radius: 50%;
   overflow: hidden;
 }

@@ -38,6 +38,10 @@
   border-radius: 8px;
 }
 
+.form input:focus {
+  outline: 1px solid #a3a3a3;
+}
+
 .form button {
   border: none;
   border-radius: 16px;

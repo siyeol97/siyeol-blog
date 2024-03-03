@@ -18,6 +18,7 @@ export default function Register() {
             type='text'
             placeholder='Name *'
             required
+            autoFocus
           />
           <input
             name='email'

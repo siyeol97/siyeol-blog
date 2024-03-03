@@ -23,7 +23,7 @@ export default function Credential() {
         id='email'
         name='email'
         type='email'
-        autoFocus={true}
+        autoFocus
         placeholder='Email *'
         ref={emailRef}
         // eslint-disable-next-line

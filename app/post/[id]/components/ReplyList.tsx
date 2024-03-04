@@ -20,7 +20,6 @@ export default function ReplyList({
   return (
     <div>
       {replyData.map((reply) => {
-        console.log(reply.comment);
         return (
           <Reply
             post_id={post_id}

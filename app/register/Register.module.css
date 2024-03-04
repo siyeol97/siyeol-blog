@@ -29,6 +29,12 @@
   gap: 1.25rem;
 }
 
+.input_box {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 .form input {
   width: 100%;
   padding: 20px 16px;
@@ -40,6 +46,12 @@
 
 .form input:focus {
   outline: 1px solid var(--primary-color-3);
+}
+
+.error_message {
+  font-size: 14px;
+  margin-top: 5px;
+  color: var(--error);
 }
 
 .form button {
@@ -59,16 +71,16 @@
   color: #fff;
 }
 
-.container p {
+.go_login {
   font-size: 0.875rem;
   text-align: center;
 }
 
-.container p a {
+.go_login a {
   color: var(--primary-color-5);
   font-weight: 500;
 }
 
-.container p a:hover {
+.go_login a:hover {
   text-decoration: underline;
 }

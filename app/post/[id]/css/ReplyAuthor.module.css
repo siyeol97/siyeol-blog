@@ -21,6 +21,7 @@
 }
 
 .created_at {
+  color: #868e96;
   margin-left: 8px;
   font-size: 0.75rem;
 }

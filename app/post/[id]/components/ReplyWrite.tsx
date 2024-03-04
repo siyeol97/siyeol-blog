@@ -2,18 +2,30 @@
 
 import { useState } from 'react';
 import styles from '../css/ReplyWrite.module.css';
+import { Session } from 'next-auth';
+import { useRouter } from 'next/navigation';
 
 interface Props {
   replyData: Reply[];
   post_id: string;
   handleReply: (reply: Reply[]) => void;
+  session: Session | null;
 }
 
-export default function ReplyWrite({ replyData, post_id, handleReply }: Props) {
+export default function ReplyWrite({
+  replyData,
+  post_id,
+  handleReply,
+  session,
+}: Props) {
+  const router = useRouter();
   const replyCount = replyData.length;
   const [comment, setComment] = useState('');
 
   const writeReply = async () => {
+    if (!session) {
+      router.push('/auth/signin');
+    }
     const response = await fetch('/api/reply/new', {
       method: 'POST',
       body: JSON.stringify({ comment: comment, post_id: post_id }),

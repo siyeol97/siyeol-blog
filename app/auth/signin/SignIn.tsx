@@ -10,7 +10,7 @@ export default function SignIn() {
       <MainLogo />
       <Credential />
       <OAuth />
-      <p>
+      <p className={styles.go_register}>
         아직 회원이 아니세요?
         <Link href={'/register'}>회원가입</Link>
       </p>

@@ -19,23 +19,21 @@ export const authOptions: NextAuthOptions = {
       // eslint-disable-next-line
       async authorize(credentials): Promise<any> {
         if (!credentials) {
-          return null;
+          return;
         }
         const db = (await connectDB).db('siyeol_blog');
         const user = await db
           .collection('created_user_account')
           .findOne({ email: credentials.email });
         if (!user) {
-          console.log('해당 유저의 정보가 없습니다');
-          return null;
+          return;
         }
         const passwordCheck = await bcrypt.compare(
           credentials.password,
           user.password
         );
         if (!passwordCheck) {
-          console.log('비밀번호가 틀렸습니다.');
-          return null;
+          return;
         }
         // user = 해당되는 'created_user_account' collection에 저장된 user 정보
         return user;
@@ -61,7 +59,7 @@ export const authOptions: NextAuthOptions = {
 
   session: {
     strategy: 'jwt',
-    maxAge: 24 * 60 * 60, //1일
+    maxAge: 24 * 60 * 60,
   },
 
   callbacks: {

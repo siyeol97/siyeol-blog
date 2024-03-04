@@ -2,12 +2,14 @@ import Image from 'next/image';
 import styles from '../css/Card.module.css';
 import Link from 'next/link';
 import getReplyList from '@/utils/getReplyList';
+import calculateTime from '@/utils/calculateTime';
 
 interface Props {
   post: Post;
 }
 
 export default async function Card({ post }: Props) {
+  const createdAt = calculateTime(post.created_at);
   const replyCount = await getReplyList(post._id);
   return (
     <li className={styles.card}>
@@ -33,7 +35,7 @@ export default async function Card({ post }: Props) {
       </Link>
       <div className={styles.card_bottom}>
         <span className={styles.writer}>
-          by <b>{post.name}</b>
+          by <b>{post.name}</b>ㆍ<span>{createdAt}</span>
         </span>
         <div className={styles.like_comment}>
           <span>❤ 999</span>

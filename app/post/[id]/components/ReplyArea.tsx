@@ -23,6 +23,7 @@ export default function ReplyArea({
         replyData={replyData}
         post_id={post_id}
         handleReply={handleReply}
+        session={session}
       />
       <ReplyList
         post_id={post_id}

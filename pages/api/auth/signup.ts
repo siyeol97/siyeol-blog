@@ -8,6 +8,7 @@ export default async function handler(
 ) {
   try {
     if (req.method === 'POST') {
+      req.body = JSON.parse(req.body);
       const client = await connectDB;
       const db = client.db('siyeol_blog');
 
@@ -18,7 +19,7 @@ export default async function handler(
         password: hashedPassword,
       };
       await db.collection('created_user_account').insertOne(userAccount);
-      res.redirect(302, '/');
+      res.status(200).json('success');
       return;
     }
     return;

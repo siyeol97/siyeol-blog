@@ -26,13 +26,14 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  gap: 1.25rem;
+  gap: 0.875rem;
 }
 
 .input_box {
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 79px;
 }
 
 .form input {

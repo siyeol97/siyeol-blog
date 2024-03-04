@@ -9,16 +9,16 @@
   padding-bottom: 100px;
 }
 
-.wrapper p {
+.go_register {
   font-size: 0.875rem;
   text-align: center;
 }
 
-.wrapper p a:hover {
+.go_register a:hover {
   text-decoration: underline;
 }
 
-.wrapper p a {
+.go_register a {
   color: var(--primary-color-5);
   font-weight: 500;
   margin-left: 5px;

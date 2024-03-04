@@ -26,7 +26,8 @@ export default function ReplyWrite({ replyData, post_id, handleReply }: Props) {
         body: post_id,
       });
       const replyList: Reply[] = await response.json();
-      handleReply(replyList);
+      const result = replyList.reverse();
+      handleReply(result);
     }
   };
 

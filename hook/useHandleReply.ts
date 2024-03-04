@@ -53,10 +53,11 @@ const useHandleReply = ({
         body: post_id,
       });
       const replyList: Reply[] = await response.json();
+      const result = replyList.reverse();
       if (type === 'edit') {
         setIsEditing(false);
       }
-      handleReply(replyList);
+      handleReply(result);
       router.refresh();
     }
     return null;

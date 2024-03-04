@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import styles from './Register.module.css';
 import MainLogo from '@/components/MainLogo';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { ChangeHandler, SubmitHandler, useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 
 interface Form {
@@ -18,6 +18,7 @@ export default function Register() {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors },
   } = useForm<Form>({
     mode: 'onBlur',
@@ -30,6 +31,17 @@ export default function Register() {
     });
     if (response.ok) {
       router.push('/auth/signin');
+    }
+  };
+
+  const onBlurEmail: ChangeHandler = async (e) => {
+    const response = await fetch('/api/auth/check-email', {
+      method: 'POST',
+      body: JSON.stringify(e.target.value),
+    });
+    const result = await response.json();
+    if (result.length !== 0) {
+      setError('email', { message: '중복된 이메일 입니다' });
     }
   };
 
@@ -67,6 +79,7 @@ export default function Register() {
                     /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/,
                   message: '올바른 이메일 형식이 아닙니다',
                 },
+                onBlur: onBlurEmail,
               })}
               placeholder='Email *'
               type='email'

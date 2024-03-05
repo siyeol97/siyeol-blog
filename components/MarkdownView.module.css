@@ -1,0 +1,46 @@
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.markdown p,
+.markdown ul,
+.markdown li {
+  line-height: 1.7;
+}
+
+.markdown a {
+  color: var(--primary-color-3);
+  font-weight: 500;
+}
+
+.markdown a:hover {
+  text-decoration: underline;
+}
+
+.markdown code {
+  background-color: rgba(175, 184, 193, 0.2);
+  color: #000;
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    SF Mono,
+    Menlo,
+    Consolas,
+    Liberation Mono,
+    monospace;
+  font-size: 85%;
+}
+
+.markdown strong {
+  font-weight: 700;
+}
+
+.markdown blockquote {
+  padding: 0.5rem 1rem;
+  border-left: 0.25em solid #d0d7de;
+  background-color: rgba(175, 184, 193, 0.2);
+}

@@ -3,6 +3,7 @@ import styles from '../css/Card.module.css';
 import Link from 'next/link';
 import getReplyList from '@/utils/getReplyList';
 import calculateTime from '@/utils/calculateTime';
+import filterText from '@/utils/filterText';
 
 interface Props {
   post: Post;
@@ -11,6 +12,7 @@ interface Props {
 export default async function Card({ post }: Props) {
   const createdAt = calculateTime(post.created_at);
   const replyCount = await getReplyList(post._id);
+  const content = filterText(post.content);
   return (
     <li className={styles.card}>
       <Link href={`/post/${post._id}`}>
@@ -21,7 +23,7 @@ export default async function Card({ post }: Props) {
             </h4>
             <hr className={styles.separate_line} />
             <p className={`${styles.card_article} ${styles.article_body}`}>
-              {post.content}
+              {content}
             </p>
           </div>
           <Image

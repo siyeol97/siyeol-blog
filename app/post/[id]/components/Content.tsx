@@ -1,4 +1,4 @@
-import MarkdownView from '@/components/MarkdownView';
+import MarkdownView from '@/components/Markdown/MarkdownView';
 import styles from '../css/Content.module.css';
 
 interface Props {

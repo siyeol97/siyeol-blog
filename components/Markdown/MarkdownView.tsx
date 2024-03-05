@@ -16,6 +16,13 @@ export default async function MarkdownView({ content }: Props) {
       components={{
         //pre: MarkdownHeader,
         code: CodeBlock,
+        img: ({ ...props }) => (
+          <img
+            style={{ maxWidth: '100%' }}
+            {...props}
+            alt=''
+          />
+        ),
       }}
       className={styles.markdown}
     >

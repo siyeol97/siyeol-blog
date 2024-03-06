@@ -10,6 +10,8 @@ interface Props {
   updateTitle: (title: string) => void;
   content: string;
   updateContent: (content: string) => void;
+  type: string;
+  _id?: string;
 }
 
 export default function WriteForm({
@@ -17,6 +19,8 @@ export default function WriteForm({
   updateTitle,
   content,
   updateContent,
+  type,
+  _id,
 }: Props) {
   const router = useRouter();
   const handleCancelClick = () => {
@@ -33,7 +37,7 @@ export default function WriteForm({
 
   return (
     <form
-      action='/api/post/new'
+      action={type === 'new' ? '/api/post/new' : '/api/post/edit'}
       method='POST'
       className={styles.form}
     >
@@ -61,6 +65,14 @@ export default function WriteForm({
           onChange={onChangeContent}
         />
       </label>
+      {type === 'edit' ? (
+        <input
+          type='text'
+          name='_id'
+          defaultValue={_id}
+          className={styles.hide_id}
+        />
+      ) : null}
       <div className={styles.button_area}>
         <button
           type='button'

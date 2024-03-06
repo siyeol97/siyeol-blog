@@ -8,7 +8,7 @@ interface Props {
   content: string;
 }
 
-export default async function MarkdownView({ content }: Props) {
+export default function MarkdownView({ content }: Props) {
   return (
     <Markdown
       remarkPlugins={[remarkGfm]}

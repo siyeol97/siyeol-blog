@@ -93,8 +93,7 @@
 }
 
 .cancel_button:hover {
-  color: var(--primary-color-5);
-  background-color: var(--primary-color-2);
+  background-color: var(--primary-color-1);
 }
 
 .hide_id {

@@ -24,7 +24,7 @@ export default function WriteForm({
 }: Props) {
   const router = useRouter();
   const handleCancelClick = () => {
-    router.push('/');
+    router.back();
   };
 
   const onChangeTitle = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -48,6 +48,7 @@ export default function WriteForm({
         required
         value={title}
         onChange={onChangeTitle}
+        maxLength={40}
       />
       <hr className={styles.separator} />
       <label
@@ -59,6 +60,7 @@ export default function WriteForm({
           name='content'
           placeholder='내용을 작성해주세요'
           className={styles.input_content}
+          maxLength={3000}
           maxRows={26}
           required
           value={content}

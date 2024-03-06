@@ -174,3 +174,7 @@ span {
 input::placeholder {
   font-family: var(--font-noto-kr);
 }
+
+textarea {
+  font-family: var(--font-noto-kr);
+}

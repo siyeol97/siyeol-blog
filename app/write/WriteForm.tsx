@@ -2,8 +2,35 @@
 
 import ReactTextareaAutosize from 'react-textarea-autosize';
 import styles from './WriteForm.module.css';
+import { useRouter } from 'next/navigation';
+import { ChangeEvent } from 'react';
 
-export default function WriteForm() {
+interface Props {
+  title: string;
+  updateTitle: (title: string) => void;
+  content: string;
+  updateContent: (content: string) => void;
+}
+
+export default function WriteForm({
+  title,
+  updateTitle,
+  content,
+  updateContent,
+}: Props) {
+  const router = useRouter();
+  const handleCancelClick = () => {
+    router.push('/');
+  };
+
+  const onChangeTitle = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    updateTitle(e.target.value);
+  };
+
+  const onChangeContent = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    updateContent(e.target.value);
+  };
+
   return (
     <form
       action='/api/post/new'
@@ -14,6 +41,9 @@ export default function WriteForm() {
         name='title'
         placeholder='제목을 작성해주세요'
         className={styles.input_title}
+        required
+        value={title}
+        onChange={onChangeTitle}
       />
       <hr className={styles.separator} />
       <label
@@ -25,11 +55,20 @@ export default function WriteForm() {
           name='content'
           placeholder='내용을 작성해주세요'
           className={styles.input_content}
-          maxRows={27}
+          maxRows={26}
+          required
+          value={content}
+          onChange={onChangeContent}
         />
       </label>
       <div className={styles.button_area}>
-        <button className={styles.cancel_button}>취소</button>
+        <button
+          type='button'
+          className={styles.cancel_button}
+          onClick={handleCancelClick}
+        >
+          취소
+        </button>
         <button
           type='submit'
           className={styles.submit_button}

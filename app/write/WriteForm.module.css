@@ -60,13 +60,10 @@
 
 .button_area {
   width: 100%;
-}
-
-.button_area {
   display: flex;
   justify-content: flex-end;
   gap: 16px;
-  padding: 0.5rem;
+  padding: 0.875rem;
   box-shadow: 0 -1px 1px -1px black;
 }
 

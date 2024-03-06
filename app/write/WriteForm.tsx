@@ -10,6 +10,8 @@ interface Props {
   updateTitle: (title: string) => void;
   content: string;
   updateContent: (content: string) => void;
+  type: string;
+  _id?: string;
 }
 
 export default function WriteForm({
@@ -17,10 +19,12 @@ export default function WriteForm({
   updateTitle,
   content,
   updateContent,
+  type,
+  _id,
 }: Props) {
   const router = useRouter();
   const handleCancelClick = () => {
-    router.push('/');
+    router.back();
   };
 
   const onChangeTitle = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -33,7 +37,7 @@ export default function WriteForm({
 
   return (
     <form
-      action='/api/post/new'
+      action={type === 'new' ? '/api/post/new' : '/api/post/edit'}
       method='POST'
       className={styles.form}
     >
@@ -44,6 +48,7 @@ export default function WriteForm({
         required
         value={title}
         onChange={onChangeTitle}
+        maxLength={40}
       />
       <hr className={styles.separator} />
       <label
@@ -55,12 +60,21 @@ export default function WriteForm({
           name='content'
           placeholder='내용을 작성해주세요'
           className={styles.input_content}
+          maxLength={3000}
           maxRows={26}
           required
           value={content}
           onChange={onChangeContent}
         />
       </label>
+      {type === 'edit' ? (
+        <input
+          type='text'
+          name='_id'
+          defaultValue={_id}
+          className={styles.hide_id}
+        />
+      ) : null}
       <div className={styles.button_area}>
         <button
           type='button'

@@ -21,6 +21,7 @@ export default function Write() {
         updateTitle={updateTitle}
         content={content}
         updateContent={updateContent}
+        type='new'
       />
       <Preview
         title={title}

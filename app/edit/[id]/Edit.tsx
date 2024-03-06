@@ -1,39 +1,41 @@
-import getSinglePost from '@/utils/getSinglePost';
-import styles from './Edit.module.css';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/pages/api/auth/[...nextauth]';
-import { redirect } from 'next/navigation';
+'use client';
 
-export default async function Edit({ _id }: { _id: string }) {
-  const session = await getServerSession(authOptions);
-  const result = await getSinglePost(_id);
-  if (!session || session.user?.email !== result?.author) {
-    redirect(`/post/${_id}`);
-  }
+import { useState } from 'react';
+import styles from './Edit.module.css';
+import WriteForm from '@/app/write/WriteForm';
+import Preview from '@/app/write/Preview';
+
+interface Props {
+  post: {
+    title: string;
+    content: string;
+  };
+  _id: string;
+}
+
+export default function Edit({ post, _id }: Props) {
+  const [title, setTitle] = useState(post.title);
+  const [content, setContent] = useState(post.content);
+  const updateTitle = (title: string) => {
+    setTitle(title);
+  };
+  const updateContent = (content: string) => {
+    setContent(content);
+  };
   return (
     <section className={styles.section}>
-      <form
-        action='/api/post/edit'
-        method='POST'
-        className={styles.edit_content}
-      >
-        <input
-          type='text'
-          name='title'
-          defaultValue={result!.title}
-        />
-        <textarea
-          name='content'
-          defaultValue={result!.content}
-        />
-        <input
-          type='text'
-          name='_id'
-          defaultValue={result!._id.toString()}
-          className={styles.hide_id}
-        />
-        <button type='submit'>저장하기</button>
-      </form>
+      <WriteForm
+        title={title}
+        updateTitle={updateTitle}
+        content={content}
+        updateContent={updateContent}
+        type='edit'
+        _id={_id}
+      />
+      <Preview
+        title={title}
+        content={content}
+      />
     </section>
   );
 }

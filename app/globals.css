@@ -145,7 +145,7 @@ h3 {
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
-  line-height: 30px;
+  line-height: 1.5;
 }
 
 h4 {
@@ -172,5 +172,9 @@ span {
 }
 
 input::placeholder {
+  font-family: var(--font-noto-kr);
+}
+
+textarea {
   font-family: var(--font-noto-kr);
 }

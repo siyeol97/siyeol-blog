@@ -5,6 +5,7 @@
   align-items: center;
   justify-content: center;
   padding: 0.5rem;
+  background-color: #f8f9fa;
 }
 
 .preview_title {
@@ -18,6 +19,7 @@
   line-height: 1.5;
   padding: 1rem;
   -ms-overflow-style: none;
+  background-color: inherit;
 }
 
 .preview_title:focus {

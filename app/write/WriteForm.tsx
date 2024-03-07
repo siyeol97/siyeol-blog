@@ -34,6 +34,19 @@ export default function WriteForm({
   const onChangeContent = (e: ChangeEvent<HTMLTextAreaElement>) => {
     updateContent(e.target.value);
   };
+  // eslint-disable-next-line
+  const handleSetTab = (e: any) => {
+    if (e.key === 'Tab') {
+      e.preventDefault();
+      const val = e.target.value;
+      const start = e.target.selectionStart;
+      const end = e.target.selectionEnd;
+      e.target.value = val.substring(0, start) + '\t' + val.substring(end);
+      e.target.selectionStart = e.target.selectionEnd = start + 1;
+      onChangeContent(e);
+      return false;
+    }
+  };
 
   return (
     <form
@@ -43,7 +56,7 @@ export default function WriteForm({
     >
       <textarea
         name='title'
-        placeholder='제목을 작성해주세요'
+        placeholder='제목을 작성해주세요.'
         className={styles.input_title}
         required
         value={title}
@@ -58,13 +71,15 @@ export default function WriteForm({
         <ReactTextareaAutosize
           id='content'
           name='content'
-          placeholder='내용을 작성해주세요'
+          placeholder='Markdown 문법을 지원합니다.'
           className={styles.input_content}
+          minRows={3}
           maxLength={3000}
           maxRows={26}
           required
           value={content}
           onChange={onChangeContent}
+          onKeyDown={(e) => handleSetTab(e)}
         />
       </label>
       {type === 'edit' ? (

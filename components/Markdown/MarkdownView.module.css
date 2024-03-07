@@ -44,7 +44,3 @@
   border-left: 0.25em solid #d0d7de;
   background-color: rgba(175, 184, 193, 0.2);
 }
-
-.markdown pre {
-  overflow-y: scroll;
-}

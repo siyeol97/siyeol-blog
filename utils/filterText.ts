@@ -6,6 +6,7 @@ const filterText = (text: string) => {
     .replace(/```[\s\S]*?```/g, '')
     .replace(/#/g, '')
     .replace(/\*/g, '')
+    .replace(/<.*?>/g, '')
     .trim();
   return filteredText;
 };

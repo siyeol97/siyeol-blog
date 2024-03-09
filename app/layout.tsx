@@ -1,11 +1,58 @@
 import type { Metadata } from 'next';
-// import { Noto_Sans_KR } from 'next/font/google';
+import localFont from 'next/font/local';
 import './globals.css';
 
-// const Noto_KR = Noto_Sans_KR({
-//   subsets: ['latin'],
-//   variable: '--font-noto-kr',
-// });
+const AppleSDGothicNeo = localFont({
+  src: [
+    {
+      path: './fonts/AppleSDGothicNeoT.ttf',
+      weight: '100',
+      style: 'normal',
+    },
+    {
+      path: './fonts/AppleSDGothicNeoUL.ttf',
+      weight: '200',
+      style: 'normal',
+    },
+    {
+      path: './fonts/AppleSDGothicNeoL.ttf',
+      weight: '300',
+      style: 'normal',
+    },
+    {
+      path: './fonts/AppleSDGothicNeoR.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: './fonts/AppleSDGothicNeoM.ttf',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: './fonts/AppleSDGothicNeoSB.ttf',
+      weight: '600',
+      style: 'normal',
+    },
+    {
+      path: './fonts/AppleSDGothicNeoB.ttf',
+      weight: '700',
+      style: 'normal',
+    },
+    {
+      path: './fonts/AppleSDGothicNeoEB.ttf',
+      weight: '800',
+      style: 'normal',
+    },
+    {
+      path: './fonts/AppleSDGothicNeoH.ttf',
+      weight: '900',
+      style: 'normal',
+    },
+  ],
+  display: 'swap',
+  variable: '--font-apple-gothic',
+});
 
 export const metadata: Metadata = {
   title: 'Siyeol-blog',
@@ -19,7 +66,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ko'>
-      <body>{children}</body>
+      <body className={AppleSDGothicNeo.className}>{children}</body>
     </html>
   );
 }

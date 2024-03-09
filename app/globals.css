@@ -93,7 +93,11 @@ input {
   font: inherit;
   vertical-align: baseline;
   font-weight: 400;
-  font-family: var(--font-noto-kr);
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    var(--font-noto-kr);
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -172,9 +176,17 @@ span {
 }
 
 input::placeholder {
-  font-family: var(--font-noto-kr);
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    var(--font-noto-kr);
 }
 
 textarea {
-  font-family: var(--font-noto-kr);
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    var(--font-noto-kr);
 }

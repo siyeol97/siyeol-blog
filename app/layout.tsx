@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ko'>
-      <body className={Noto_KR.className}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }

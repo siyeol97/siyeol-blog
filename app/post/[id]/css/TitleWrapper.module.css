@@ -5,3 +5,13 @@
   justify-content: center;
   gap: 1rem;
 }
+
+.separator {
+  width: 20%;
+  height: 1px;
+  border: none;
+  border-top: 5px solid #000;
+  margin-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}

@@ -17,6 +17,7 @@ export default function TitleWrapper({ post, isAuthor }: Props) {
         post={post}
       />
       <PostTag />
+      <hr className={styles.separator} />
     </div>
   );
 }

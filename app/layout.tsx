@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
-import { Noto_Sans_KR } from 'next/font/google';
+// import { Noto_Sans_KR } from 'next/font/google';
 import './globals.css';
 
-const Noto_KR = Noto_Sans_KR({
-  subsets: ['latin'],
-  variable: '--font-noto-kr',
-});
+// const Noto_KR = Noto_Sans_KR({
+//   subsets: ['latin'],
+//   variable: '--font-noto-kr',
+// });
 
 export const metadata: Metadata = {
   title: 'Siyeol-blog',
@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ko'>
-      <body className={Noto_KR.className}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }

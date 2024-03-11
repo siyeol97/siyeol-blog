@@ -21,7 +21,7 @@ export default async function Card({ post }: Props) {
             <h4 className={`${styles.card_article} ${styles.article_title} `}>
               {post.title}
             </h4>
-            <hr className={styles.separate_line} />
+            <hr className={styles.separator} />
             <p className={`${styles.card_article} ${styles.article_body}`}>
               {content}
             </p>

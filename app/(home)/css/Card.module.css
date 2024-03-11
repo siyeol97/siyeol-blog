@@ -51,10 +51,12 @@
   font-weight: 500;
 }
 
-.separate_line {
-  background-color: white;
-  border: none;
-  height: 0.1px;
+.separator {
+  width: 10%;
+  border-top: 1px solid white;
+  height: 1px;
+  margin-left: 0;
+  margin-top: 0;
 }
 
 .article_body {

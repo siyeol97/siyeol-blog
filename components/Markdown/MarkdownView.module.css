@@ -44,3 +44,39 @@
   border-left: 0.25em solid #d0d7de;
   background-color: rgba(175, 184, 193, 0.2);
 }
+
+.markdown blockquote,
+.markdown blockquote p,
+.markdown blockquote a {
+  font-weight: 600;
+}
+
+.markdown table,
+.markdown th,
+.markdown td {
+  border: 1px solid black;
+}
+
+.markdown th,
+.markdown td {
+  padding: 8px;
+}
+
+.markdown table {
+  border-collapse: collapse;
+}
+.markdown th {
+  background: #ea6153;
+  color: #fff;
+}
+
+.markdown tbody tr:nth-of-type(odd) {
+  background: #e9e9e9;
+}
+.markdown tbody tr:nth-of-type(even) {
+  background: #fafbfb;
+}
+.markdown tbody tr:nth-of-type(odd):hover,
+.markdown tbody tr:nth-of-type(even):hover {
+  background-color: hsl(0, 0%, 80%);
+}

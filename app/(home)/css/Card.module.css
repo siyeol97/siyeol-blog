@@ -1,4 +1,5 @@
 .card {
+  z-index: -1;
   display: flex;
   background-color: #ffffff;
   flex-flow: column nowrap;
@@ -53,6 +54,7 @@
 
 .separator {
   width: 10%;
+  border: none;
   border-top: 1px solid white;
   height: 1px;
   margin-left: 0;

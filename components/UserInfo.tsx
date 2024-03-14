@@ -10,7 +10,8 @@ import { useState } from 'react';
 
 export default function UserInfo({ session }: { session: Session }) {
   const [isToggle, setIsToggle] = useState(false);
-  const handleToggle = () => {
+
+  const handleClick = () => {
     setIsToggle((prev) => !prev);
   };
 
@@ -22,12 +23,12 @@ export default function UserInfo({ session }: { session: Session }) {
       >
         새 글 쓰기
       </Link>
-      <div
-        className={styles.user_session}
-        onClick={handleToggle}
-      >
+      <div className={styles.user_session}>
         {session.user?.image ? (
-          <div className={styles.avatar}>
+          <div
+            className={styles.avatar}
+            onClick={handleClick}
+          >
             <Image
               src={session.user.image}
               alt='avatar'
@@ -36,7 +37,10 @@ export default function UserInfo({ session }: { session: Session }) {
             />
           </div>
         ) : (
-          <div style={{ cursor: 'pointer' }}>
+          <div
+            style={{ cursor: 'pointer' }}
+            onClick={handleClick}
+          >
             <DefaultAvatar name={session.user!.name?.slice(-2)} />
           </div>
         )}

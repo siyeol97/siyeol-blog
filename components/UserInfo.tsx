@@ -1,11 +1,11 @@
 'use client';
 
-import { signOut } from 'next-auth/react';
-import Link from 'next/link';
-import styles from './UserInfo.module.css';
 import { Session } from 'next-auth';
+import { signOut } from 'next-auth/react';
 import Image from 'next/image';
+import Link from 'next/link';
 import DefaultAvatar from './DefaultAvatar';
+import styles from './UserInfo.module.css';
 
 export default function UserInfo({ session }: { session: Session }) {
   return (

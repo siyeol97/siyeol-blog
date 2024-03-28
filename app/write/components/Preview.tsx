@@ -1,6 +1,6 @@
 import MarkdownView from '@/components/Markdown/MarkdownView';
 import { useEffect, useRef } from 'react';
-import styles from './Preview.module.css';
+import styles from '../css/Preview.module.css';
 
 interface Props {
   title: string;

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Preview from './Preview';
-import styles from './Write.module.css';
+import styles from '../css/Write.module.css';
 import WriteForm from './WriteForm';
 
 export default function Write() {

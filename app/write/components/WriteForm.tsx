@@ -1,7 +1,7 @@
 'use client';
 
 import ReactTextareaAutosize from 'react-textarea-autosize';
-import styles from './WriteForm.module.css';
+import styles from '../css/WriteForm.module.css';
 import { useRouter } from 'next/navigation';
 import { ChangeEvent } from 'react';
 

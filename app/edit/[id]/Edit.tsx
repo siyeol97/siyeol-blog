@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import styles from './Edit.module.css';
-import WriteForm from '@/app/write/WriteForm';
-import Preview from '@/app/write/Preview';
+import WriteForm from '@/app/write/components/WriteForm';
+import Preview from '@/app/write/components/Preview';
 
 interface Props {
   post: {

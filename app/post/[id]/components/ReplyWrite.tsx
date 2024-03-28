@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import styles from '../css/ReplyWrite.module.css';
 import { Session } from 'next-auth';
 import { useRouter } from 'next/navigation';
@@ -21,6 +21,13 @@ export default function ReplyWrite({
   const router = useRouter();
   const replyCount = replyData.length;
   const [comment, setComment] = useState('');
+
+  const onChangeReply = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    if (e.target.value.length >= 1000) {
+      return;
+    }
+    setComment(e.target.value);
+  };
 
   const writeReply = async () => {
     if (!session) {
@@ -51,9 +58,7 @@ export default function ReplyWrite({
           name='reply'
           value={comment}
           className={styles.reply_input}
-          onChange={(e) => {
-            setComment(e.target.value);
-          }}
+          onChange={onChangeReply}
         />
         <button
           onClick={writeReply}

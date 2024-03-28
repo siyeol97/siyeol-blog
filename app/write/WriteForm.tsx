@@ -74,7 +74,7 @@ export default function WriteForm({
           placeholder='Markdown 문법을 지원합니다.'
           className={styles.input_content}
           minRows={3}
-          maxLength={3000}
+          maxLength={6000}
           maxRows={26}
           required
           value={content}

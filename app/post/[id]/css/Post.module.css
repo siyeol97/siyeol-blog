@@ -2,4 +2,5 @@
   display: block;
   width: 768px;
   margin-bottom: 5rem;
+  word-wrap: break-word;
 }

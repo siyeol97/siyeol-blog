@@ -3,12 +3,15 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 50px;
+  padding: 100px 50px;
 }
 
 .ul {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: 860px;
 }

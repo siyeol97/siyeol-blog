@@ -1,0 +1,19 @@
+.skeleton {
+  background-color: rgba(207, 207, 207, 1);
+  border-radius: 4px;
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1);
+  animation-duration: 1s;
+  animation-name: loading;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes loading {
+  from {
+    background-color: rgba(207, 207, 207, 0.8);
+  }
+
+  to {
+    background-color: rgba(207, 207, 207, 0.3);
+  }
+}

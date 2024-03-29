@@ -18,21 +18,22 @@ export default async function Card({ post }: Props) {
       <Link href={`/post/${post._id}`}>
         <div className={styles.card_preview}>
           <div className={styles.card_preview_text}>
-            <h4 className={`${styles.card_article} ${styles.article_title} `}>
+            <h2 className={`${styles.card_article} ${styles.article_title} `}>
               {post.title}
-            </h4>
-            <hr className={styles.separator} />
+            </h2>
             <p className={`${styles.card_article} ${styles.article_body}`}>
               {content}
             </p>
           </div>
-          <Image
-            fill
-            sizes='300px'
-            src={'/default-img.jpeg'}
-            alt='default-image'
-            priority
-          />
+          <div className={styles.thumbnail}>
+            <Image
+              fill
+              sizes='130px'
+              src={'/default-img.jpeg'}
+              alt='default-image'
+              style={{ objectFit: 'cover' }}
+            />
+          </div>
         </div>
       </Link>
       <div className={styles.card_bottom}>

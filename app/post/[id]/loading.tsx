@@ -9,6 +9,7 @@ export default function loading() {
         alt='loading'
         width={64}
         height={64}
+        priority
       />
     </div>
   );

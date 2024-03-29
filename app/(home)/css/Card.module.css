@@ -79,7 +79,20 @@
   margin-left: 2px;
 }
 
-.like_comment {
+.like {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+}
+
+.comment {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  align-items: center;
+}
+
+.social {
   display: flex;
   gap: 10px;
   font-size: 12px;

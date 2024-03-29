@@ -36,7 +36,6 @@ export const authOptions: NextAuthOptions = {
           return;
         }
         // user = 해당되는 'created_user_account' collection에 저장된 user 정보
-        console.log('authorize : ', user);
         return user;
       },
     }),

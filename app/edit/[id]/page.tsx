@@ -5,6 +5,17 @@ import { authOptions } from '@/pages/api/auth/[...nextauth]';
 import getSinglePost from '@/utils/getSinglePost';
 import { redirect } from 'next/navigation';
 
+export async function generateMetadata({
+  params: { id },
+}: {
+  params: { id: string };
+}) {
+  const result = await getSinglePost(id);
+  return {
+    title: `(수정중) ${result!.title}`,
+  };
+}
+
 export default async function EditPage({
   params: { id },
 }: {

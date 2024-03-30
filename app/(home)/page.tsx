@@ -1,5 +1,10 @@
 import getPostList from '@/utils/getPostList';
 import Main from './components/Main';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Home',
+};
 
 export default async function HomePage() {
   const data = await getPostList();

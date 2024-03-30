@@ -4,6 +4,17 @@ import { getServerSession } from 'next-auth';
 import styles from './css/page.module.css';
 import PostDetail from './components/PostDetail';
 
+export async function generateMetadata({
+  params: { id },
+}: {
+  params: { id: string };
+}) {
+  const res = await getSinglePost(id);
+  return {
+    title: res!.title,
+  };
+}
+
 export default async function PostPage({
   params: { id },
 }: {

@@ -13,6 +13,7 @@
   flex-direction: column;
   width: 400px;
   gap: 2rem;
+  align-items: center;
 }
 
 .container h2 {

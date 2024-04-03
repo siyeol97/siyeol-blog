@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import SignIn from './SignIn';
+import SignIn from './components/SignIn';
 
 export const metadata: Metadata = {
   title: '로그인',

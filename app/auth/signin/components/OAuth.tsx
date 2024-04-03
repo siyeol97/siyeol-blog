@@ -1,7 +1,7 @@
 'use client';
 
 import { signIn } from 'next-auth/react';
-import styles from './OAuth.module.css';
+import styles from '../css/OAuth.module.css';
 import Image from 'next/image';
 
 export default function OAuth() {

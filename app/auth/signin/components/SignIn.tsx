@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Credential from './Credential';
 import OAuth from './OAuth';
-import styles from './SignIn.module.css';
+import styles from '../css/SignIn.module.css';
 import MainLogo from '@/components/MainLogo';
 
 export default function SignIn() {

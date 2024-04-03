@@ -10,7 +10,7 @@
   width: 100%;
   height: 1px;
   border: none;
-  border-top: 1px solid #000;
+  border-top: 1px solid #a5a4a4;
   margin: 0;
 }
 
@@ -114,13 +114,17 @@
     font-size: 18px;
   }
 
+  .card_preview_text {
+    padding: 0px 12px;
+  }
+
   .article_body {
     margin: 1px;
   }
 
   .thumbnail {
-    width: 125px;
-    height: 125px;
+    width: 105px;
+    height: 105px;
   }
 
   .article_body {

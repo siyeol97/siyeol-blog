@@ -111,15 +111,15 @@
 
 @media (max-width: 767px) {
   .article_title {
-    font-size: 20px;
+    font-size: 18px;
+  }
+
+  .article_body {
+    margin: 1px;
   }
 
   .thumbnail {
     width: 125px;
-    height: 125px;
-  }
-
-  .card_preview_text {
     height: 125px;
   }
 

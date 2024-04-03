@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import styles from './Register.module.css';
+import styles from '../css/Register.module.css';
 import MainLogo from '@/components/MainLogo';
 import { ChangeHandler, SubmitHandler, useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';

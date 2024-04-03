@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import Register from './Register';
+import Register from './components/Register';
 
 export const metadata: Metadata = {
   title: '회원가입',

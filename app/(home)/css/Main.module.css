@@ -13,3 +13,14 @@
   padding: 0;
   margin: 0;
 }
+
+@media (max-width: 767px) {
+  .section {
+    padding: 50px 25px;
+  }
+
+  .ul {
+    width: inherit;
+    gap: 12px;
+  }
+}

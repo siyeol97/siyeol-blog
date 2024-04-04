@@ -30,7 +30,7 @@ export default async function Card({ post }: Props) {
             <div className={styles.thumbnail}>
               <Image
                 fill
-                sizes='130px'
+                sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                 src={'/default-image.jpg'}
                 alt='default-image'
                 style={{ objectFit: 'cover' }}

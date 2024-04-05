@@ -3,6 +3,7 @@ import ReplyArea from './ReplyArea';
 import { Session } from 'next-auth';
 import Content from './Content';
 import TitleWrapper from './TitleWrapper';
+import { Post } from '@/app/type';
 
 interface Props {
   post: Post;
@@ -19,7 +20,7 @@ export default function PostDetail({ post, isAuthor, session }: Props) {
       />
       <Content post={post} />
       <ReplyArea
-        post_id={post._id}
+        post_id={post._id.toString()}
         session={session}
       />
     </section>

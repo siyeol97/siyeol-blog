@@ -1,6 +1,7 @@
 import ControlPost from './ControlPost';
 import styles from '../css/PostInfo.module.css';
 import calculateTime from '@/utils/calculateTime';
+import { Post } from '@/app/type';
 
 interface Props {
   post: Post;
@@ -16,7 +17,7 @@ export default function PostInfo({ post, isAuthor }: Props) {
         <b>{post.name}</b>ㆍ
         <span className={styles.created_at}>{createdAt}</span>
       </span>
-      <div>{isAuthor ? <ControlPost _id={post._id} /> : null}</div>
+      <div>{isAuthor ? <ControlPost _id={post._id.toString()} /> : null}</div>
     </div>
   );
 }

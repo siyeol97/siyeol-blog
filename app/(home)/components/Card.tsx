@@ -5,6 +5,7 @@ import filterText from '@/utils/filterText';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from '../css/Card.module.css';
+import { Post } from '@/app/type';
 
 interface Props {
   post: Post;
@@ -17,7 +18,7 @@ export default function Card({ post }: Props) {
     <>
       <hr className={styles.separator} />
       <li className={styles.card}>
-        <Link href={`/post/${post._id}`}>
+        <Link href={`/post/${post._id.toString()}`}>
           <div className={styles.card_preview}>
             <div className={styles.card_preview_text}>
               <h2 className={`${styles.card_article} ${styles.article_title} `}>

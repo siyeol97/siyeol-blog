@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import styles from '../css/Main.module.css';
 import Card from './Card';
 import Loading from '../loading';
+import { Post } from '@/app/type';
 
 export default function Main() {
   const { data, isLoading } = useQuery<Post[]>({
@@ -21,23 +22,12 @@ export default function Main() {
     return <div>error</div>;
   }
 
-  const postItem: Post[] = data.map((post) => {
-    return {
-      _id: post._id.toString(),
-      title: post.title,
-      content: post.content,
-      name: post.name,
-      author: post.author,
-      author_image: post.author_image,
-      created_at: post.created_at,
-    };
-  });
   return (
     <section className={styles.section}>
       <ul className={styles.ul}>
-        {postItem.map((post) => (
+        {data.map((post) => (
           <Card
-            key={post._id}
+            key={post._id.toString()}
             post={post}
           />
         ))}

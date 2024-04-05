@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import Reply from './Reply';
 import { Session } from 'next-auth';
+import { Reply } from '@/app/type';
+import ReplyComment from './ReplyComment';
 
 export default function ReplyList({
   post_id,
@@ -21,9 +22,9 @@ export default function ReplyList({
     <div>
       {replyData.map((reply) => {
         return (
-          <Reply
+          <ReplyComment
             post_id={post_id}
-            key={reply._id}
+            key={reply._id.toString()}
             reply={reply}
             session={session}
             updateEditingReply={updateEditingReply}

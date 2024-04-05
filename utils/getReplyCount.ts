@@ -1,3 +1,5 @@
+import { Reply } from '@/app/type';
+
 const getReplyCount = async (_id: string) => {
   try {
     const response = await fetch(`${process.env.API_URL}/api/reply/pid`, {

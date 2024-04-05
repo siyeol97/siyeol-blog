@@ -6,6 +6,7 @@ import styles from '../css/Reply.module.css';
 import ReplyAuthor from './ReplyAuthor';
 import Comment from './Comment';
 import ReplyEdit from './ReplyEdit';
+import { Reply } from '@/app/type';
 
 export interface ReplyProps {
   post_id: string;
@@ -16,7 +17,7 @@ export interface ReplyProps {
   handleReply: (reply: Reply[]) => void;
 }
 
-export default function Reply({
+export default function ReplyComment({
   post_id,
   reply,
   session,

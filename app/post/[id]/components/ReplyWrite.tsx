@@ -4,6 +4,7 @@ import { ChangeEvent, useState } from 'react';
 import styles from '../css/ReplyWrite.module.css';
 import { Session } from 'next-auth';
 import { useRouter } from 'next/navigation';
+import { Reply } from '@/app/type';
 
 interface Props {
   replyData: Reply[];

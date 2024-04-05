@@ -1,5 +1,6 @@
 'use client';
 
+import { Reply } from '@/app/type';
 import styles from '../css/ReplyEdit.module.css';
 
 interface Props {

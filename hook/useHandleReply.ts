@@ -1,3 +1,4 @@
+import { Reply } from '@/app/type';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
@@ -19,7 +20,7 @@ const useHandleReply = ({
   const [replyValue, setReplyValue] = useState(reply.comment);
 
   useEffect(() => {
-    if (selectedReply !== reply._id) {
+    if (selectedReply !== reply._id.toString()) {
       setIsEditing(false);
     }
   }, [selectedReply]);
@@ -27,7 +28,7 @@ const useHandleReply = ({
   const handleClick = (type: string) => {
     setIsEditing((prev) => !prev);
     if (type === 'edit') {
-      updateEditingReply(reply._id);
+      updateEditingReply(reply._id.toString());
     } else {
       updateEditingReply('');
     }

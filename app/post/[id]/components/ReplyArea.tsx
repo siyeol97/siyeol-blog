@@ -5,6 +5,7 @@ import useReply from '@/hook/useReply';
 import ReplyWrite from './ReplyWrite';
 import { Session } from 'next-auth';
 import styles from '../css/ReplyArea.module.css';
+import { Reply } from '@/app/type';
 
 export default function ReplyArea({
   post_id,

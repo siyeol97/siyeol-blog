@@ -2,6 +2,7 @@ import Image from 'next/image';
 import styles from '../css/ReplyAuthor.module.css';
 import calculateTime from '@/utils/calculateTime';
 import DefaultAvatar from '@/components/DefaultAvatar';
+import { Reply } from '@/app/type';
 
 interface Props {
   reply: Reply;

@@ -22,9 +22,11 @@ export default async function PostPage({
   params: { id: string };
 }) {
   const post: Post = (await getSinglePost(id)) as Post;
+
   if (!post) {
     return <div>error</div>;
   }
+
   const session = await getServerSession(authOptions);
   const isAuthor = session?.user?.email === post.author;
 

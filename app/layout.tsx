@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
+import ReactQueryProvider from '../providers/ReactQueryProvider';
 import './globals.css';
 
 const AppleSDGothicNeo = localFont({
@@ -72,7 +73,7 @@ export default function RootLayout({
   return (
     <html lang='ko'>
       <body className={AppleSDGothicNeo.className}>
-        {children}
+        <ReactQueryProvider>{children}</ReactQueryProvider>
         <SpeedInsights />
         <Analytics />
       </body>

@@ -1,17 +1,17 @@
-import Image from 'next/image';
-import styles from '../css/Card.module.css';
-import Link from 'next/link';
-import getReplyList from '@/utils/getReplyList';
+'use client';
+
 import calculateTime from '@/utils/calculateTime';
 import filterText from '@/utils/filterText';
+import Image from 'next/image';
+import Link from 'next/link';
+import styles from '../css/Card.module.css';
 
 interface Props {
   post: Post;
 }
 
-export default async function Card({ post }: Props) {
-  const createdAt = calculateTime(post.created_at);
-  const replyCount = await getReplyList(post._id);
+export default function Card({ post }: Props) {
+  const createdAt = calculateTime(new Date(post.created_at));
   const content = filterText(post.content);
   return (
     <>
@@ -57,27 +57,6 @@ export default async function Card({ post }: Props) {
                 />
               </svg>
               <span>0</span>
-            </div>
-            <div className={styles.comment}>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                width='14'
-                height='14'
-                viewBox='0 0 24 24'
-                fill='none'
-              >
-                <g transform='translate(1 1)'>
-                  <path
-                    fill='none'
-                    stroke='#6E6E82'
-                    strokeWidth='1.5'
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    d='M8.04264 15.6431C8.69018 15.7443 9.3446 15.7951 10 15.7948C15.5227 15.7948 20 12.2591 20 7.89741C20 3.53576 15.5227 0 10 0C4.47729 0 0 3.53576 0 7.89741C0 10.7023 1.85181 13.1654 4.64235 14.5665L3.70288 18.1472C3.68985 18.1968 3.69238 18.2492 3.71012 18.2974C3.72786 18.3455 3.75996 18.3871 3.80208 18.4164C3.8442 18.4457 3.8943 18.4614 3.94562 18.4613C3.99693 18.4612 4.04698 18.4453 4.08899 18.4159L8.04264 15.6431Z'
-                  />
-                </g>
-              </svg>
-              <span>{replyCount}</span>
             </div>
           </div>
         </div>

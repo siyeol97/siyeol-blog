@@ -1,23 +1,24 @@
 import getPostList from '@/utils/getPostList';
-import Main from './components/Main';
+import { QueryClient, dehydrate } from '@tanstack/query-core';
+import { HydrationBoundary } from '@tanstack/react-query';
 import { Metadata } from 'next';
+import Main from './components/Main';
 
 export const metadata: Metadata = {
   title: 'Home',
 };
 
 export default async function HomePage() {
-  const data = await getPostList();
-  const postItem: Post[] = data.map((post) => {
-    return {
-      _id: post._id.toString(),
-      title: post.title,
-      content: post.content,
-      name: post.name,
-      author: post.author,
-      author_image: post.author_image,
-      created_at: post.created_at,
-    };
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery({
+    queryKey: ['post-list'],
+    queryFn: getPostList,
   });
-  return <Main postItem={postItem} />;
+
+  return (
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <Main />
+    </HydrationBoundary>
+  );
 }

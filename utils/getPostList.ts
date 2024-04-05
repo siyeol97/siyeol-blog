@@ -1,10 +1,11 @@
-import { connectDB } from './database';
-
 const getPostList = async () => {
-  const client = await connectDB;
-  const db = client.db('siyeol_blog');
-  const result = await db.collection('blog_post').find().toArray();
-  return result.reverse();
+  try {
+    const response = await fetch(`${process.env.API_URL}/api/post/pid`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export default getPostList;

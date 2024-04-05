@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@next-auth/mongodb-adapter": "^1.1.3",
+    "@tanstack/query-core": "^5.28.13",
+    "@tanstack/react-query": "^5.28.14",
     "@types/react-syntax-highlighter": "^15.5.11",
     "@vercel/analytics": "^1.2.2",
     "@vercel/speed-insights": "^1.0.10",
@@ -28,6 +30,7 @@
     "sharp": "^0.33.3"
   },
   "devDependencies": {
+    "@tanstack/react-query-devtools": "^5.28.14",
     "@types/bcrypt": "^5.0.2",
     "@types/node": "^20.11.19",
     "@types/react": "^18",

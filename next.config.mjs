@@ -30,6 +30,9 @@ const nextConfig = {
       },
     ],
   },
+  env: {
+    API_URL: process.env.API_URL || 'http://localhost:3000', // 개발 모드일 때 기본 URL 설정
+  },
 };
 
 export default nextConfig;

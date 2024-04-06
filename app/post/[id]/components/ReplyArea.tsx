@@ -8,6 +8,7 @@ import { Reply } from '@/app/type';
 import { useQuery } from '@tanstack/react-query';
 import getReplyList from '@/utils/getReplyList';
 import ReplyLoading from './ReplyLoading';
+import getPostLikeCount from '@/utils/getLikeCount';
 
 export default function ReplyArea({
   post_id,
@@ -22,6 +23,12 @@ export default function ReplyArea({
     staleTime: 30 * 1000,
   });
 
+  const { data: likeCount } = useQuery<number>({
+    queryKey: ['like-count', post_id],
+    queryFn: () => getPostLikeCount(post_id),
+    staleTime: 10 * 1000,
+  });
+
   return (
     <div className={styles.wrapper}>
       {isLoading ? (
@@ -32,6 +39,7 @@ export default function ReplyArea({
             replyData={replyData}
             post_id={post_id}
             session={session}
+            likeCount={likeCount}
           />
           <ReplyList
             post_id={post_id}

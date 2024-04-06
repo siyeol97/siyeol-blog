@@ -21,6 +21,7 @@ export default async function PostDetail({ post, isAuthor, session }: Props) {
     queryKey: ['reply-list'],
     queryFn: () => getReplyList(post._id.toString()),
   });
+
   return (
     <section className={styles.post}>
       <TitleWrapper

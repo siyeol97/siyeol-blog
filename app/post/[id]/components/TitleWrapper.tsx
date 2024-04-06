@@ -2,6 +2,7 @@ import PostInfo from './PostInfo';
 import PostTag from './PostTag';
 import Title from './Title';
 import styles from '../css/TitleWrapper.module.css';
+import { Post } from '@/app/type';
 
 interface Props {
   post: Post;

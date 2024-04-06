@@ -1,0 +1,27 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.reply {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1.125rem;
+  padding-bottom: 1.25rem;
+}
+
+.reply_author {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-bottom: 1rem;
+}

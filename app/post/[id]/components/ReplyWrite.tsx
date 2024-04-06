@@ -1,26 +1,22 @@
 'use client';
 
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, MouseEvent, useState } from 'react';
 import styles from '../css/ReplyWrite.module.css';
 import { Session } from 'next-auth';
-import { useRouter } from 'next/navigation';
+import { Reply } from '@/app/type';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import writeReply, { NewReply } from '@/utils/writeReply';
 
 interface Props {
-  replyData: Reply[];
+  replyData: Reply[] | undefined;
   post_id: string;
-  handleReply: (reply: Reply[]) => void;
   session: Session | null;
 }
 
-export default function ReplyWrite({
-  replyData,
-  post_id,
-  handleReply,
-  session,
-}: Props) {
-  const router = useRouter();
-  const replyCount = replyData.length;
+export default function ReplyWrite({ replyData, post_id, session }: Props) {
+  const replyCount = replyData?.length;
   const [comment, setComment] = useState('');
+  const queryClient = useQueryClient();
 
   const onChangeReply = (e: ChangeEvent<HTMLTextAreaElement>) => {
     if (e.target.value.length >= 1000) {
@@ -29,25 +25,23 @@ export default function ReplyWrite({
     setComment(e.target.value);
   };
 
-  const writeReply = async () => {
+  const uploadReplyMutation = useMutation({
+    mutationFn: (newReply: NewReply) => writeReply(newReply),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['reply-list'] });
+    },
+  });
+
+  const handleSubmit = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     if (!session) {
-      router.push('/auth/signin');
+      alert('로그인필요');
     }
-    const response = await fetch('/api/reply/new', {
-      method: 'POST',
-      body: JSON.stringify({ comment: comment, post_id: post_id }),
+    const newReply: NewReply = { comment: comment, post_id: post_id };
+    uploadReplyMutation.mutate(newReply, {
+      onSuccess: () => console.log('댓글 등록 성공'),
     });
-    if (response.ok) {
-      setComment('');
-      // 댓글 영역 재렌더링
-      const response = await fetch('/api/reply/pid', {
-        method: 'POST',
-        body: post_id,
-      });
-      const replyList: Reply[] = await response.json();
-      const result = replyList.reverse();
-      handleReply(result);
-    }
+    setComment('');
   };
 
   return (
@@ -61,7 +55,8 @@ export default function ReplyWrite({
           onChange={onChangeReply}
         />
         <button
-          onClick={writeReply}
+          disabled={uploadReplyMutation.isPending || !comment}
+          onClick={handleSubmit}
           className={styles.button}
         >
           댓글 등록

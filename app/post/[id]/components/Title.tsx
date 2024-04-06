@@ -1,3 +1,4 @@
+import { Post } from '@/app/type';
 import styles from '../css/Title.module.css';
 
 interface Props {

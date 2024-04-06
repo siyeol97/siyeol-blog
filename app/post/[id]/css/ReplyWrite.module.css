@@ -17,7 +17,7 @@
   align-items: flex-end;
   justify-content: center;
   flex-direction: column;
-  gap: 20px;
+  gap: 1rem;
 }
 
 .reply_input {
@@ -48,4 +48,9 @@
 .button:hover {
   background-color: var(--primary-color-5);
   color: #fff;
+}
+
+.button:disabled {
+  background-color: gray;
+  cursor: not-allowed;
 }

@@ -1,3 +1,4 @@
+import { Reply } from '@/app/type';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
 const useReply = (

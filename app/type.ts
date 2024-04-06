@@ -1,5 +1,7 @@
-interface Post {
-  _id: string;
+import { Document, ObjectId, WithId } from 'mongodb';
+
+export interface Post extends WithId<Document> {
+  _id: ObjectId;
   title: string;
   content: string;
   name: string;
@@ -7,8 +9,9 @@ interface Post {
   author_image: string;
   created_at: Date;
 }
-interface Reply {
-  _id: string;
+
+export interface Reply {
+  _id: ObjectId;
   comment: string;
   parent_post: string;
   author: string;

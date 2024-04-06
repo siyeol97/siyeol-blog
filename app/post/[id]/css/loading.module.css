@@ -1,7 +1,27 @@
 .loading {
   display: flex;
-  width: 100vw;
-  height: 100vh;
+  width: 768px;
   align-items: center;
+  flex-direction: column;
+  margin-top: 5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: center;
+  gap: 1rem;
+}
+
+.body {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  margin-top: 48px;
+  align-items: flex-start;
+  gap: 1rem;
 }

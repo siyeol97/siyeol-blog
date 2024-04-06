@@ -7,19 +7,20 @@ import { Reply } from '@/app/type';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import writeReply, { NewReply } from '@/utils/writeReply';
 import ReplyLikeInfo from './ReplyLikeInfo';
+import { LikeCountCheck } from '../type';
 
 interface Props {
   replyData: Reply[] | undefined;
   post_id: string;
   session: Session | null;
-  likeCount: number | undefined;
+  likeCountCheck: LikeCountCheck | undefined;
 }
 
 export default function ReplyWrite({
   replyData,
   post_id,
   session,
-  likeCount,
+  likeCountCheck,
 }: Props) {
   const replyCount = replyData?.length;
   const [comment, setComment] = useState('');
@@ -58,7 +59,7 @@ export default function ReplyWrite({
         replyCount={replyCount}
         post_id={post_id}
         session={session}
-        likeCount={likeCount}
+        likeCountCheck={likeCountCheck}
       />
       <div className={styles.reply_input_area}>
         <textarea

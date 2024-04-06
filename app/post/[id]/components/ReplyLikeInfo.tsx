@@ -6,26 +6,27 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { MouseEvent } from 'react';
 import likePost, { LikePost } from '@/utils/likePost';
 import { Session } from 'next-auth';
+import { LikeCountCheck } from '../type';
 
 interface Props {
   replyCount: number | undefined;
   post_id: string;
   session: Session | null;
-  likeCount: number | undefined;
+  likeCountCheck: LikeCountCheck | undefined;
 }
 
 export default function ReplyLikeInfo({
   replyCount,
   post_id,
   session,
-  likeCount,
+  likeCountCheck,
 }: Props) {
   const queryClient = useQueryClient();
 
   const likePostMutation = useMutation({
     mutationFn: (likeReq: LikePost) => likePost(likeReq),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['like-count'] });
+      queryClient.invalidateQueries({ queryKey: ['like-count-check'] });
     },
   });
 
@@ -56,15 +57,27 @@ export default function ReplyLikeInfo({
         <span className={styles.reply_like_count}>{replyCount}</span>
       </div>
       <div className={styles.count}>
-        <Image
-          src={'/inactive-heart.svg'}
-          alt='like-icon'
-          width={24}
-          height={24}
-          onClick={handleLikeClick}
-          className={styles.like_icon}
-        />
-        <span className={styles.reply_like_count}>{likeCount}</span>
+        {likeCountCheck?.isLiked ? (
+          <Image
+            src={'/active-heart.svg'}
+            alt='like-icon'
+            width={24}
+            height={24}
+            onClick={handleLikeClick}
+            className={styles.like_icon}
+          />
+        ) : (
+          <Image
+            src={'/inactive-heart.svg'}
+            alt='like-icon'
+            width={24}
+            height={24}
+            onClick={handleLikeClick}
+            className={styles.like_icon}
+          />
+        )}
+
+        <span className={styles.reply_like_count}>{likeCountCheck?.count}</span>
       </div>
     </div>
   );

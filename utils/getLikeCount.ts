@@ -1,8 +1,13 @@
-const getPostLikeCount = async (post_id: string) => {
+export interface GetLikeInfoProp {
+  user_email: string | null | undefined;
+  post_id: string;
+}
+
+const getPostLikeCount = async (getLikeInfoProp: GetLikeInfoProp) => {
   try {
-    const response = await fetch(`/api/post/like-count`, {
+    const response = await fetch(`/api/post/like-count-check`, {
       method: 'POST',
-      body: post_id,
+      body: JSON.stringify(getLikeInfoProp),
     });
     const data = await response.json();
     return data;

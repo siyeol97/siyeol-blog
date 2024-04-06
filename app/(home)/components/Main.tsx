@@ -18,14 +18,10 @@ export default function Main() {
     return <Loading />;
   }
 
-  if (!data) {
-    return <div>error</div>;
-  }
-
   return (
     <section className={styles.section}>
       <ul className={styles.ul}>
-        {data.map((post) => (
+        {data?.map((post) => (
           <Card
             key={post._id.toString()}
             post={post}

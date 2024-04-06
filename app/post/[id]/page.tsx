@@ -21,7 +21,7 @@ export default async function PostPage({
 }: {
   params: { id: string };
 }) {
-  const post: Post = (await getSinglePost(id)) as Post;
+  const post = (await getSinglePost(id)) as Post;
 
   if (!post) {
     return <div>error</div>;

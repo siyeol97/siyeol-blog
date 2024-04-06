@@ -14,7 +14,6 @@ export interface ReplyProps {
   session: Session | null;
   updateEditingReply: (_id: string) => void;
   selectedReply: string;
-  handleReply: (reply: Reply[]) => void;
 }
 
 export default function ReplyComment({
@@ -23,18 +22,21 @@ export default function ReplyComment({
   session,
   updateEditingReply,
   selectedReply,
-  handleReply,
 }: ReplyProps) {
   const isAuthor = reply.author === session?.user?.email;
 
-  const { replyValue, isEditing, setReplyValue, handleClick, handleRequest } =
-    useHandleReply({
-      post_id,
-      reply,
-      updateEditingReply,
-      selectedReply,
-      handleReply,
-    });
+  const {
+    editedReplyValue,
+    isEditing,
+    setEditedReplyValue,
+    handleClick,
+    setIsEditing,
+  } = useHandleReply({
+    post_id,
+    reply,
+    updateEditingReply,
+    selectedReply,
+  });
 
   return (
     <div className={styles.wrapper}>
@@ -42,10 +44,10 @@ export default function ReplyComment({
       {isEditing ? (
         <ReplyEdit
           reply={reply}
-          replyValue={replyValue}
-          setReplyValue={setReplyValue}
+          editedReplyValue={editedReplyValue}
+          setEditedReplyValue={setEditedReplyValue}
           handleClick={handleClick}
-          handleRequest={handleRequest}
+          setIsEditing={setIsEditing}
         />
       ) : (
         <Comment
@@ -53,7 +55,6 @@ export default function ReplyComment({
           isAuthor={isAuthor}
           isEditing={isEditing}
           handleClick={handleClick}
-          handleRequest={handleRequest}
         />
       )}
     </div>

@@ -1,15 +1,16 @@
-import { ObjectId } from 'mongodb';
-import { connectDB } from './database';
+import { Reply } from '@/app/type';
 
 const getReplyList = async (_id: string) => {
-  const client = await connectDB;
-  const db = client.db('siyeol_blog');
-  const result = await db
-    .collection('reply')
-    .find({ parent_post: new ObjectId(_id) })
-    .toArray();
-  const count = result.length;
-  return count;
+  const response = await fetch('/api/reply/pid', {
+    method: 'POST',
+    body: _id,
+  });
+  if (!response.ok) {
+    throw new Error('댓글 불러오기 실패');
+  }
+  const data: Reply[] = await response.json();
+  const result = data.reverse();
+  return result;
 };
 
 export default getReplyList;

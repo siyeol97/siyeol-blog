@@ -7,6 +7,7 @@ import { MouseEvent } from 'react';
 import likePost, { LikePost } from '@/utils/likePost';
 import { Session } from 'next-auth';
 import { LikeCountCheck } from '../type';
+import unlikePost from '@/utils/unlikePost';
 
 interface Props {
   replyCount: number | undefined;
@@ -30,6 +31,13 @@ export default function ReplyLikeInfo({
     },
   });
 
+  const unlikePostMutation = useMutation({
+    mutationFn: (unlikeReq: LikePost) => unlikePost(unlikeReq),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['like-count-check'] });
+    },
+  });
+
   const handleLikeClick = (e: MouseEvent<HTMLImageElement>) => {
     e.preventDefault();
     if (!session || !session.user?.email) {
@@ -42,6 +50,21 @@ export default function ReplyLikeInfo({
     };
     likePostMutation.mutate(likeReq, {
       onSuccess: () => console.log('좋아요 성공'),
+    });
+  };
+
+  const handleUnLikeClick = (e: MouseEvent<HTMLImageElement>) => {
+    e.preventDefault();
+    if (!session || !session.user?.email) {
+      alert('로그인필요');
+      return;
+    }
+    const unlikeReq: LikePost = {
+      user_email: session.user.email,
+      post_id: post_id,
+    };
+    unlikePostMutation.mutate(unlikeReq, {
+      onSuccess: () => console.log('좋아요 취소'),
     });
   };
 
@@ -63,7 +86,7 @@ export default function ReplyLikeInfo({
             alt='like-icon'
             width={24}
             height={24}
-            onClick={handleLikeClick}
+            onClick={handleUnLikeClick}
             className={styles.like_icon}
           />
         ) : (

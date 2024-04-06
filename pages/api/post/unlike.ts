@@ -9,12 +9,13 @@ export default async function handler(
     if (req.method !== 'DELETE') {
       throw new Error();
     }
-
+    req.body = JSON.parse(req.body);
     const client = await connectDB;
     const db = client.db('siyeol_blog');
-    await db
-      .collection('like')
-      .deleteOne({ user_id: req.body.user_id, parent_post: req.body.post_id });
+    await db.collection('like').deleteOne({
+      user_email: req.body.user_email,
+      parent_post: req.body.post_id,
+    });
 
     res.status(200).json('success to unlike');
     return;

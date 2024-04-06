@@ -1,12 +1,9 @@
-export interface LikePost {
-  user_id: string;
-  post_id: string;
-}
+import { LikePost } from './likePost';
 
-const unlikePost = async (like_id: LikePost) => {
-  const response = await fetch(`/api/reply/unlike`, {
+const unlikePost = async (unlike_req: LikePost) => {
+  const response = await fetch(`/api/post/unlike`, {
     method: 'DELETE',
-    body: JSON.stringify(like_id),
+    body: JSON.stringify(unlike_req),
   });
   if (!response.ok) {
     throw new Error('댓글 좋아요 취소 실패');

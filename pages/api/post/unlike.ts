@@ -13,6 +13,15 @@ export default async function handler(
     req.body = JSON.parse(req.body);
     const client = await connectDB;
     const db = client.db('siyeol_blog');
+    const result = await db.collection('like').findOne({
+      user_email: req.body.user_email,
+      parent_post: req.body.post_id,
+    });
+
+    if (!result?._id) {
+      throw new Error('중복 요청입니다');
+    }
+
     await db.collection('like').deleteOne({
       user_email: req.body.user_email,
       parent_post: req.body.post_id,

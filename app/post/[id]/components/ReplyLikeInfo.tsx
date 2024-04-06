@@ -42,6 +42,9 @@ export default function ReplyLikeInfo({
 
   const handleLikeClick = (e: MouseEvent<HTMLImageElement>) => {
     e.preventDefault();
+    if (likePostMutation.isPending) {
+      return;
+    }
     if (!session || !session.user?.email) {
       alert('로그인필요');
       return;
@@ -57,6 +60,9 @@ export default function ReplyLikeInfo({
 
   const handleUnLikeClick = (e: MouseEvent<HTMLImageElement>) => {
     e.preventDefault();
+    if (unlikePostMutation.isPending) {
+      return;
+    }
     if (!session || !session.user?.email) {
       alert('로그인필요');
       return;

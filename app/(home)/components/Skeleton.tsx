@@ -1,7 +1,7 @@
 import styles from '../css/Skeleton.module.css';
 
 interface Props {
-  width: string;
+  width?: string;
   height: string;
 }
 

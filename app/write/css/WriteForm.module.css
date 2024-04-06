@@ -85,6 +85,11 @@
   color: #fff;
 }
 
+.submit_button:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
 .cancel_button {
   border: none;
   border-radius: 4px;

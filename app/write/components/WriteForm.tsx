@@ -99,6 +99,7 @@ export default function WriteForm({
           취소
         </button>
         <button
+          disabled={!title || !content}
           type='submit'
           className={styles.submit_button}
         >

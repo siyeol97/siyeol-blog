@@ -1,4 +1,5 @@
 import { connectDB } from '@/utils/database';
+import { ObjectId } from 'mongodb';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(
@@ -17,6 +18,15 @@ export default async function handler(
       parent_post: req.body.post_id,
     };
     await db.collection('like').insertOne(data);
+    const likeCount = await db
+      .collection('like')
+      .countDocuments({ parent_post: req.body.post_id });
+    await db
+      .collection('blog_post')
+      .updateOne(
+        { _id: new ObjectId(req.body.post_id) },
+        { $set: { like_count: likeCount } }
+      );
     res.status(200).json('success to like');
     return;
   } catch (error) {

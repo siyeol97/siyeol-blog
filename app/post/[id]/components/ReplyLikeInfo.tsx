@@ -28,6 +28,7 @@ export default function ReplyLikeInfo({
     mutationFn: (likeReq: LikePost) => likePost(likeReq),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['like-count-check'] });
+      queryClient.invalidateQueries({ queryKey: ['post-list'] });
     },
   });
 
@@ -35,6 +36,7 @@ export default function ReplyLikeInfo({
     mutationFn: (unlikeReq: LikePost) => unlikePost(unlikeReq),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['like-count-check'] });
+      queryClient.invalidateQueries({ queryKey: ['post-list'] });
     },
   });
 

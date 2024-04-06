@@ -33,7 +33,7 @@
   font-size: 30px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .header {
     padding: 12px 25px;
   }

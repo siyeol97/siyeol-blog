@@ -25,3 +25,10 @@
   align-items: flex-start;
   gap: 1rem;
 }
+
+@media (max-width: 767px) {
+  .loading {
+    padding: 0 32px;
+    width: 100%;
+  }
+}

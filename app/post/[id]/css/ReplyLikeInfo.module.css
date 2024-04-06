@@ -1,0 +1,23 @@
+.reply_like_info {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
+.reply_like_count {
+  font-size: 1.125rem;
+  font-weight: 500;
+  width: 100%;
+}
+
+.count {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0.125rem;
+}
+
+.like_icon {
+  cursor: pointer;
+}

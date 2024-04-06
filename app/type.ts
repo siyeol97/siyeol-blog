@@ -8,6 +8,7 @@ export interface Post extends WithId<Document> {
   author: string;
   author_image: string;
   created_at: Date;
+  like_count: number;
 }
 
 export interface Reply {

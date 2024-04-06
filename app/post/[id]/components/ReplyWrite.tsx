@@ -6,14 +6,22 @@ import { Session } from 'next-auth';
 import { Reply } from '@/app/type';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import writeReply, { NewReply } from '@/utils/writeReply';
+import ReplyLikeInfo from './ReplyLikeInfo';
+import { LikeCountCheck } from '../type';
 
 interface Props {
   replyData: Reply[] | undefined;
   post_id: string;
   session: Session | null;
+  likeCountCheck: LikeCountCheck | undefined;
 }
 
-export default function ReplyWrite({ replyData, post_id, session }: Props) {
+export default function ReplyWrite({
+  replyData,
+  post_id,
+  session,
+  likeCountCheck,
+}: Props) {
   const replyCount = replyData?.length;
   const [comment, setComment] = useState('');
   const queryClient = useQueryClient();
@@ -32,7 +40,7 @@ export default function ReplyWrite({ replyData, post_id, session }: Props) {
     },
   });
 
-  const handleSubmit = (e: MouseEvent<HTMLButtonElement>) => {
+  const handleReplySubmit = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (!session) {
       alert('로그인필요');
@@ -47,7 +55,12 @@ export default function ReplyWrite({ replyData, post_id, session }: Props) {
 
   return (
     <div className={styles.wrapper}>
-      <span className={styles.reply_count}>댓글 {replyCount}개</span>
+      <ReplyLikeInfo
+        replyCount={replyCount}
+        post_id={post_id}
+        session={session}
+        likeCountCheck={likeCountCheck}
+      />
       <div className={styles.reply_input_area}>
         <textarea
           name='reply'
@@ -57,7 +70,7 @@ export default function ReplyWrite({ replyData, post_id, session }: Props) {
         />
         <button
           disabled={uploadReplyMutation.isPending || !comment}
-          onClick={handleSubmit}
+          onClick={handleReplySubmit}
           className={styles.button}
         >
           댓글 등록

@@ -25,6 +25,7 @@ export default async function handler(
       author: session?.user?.email,
       author_image: session?.user?.image,
       created_at: new Date(),
+      like_count: 0,
     };
     const result = await db.collection('blog_post').insertOne(data);
     const { insertedId } = result;

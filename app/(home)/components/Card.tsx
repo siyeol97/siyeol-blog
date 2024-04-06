@@ -57,7 +57,7 @@ export default function Card({ post }: Props) {
                   fill='#6E6E82'
                 />
               </svg>
-              <span>0</span>
+              <span>{post.like_count}</span>
             </div>
           </div>
         </div>

@@ -55,6 +55,7 @@ export default function ReplyWrite({ replyData, post_id, session }: Props) {
           onChange={onChangeReply}
         />
         <button
+          disabled={uploadReplyMutation.isPending || !comment}
           onClick={handleSubmit}
           className={styles.button}
         >

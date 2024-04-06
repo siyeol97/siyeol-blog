@@ -49,3 +49,7 @@
   background-color: var(--primary-color-5);
   color: #fff;
 }
+
+.button:disabled {
+  background-color: gray;
+}

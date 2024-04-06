@@ -2,3 +2,9 @@
   width: 100%;
   font-size: 56px;
 }
+
+@media (max-width: 767px) {
+  .wrapper {
+    font-size: 36px;
+  }
+}

@@ -36,6 +36,7 @@ export default function ReplyWrite({ replyData, post_id, session }: Props) {
     e.preventDefault();
     if (!session) {
       alert('로그인필요');
+      return;
     }
     const newReply: NewReply = { comment: comment, post_id: post_id };
     uploadReplyMutation.mutate(newReply, {

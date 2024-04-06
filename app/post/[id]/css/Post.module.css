@@ -4,3 +4,10 @@
   margin-bottom: 5rem;
   word-wrap: break-word;
 }
+
+@media (max-width: 767px) {
+  .post {
+    width: 100%;
+    padding: 0 32px;
+  }
+}

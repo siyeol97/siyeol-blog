@@ -9,12 +9,8 @@ export default function LoadingCard() {
         <div className={styles.card_preview}>
           <div className={styles.card_preview_text}>
             <Skeleton
-              width={'370px'}
+              width={'80%'}
               height={'40px'}
-            />
-            <Skeleton
-              width={'100%'}
-              height={'14px'}
             />
             <Skeleton
               width={'100%'}

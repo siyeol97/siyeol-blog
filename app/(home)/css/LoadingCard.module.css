@@ -16,11 +16,13 @@
 
 .card_preview {
   display: flex;
+  align-items: flex-start;
   justify-content: space-between;
+  width: 100%;
 }
 
 .card_preview_text {
-  display: flex;
+  display: grid;
   flex-direction: column;
   gap: 12px;
   z-index: 1;
@@ -29,7 +31,9 @@
 }
 
 .thumbnail {
-  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
   width: 130px;
   height: 130px;
   overflow: hidden;
@@ -58,4 +62,11 @@
   gap: 10px;
   font-size: 12px;
   align-items: center;
+}
+
+@media (max-width: 767px) {
+  .thumbnail {
+    width: 105px;
+    height: 105px;
+  }
 }

@@ -7,33 +7,33 @@ export default function Loading() {
       <div className={styles.header}>
         <Skeleton height='75px' />
         <Skeleton
-          width='170px'
+          width='25%'
           height='24px'
         />
         <Skeleton
-          width='120px'
+          width='15%'
           height='20px'
         />
       </div>
       <div className={styles.body}>
         <Skeleton
-          width='280px'
+          width='70%'
           height='40px'
         />
         <Skeleton
-          width='360px'
+          width='80%'
           height='24px'
         />
         <Skeleton
-          width='280px'
+          width='50%'
           height='24px'
         />
         <Skeleton
-          width='150px'
+          width='40%'
           height='24px'
         />
         <Skeleton
-          width='375px'
+          width='75%'
           height='24px'
         />
       </div>

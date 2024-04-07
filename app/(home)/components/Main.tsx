@@ -11,7 +11,7 @@ export default function Main() {
   const { data, isLoading } = useQuery<Post[]>({
     queryKey: ['post-list'],
     queryFn: () => getPostList(),
-    staleTime: 30 * 1000,
+    staleTime: 20 * 1000,
   });
 
   if (isLoading) {

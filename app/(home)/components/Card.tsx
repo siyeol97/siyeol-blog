@@ -12,6 +12,7 @@ interface Props {
 }
 
 export default function Card({ post }: Props) {
+  console.log(post.like_count);
   const createdAt = calculateTime(new Date(post.created_at));
   const content = filterText(post.content);
   return (

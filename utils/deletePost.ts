@@ -1,14 +1,18 @@
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 
-const deletePost = async (_id: string, router: AppRouterInstance) => {
+export interface DeleteProp {
+  _id: string;
+  router: AppRouterInstance;
+}
+
+const deletePost = async (deleteProp: DeleteProp) => {
   try {
     const response = await fetch('/api/post/delete', {
       method: 'DELETE',
-      body: _id,
+      body: deleteProp._id,
     });
     if (response.ok) {
-      router.push('/');
-      router.refresh();
+      deleteProp.router.push('/');
     }
   } catch (error) {
     console.log(error);

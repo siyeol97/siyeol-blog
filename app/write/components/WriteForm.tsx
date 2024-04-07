@@ -3,7 +3,9 @@
 import ReactTextareaAutosize from 'react-textarea-autosize';
 import styles from '../css/WriteForm.module.css';
 import { useRouter } from 'next/navigation';
-import { ChangeEvent } from 'react';
+import { ChangeEvent, MouseEvent } from 'react';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import writePost, { WritePostProp } from '@/utils/writePost';
 
 interface Props {
   title: string;
@@ -23,6 +25,7 @@ export default function WriteForm({
   _id,
 }: Props) {
   const router = useRouter();
+  const queryClient = useQueryClient();
   const handleCancelClick = () => {
     router.back();
   };
@@ -48,12 +51,33 @@ export default function WriteForm({
     }
   };
 
+  const uploadPostMutation = useMutation({
+    mutationFn: (writePostProp: WritePostProp) => writePost(writePostProp),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['post-list'] });
+    },
+  });
+
+  const handlePostSubmit = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    const writePostProp: WritePostProp = {
+      post_id: _id,
+      title: title,
+      content: content,
+      type: type,
+    };
+    uploadPostMutation.mutate(writePostProp, {
+      onSuccess: (data) => {
+        router.push(`/post/${data.post_id}`);
+        if (type === 'edit') {
+          router.refresh();
+        }
+      },
+    });
+  };
+
   return (
-    <form
-      action={type === 'new' ? '/api/post/new' : '/api/post/edit'}
-      method='POST'
-      className={styles.form}
-    >
+    <form className={styles.form}>
       <textarea
         name='title'
         placeholder='제목을 작성해주세요.'
@@ -82,14 +106,6 @@ export default function WriteForm({
           onKeyDown={(e) => handleSetTab(e)}
         />
       </label>
-      {type === 'edit' ? (
-        <input
-          type='text'
-          name='_id'
-          defaultValue={_id}
-          className={styles.hide_id}
-        />
-      ) : null}
       <div className={styles.button_area}>
         <button
           type='button'
@@ -99,9 +115,9 @@ export default function WriteForm({
           취소
         </button>
         <button
-          disabled={!title || !content}
-          type='submit'
+          disabled={!title || !content || uploadPostMutation.isPending}
           className={styles.submit_button}
+          onClick={handlePostSubmit}
         >
           저장하기
         </button>

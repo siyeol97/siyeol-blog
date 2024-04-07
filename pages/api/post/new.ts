@@ -15,7 +15,7 @@ export default async function handler(
     if (req.body.title === '' || req.body.content === '') {
       throw new Error();
     }
-
+    req.body = JSON.parse(req.body);
     const session = await getServerSession(req, res, authOptions);
     const client = await connectDB;
     const db = client.db('siyeol_blog');
@@ -29,7 +29,7 @@ export default async function handler(
     };
     const result = await db.collection('blog_post').insertOne(data);
     const { insertedId } = result;
-    res.redirect(302, `/post/${insertedId.toString()}`);
+    res.status(200).json({ post_id: `${insertedId.toString()}` });
     return;
   } catch (error) {
     res.status(500).json({ error: 'failed to load' });

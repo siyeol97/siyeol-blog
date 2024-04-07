@@ -29,6 +29,8 @@ export default async function handler(
           .collection('reply')
           .deleteMany({ parent_post: new ObjectId(req.body) });
 
+        await db.collection('like').deleteMany({ parent_post: req.body });
+
         res.status(200).json('삭제 성공');
         return;
       }

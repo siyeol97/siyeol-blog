@@ -6,7 +6,7 @@ export interface Post extends WithId<Document> {
   content: string;
   name: string;
   author: string;
-  author_image: string;
+  author_image: string | null;
   created_at: Date;
   like_count: number;
 }

@@ -1,5 +1,6 @@
 import Skeleton from '@/app/(home)/components/Skeleton';
 import styles from './css/loading.module.css';
+import ReplyLoading from './components/ReplyLoading';
 
 export default function Loading() {
   return (
@@ -36,6 +37,9 @@ export default function Loading() {
           width='75%'
           height='24px'
         />
+      </div>
+      <div className={styles.reply}>
+        <ReplyLoading />
       </div>
     </div>
   );

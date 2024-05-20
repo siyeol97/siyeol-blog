@@ -6,6 +6,7 @@
   margin-top: 5rem;
   margin-left: auto;
   margin-right: auto;
+  gap: 30px;
 }
 
 .header {
@@ -24,6 +25,10 @@
   margin-top: 48px;
   align-items: flex-start;
   gap: 1rem;
+}
+
+.reply {
+  width: 100%;
 }
 
 @media (max-width: 767px) {

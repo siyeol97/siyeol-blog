@@ -1,23 +1,10 @@
 'use client';
 
-import getPostList from '@/utils/getPostList';
-import { useQuery } from '@tanstack/react-query';
+import { Post } from '@/app/type';
 import styles from '../css/Main.module.css';
 import Card from './Card';
-import Loading from '../loading';
-import { Post } from '@/app/type';
 
-export default function Main() {
-  const { data, isLoading } = useQuery<Post[]>({
-    queryKey: ['post-list'],
-    queryFn: () => getPostList(),
-    staleTime: 20 * 1000,
-  });
-
-  if (isLoading) {
-    return <Loading />;
-  }
-
+export default function Main({ data }: { data: Post[] }) {
   return (
     <section className={styles.section}>
       <ul className={styles.ul}>

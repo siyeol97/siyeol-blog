@@ -21,12 +21,6 @@ export default function LoadingCard() {
               height={'14px'}
             />
           </div>
-          <div className={styles.thumbnail}>
-            <Skeleton
-              width={'130px'}
-              height={'130px'}
-            />
-          </div>
         </div>
         <div className={styles.card_bottom}>
           <Skeleton

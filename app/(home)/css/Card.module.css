@@ -25,7 +25,6 @@
   display: grid;
   z-index: 1;
   padding: 8px 12px;
-  width: 80%;
 }
 
 .card_article {
@@ -52,16 +51,6 @@
   color: #000;
   font-size: 14px;
   font-weight: 400;
-}
-
-.thumbnail {
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
-  width: 130px;
-  height: 130px;
-  overflow: hidden;
-  position: relative;
 }
 
 .card_bottom {

@@ -2,7 +2,6 @@
 
 import calculateTime from '@/utils/calculateTime';
 import filterText from '@/utils/filterText';
-import Image from 'next/image';
 import Link from 'next/link';
 import styles from '../css/Card.module.css';
 import { Post } from '@/app/type';
@@ -27,15 +26,6 @@ export default function Card({ post }: Props) {
               <p className={`${styles.card_article} ${styles.article_body}`}>
                 {content}
               </p>
-            </div>
-            <div className={styles.thumbnail}>
-              <Image
-                fill
-                sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-                src={'/default-image.jpg'}
-                alt='default-image'
-                style={{ objectFit: 'cover' }}
-              />
             </div>
           </div>
         </Link>

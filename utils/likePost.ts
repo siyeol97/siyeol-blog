@@ -1,6 +1,7 @@
 export interface LikePost {
   user_email: string;
   post_id: string;
+  userAction: 'like' | 'unlike';
 }
 
 const likePost = async (like_req: LikePost) => {

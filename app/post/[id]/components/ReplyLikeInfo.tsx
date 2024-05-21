@@ -25,22 +25,23 @@ export default function ReplyLikeInfo({
   const queryClient = useQueryClient();
 
   const likePostMutation = useMutation({
-    mutationFn: (likeReq: LikePost) => likePost(likeReq),
+    mutationFn: async (likeReq: LikePost) => {
+      if (likeReq.userAction === 'like') {
+        await likePost(likeReq);
+      } else {
+        await unlikePost(likeReq);
+      }
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['like-count-check'] });
       queryClient.invalidateQueries({ queryKey: ['post-list'] });
     },
   });
 
-  const unlikePostMutation = useMutation({
-    mutationFn: (unlikeReq: LikePost) => unlikePost(unlikeReq),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['like-count-check'] });
-      queryClient.invalidateQueries({ queryKey: ['post-list'] });
-    },
-  });
-
-  const handleLikeClick = (e: MouseEvent<HTMLImageElement>) => {
+  const handleLikeClick = (
+    e: MouseEvent<HTMLImageElement>,
+    userAction: 'like' | 'unlike'
+  ) => {
     e.preventDefault();
     if (likePostMutation.isPending) {
       return;
@@ -52,27 +53,10 @@ export default function ReplyLikeInfo({
     const likeReq: LikePost = {
       user_email: session.user.email,
       post_id: post_id,
+      userAction,
     };
     likePostMutation.mutate(likeReq, {
-      onSuccess: () => console.log('좋아요 성공'),
-    });
-  };
-
-  const handleUnLikeClick = (e: MouseEvent<HTMLImageElement>) => {
-    e.preventDefault();
-    if (unlikePostMutation.isPending) {
-      return;
-    }
-    if (!session || !session.user?.email) {
-      alert('로그인필요');
-      return;
-    }
-    const unlikeReq: LikePost = {
-      user_email: session.user.email,
-      post_id: post_id,
-    };
-    unlikePostMutation.mutate(unlikeReq, {
-      onSuccess: () => console.log('좋아요 취소'),
+      onSuccess: () => console.log('좋아요 로직 성공'),
     });
   };
 
@@ -94,7 +78,7 @@ export default function ReplyLikeInfo({
             alt='like-icon'
             width={24}
             height={24}
-            onClick={handleUnLikeClick}
+            onClick={(e) => handleLikeClick(e, 'unlike')}
             className={styles.like_icon}
           />
         ) : (
@@ -103,7 +87,7 @@ export default function ReplyLikeInfo({
             alt='like-icon'
             width={24}
             height={24}
-            onClick={handleLikeClick}
+            onClick={(e) => handleLikeClick(e, 'like')}
             className={styles.like_icon}
           />
         )}

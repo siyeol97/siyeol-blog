@@ -32,9 +32,33 @@ export default function ReplyLikeInfo({
         await unlikePost(likeReq);
       }
     },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['like-count-check'] });
-      queryClient.invalidateQueries({ queryKey: ['post-list'] });
+    onMutate: async (likeReq: LikePost) => {
+      await queryClient.cancelQueries({ queryKey: ['like-count-check'] });
+
+      const prevStatus = queryClient.getQueryData([
+        'like-count-check',
+        post_id,
+      ]);
+
+      queryClient.setQueryData(
+        ['like-count-check', post_id],
+        (prev: LikeCountCheck) => {
+          const newCount =
+            likeReq.userAction === 'like' ? prev.count + 1 : prev.count - 1;
+          const newIsLiked = likeReq.userAction === 'like';
+          return { ...prev, count: newCount, isLiked: newIsLiked };
+        }
+      );
+
+      return prevStatus;
+    },
+    onError: (err, likeReq, context) => {
+      queryClient.setQueryData(['like-count-check', post_id], context);
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['like-count-check', post_id],
+      });
     },
   });
 
@@ -55,9 +79,7 @@ export default function ReplyLikeInfo({
       post_id: post_id,
       userAction,
     };
-    likePostMutation.mutate(likeReq, {
-      onSuccess: () => console.log('좋아요 로직 성공'),
-    });
+    likePostMutation.mutate(likeReq);
   };
 
   return (
@@ -72,26 +94,22 @@ export default function ReplyLikeInfo({
         <span className={styles.reply_like_count}>{replyCount}</span>
       </div>
       <div className={styles.count}>
-        {likeCountCheck?.isLiked ? (
-          <Image
-            src={'/active-heart.svg'}
-            alt='like-icon'
-            width={24}
-            height={24}
-            onClick={(e) => handleLikeClick(e, 'unlike')}
-            className={styles.like_icon}
-          />
-        ) : (
-          <Image
-            src={'/inactive-heart.svg'}
-            alt='like-icon'
-            width={24}
-            height={24}
-            onClick={(e) => handleLikeClick(e, 'like')}
-            className={styles.like_icon}
-          />
-        )}
-
+        <Image
+          src={
+            likeCountCheck?.isLiked
+              ? '/active-heart.svg'
+              : '/inactive-heart.svg'
+          }
+          alt='like-icon'
+          width={24}
+          height={24}
+          onClick={
+            likeCountCheck?.isLiked
+              ? (e) => handleLikeClick(e, 'unlike')
+              : (e) => handleLikeClick(e, 'like')
+          }
+          className={styles.like_icon}
+        />
         <span className={styles.reply_like_count}>{likeCountCheck?.count}</span>
       </div>
     </div>

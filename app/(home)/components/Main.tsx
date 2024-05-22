@@ -3,22 +3,10 @@
 import { Post } from '@/app/type';
 import styles from '../css/Main.module.css';
 import Card from './Card';
-import { ChangeEvent, useState } from 'react';
+import useSearchPost from '@/hook/useSearchPost';
 
 export default function Main({ data }: { data: Post[] }) {
-  const [searchValue, setSearchValue] = useState('');
-  const [searchedData, setSearchedData] = useState<Post[]>(data);
-
-  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(e.target.value);
-    const filteredPosts = data.filter((post) =>
-      post.title
-        .replace(/\s/g, '')
-        .toLowerCase()
-        .includes(e.target.value.replace(/\s/g, '').toLowerCase())
-    );
-    setSearchedData(filteredPosts);
-  };
+  const { searchValue, searchedData, onChange } = useSearchPost(data);
 
   return (
     <section className={styles.section}>

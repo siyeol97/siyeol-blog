@@ -2,7 +2,6 @@
   display: flex;
   flex-flow: column nowrap;
   width: 100%;
-  max-width: 860px;
   overflow: hidden;
 }
 
@@ -66,7 +65,7 @@
   display: flex;
   align-items: baseline;
   gap: 2px;
-  color: #686a6c;
+  color: var(--gray);
   font-size: 16px;
 }
 

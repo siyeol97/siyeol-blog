@@ -26,10 +26,22 @@ const useCanvas = (
     };
     setCanvas();
 
-    if (context) {
-      animate(context);
-    }
-  }, [canvasWidth, canvasHeight]);
+    let animationFrameId: number;
+
+    const render = () => {
+      animationFrameId = requestAnimationFrame(render);
+      if (context) {
+        animate(context);
+      }
+    };
+    render();
+
+    return () => {
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+    };
+  }, [canvasWidth, canvasHeight, animate]);
 
   return canvasRef;
 };

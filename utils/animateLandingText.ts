@@ -8,12 +8,12 @@ import {
 } from '@/constants/landingText';
 
 const SYNTAX_COLORS: { [key: string]: string } = {
-  keyword: '#a103fc',
-  string: '#338223',
+  keyword: '#BB7CD7',
+  string: '#9FC080',
   number: '#005cc5',
-  object: '#e81700',
-  function: '#2c58bf',
-  default: '#000',
+  object: '#DEC083',
+  function: '#6B9DD2',
+  default: '#ACB2BE',
 };
 
 interface Token {

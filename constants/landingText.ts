@@ -14,8 +14,8 @@ export const DEFAULT_TEXT = `class Developer {
   }
 }
 
-const FE_Developer = new Developer(
-  '이시열', ['JavaScript', 'TypeScript', 'React', 'Next.js' ]
+const front_end_developer = new Developer(
+  '이시열', ['JavaScript', 'TypeScript', 'React', 'Next.js']
 );
 
-console.log(FE_Developer.getGreetings());`;
+console.log(front_end_developer.getGreetings());`;

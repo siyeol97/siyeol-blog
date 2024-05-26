@@ -5,9 +5,11 @@ const useCanvas = (
   canvasHeight: number,
   animate: (
     context: CanvasRenderingContext2D,
-    isSmallScreen: boolean
+    isSmallScreen: boolean,
+    handleAnimationFlag: (flag: boolean) => void
   ) => () => void,
-  isSmallScreen: boolean
+  isSmallScreen: boolean,
+  handleAnimationFlag: (flag: boolean) => void
 ) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -33,7 +35,7 @@ const useCanvas = (
     let cleanup: (() => void) | undefined;
 
     if (context) {
-      cleanup = animate(context, isSmallScreen);
+      cleanup = animate(context, isSmallScreen, handleAnimationFlag);
     }
 
     return () => {

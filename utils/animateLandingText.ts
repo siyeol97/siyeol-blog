@@ -58,7 +58,8 @@ const tokenize = (code: string): Token[] => {
 
 const animateLandingText = (
   context: CanvasRenderingContext2D,
-  isSmallScreen: boolean
+  isSmallScreen: boolean,
+  handleAnimationFlag: (flag: boolean) => void
 ): (() => void) => {
   const TEXT_START_X = isSmallScreen ? 25 : DEFAULT_TEXT_START_X;
   const TEXT_START_Y = isSmallScreen ? 25 : DEFAULT_TEXT_START_Y;
@@ -76,7 +77,7 @@ const animateLandingText = (
   }
 }
   
-const FE_Developer = new Developer(
+const front_end_developer = new Developer(
   '이시열',
   [
     'JavaScript',
@@ -86,11 +87,12 @@ const FE_Developer = new Developer(
   ]
 );
   
-console.log(FE_Developer.getGreetings());`
+console.log(front_end_developer.getGreetings());`
     : DEFAULT_TEXT;
   let index = 0;
   let animationFrameId: number;
 
+  handleAnimationFlag(false);
   const renderFrame = () => {
     context.clearRect(0, 0, context.canvas.width, context.canvas.height);
 
@@ -118,6 +120,8 @@ console.log(FE_Developer.getGreetings());`
     if (index < TEXT.length) {
       index++;
       animationFrameId = requestAnimationFrame(renderFrame);
+    } else {
+      handleAnimationFlag(true);
     }
   };
 

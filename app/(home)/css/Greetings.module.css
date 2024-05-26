@@ -1,0 +1,15 @@
+.wrapper {
+  padding: 25px 50px;
+}
+
+.wrapper span {
+  color: #acb2be;
+  white-space: pre;
+  font-size: 20px;
+}
+
+@media (max-width: 767px) {
+  .wrapper {
+    padding: 25px;
+  }
+}

@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 const useCanvas = (
   canvasWidth: number,
   canvasHeight: number,
-  animate: (context: CanvasRenderingContext2D) => void
+  animate: (context: CanvasRenderingContext2D) => () => void
 ) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -26,19 +26,15 @@ const useCanvas = (
     };
     setCanvas();
 
-    let animationFrameId: number;
+    let cleanup: (() => void) | undefined;
 
-    const render = () => {
-      animationFrameId = requestAnimationFrame(render);
-      if (context) {
-        animate(context);
-      }
-    };
-    render();
+    if (context) {
+      cleanup = animate(context);
+    }
 
     return () => {
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
+      if (cleanup) {
+        cleanup();
       }
     };
   }, [canvasWidth, canvasHeight, animate]);

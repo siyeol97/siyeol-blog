@@ -3,7 +3,6 @@ export const TEXT_START_Y = 50;
 export const TEXT_LINE_HEIGHT = 24;
 export const FONT_FAMILY = 'monospace';
 export const FONT_SIZE = 16;
-export const FONT_COLOR = '#000';
 export const TEXT = `class Developer {
   constructor(name, techStack) {
       this.name = name;

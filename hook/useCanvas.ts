@@ -3,7 +3,11 @@ import { useEffect, useRef } from 'react';
 const useCanvas = (
   canvasWidth: number,
   canvasHeight: number,
-  animate: (context: CanvasRenderingContext2D) => () => void
+  animate: (
+    context: CanvasRenderingContext2D,
+    isSmallScreen: boolean
+  ) => () => void,
+  isSmallScreen: boolean
 ) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -29,7 +33,7 @@ const useCanvas = (
     let cleanup: (() => void) | undefined;
 
     if (context) {
-      cleanup = animate(context);
+      cleanup = animate(context, isSmallScreen);
     }
 
     return () => {

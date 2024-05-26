@@ -8,6 +8,7 @@ import useScreenSize from '@/hook/useScreenSize';
 export default function Landing() {
   const sectionRef = useRef<HTMLElement>(null);
   const screenSize = useScreenSize(sectionRef);
+
   return (
     <section
       className={styles.wrapper}
@@ -15,7 +16,8 @@ export default function Landing() {
     >
       <CodeAnimation
         canvasWidth={screenSize.width}
-        canvasHeight={screenSize.height}
+        canvasHeight={screenSize.height - 380}
+        isSmallScreen={screenSize.isSmallScreen}
       />
     </section>
   );

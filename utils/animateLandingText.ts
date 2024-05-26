@@ -1,10 +1,10 @@
 import {
-  FONT_FAMILY,
-  FONT_SIZE,
-  TEXT,
-  TEXT_LINE_HEIGHT,
-  TEXT_START_X,
-  TEXT_START_Y,
+  DEFAULT_FONT_FAMILY,
+  DEFAULT_FONT_SIZE,
+  DEFAULT_TEXT,
+  DEFAULT_TEXT_LINE_HEIGHT,
+  DEFAULT_TEXT_START_X,
+  DEFAULT_TEXT_START_Y,
 } from '@/constants/landingText';
 
 const SYNTAX_COLORS: { [key: string]: string } = {
@@ -57,15 +57,44 @@ const tokenize = (code: string): Token[] => {
 };
 
 const animateLandingText = (
-  context: CanvasRenderingContext2D
+  context: CanvasRenderingContext2D,
+  isSmallScreen: boolean
 ): (() => void) => {
+  const TEXT_START_X = isSmallScreen ? 25 : DEFAULT_TEXT_START_X;
+  const TEXT_START_Y = isSmallScreen ? 25 : DEFAULT_TEXT_START_Y;
+  const TEXT_LINE_HEIGHT = isSmallScreen ? 20 : DEFAULT_TEXT_LINE_HEIGHT;
+  const FONT_SIZE = isSmallScreen ? 14 : DEFAULT_FONT_SIZE;
+  const TEXT = isSmallScreen
+    ? `class Developer {
+  constructor(name, techStack) {
+    this.name = name;
+    this.techStack = techStack;
+  }
+  
+  getGreetings() {
+    return 'Hello World!';
+  }
+}
+  
+const FE_Developer = new Developer(
+  '이시열',
+  [
+    'JavaScript',
+    'TypeScript',
+    'React',
+    'Next.js'
+  ]
+);
+  
+console.log(FE_Developer.getGreetings());`
+    : DEFAULT_TEXT;
   let index = 0;
   let animationFrameId: number;
 
   const renderFrame = () => {
     context.clearRect(0, 0, context.canvas.width, context.canvas.height);
 
-    context.font = `${FONT_SIZE}px ${FONT_FAMILY}`;
+    context.font = `${FONT_SIZE}px ${DEFAULT_FONT_FAMILY}`;
     context.fillStyle = '#000';
 
     const currentText = TEXT.slice(0, index);

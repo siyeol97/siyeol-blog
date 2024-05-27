@@ -10,10 +10,16 @@ interface Props {
 export default function Greetings({ isAnimationFinished }: Props) {
   const greetings = [
     'Hello World!\n',
-    <span key='jsx-1'>~/Desktop/siyeol-blog</span>,
+    <span
+      key='jsx-1'
+      className={styles.terminal}
+    >
+      ~/Desktop/siyeol-blog
+    </span>,
     '  npm run dev\n\n',
-    '> siyeol dev-log@0.1.0 dev\n',
-    '> next dev',
+    '> siyeol dev-log@0.1.0 dev\n> next dev\n\n',
+    '\t▲ Next.js 14.1.0\n\t- Local:\thttp://localhost:3000\n\t- Environments: .env.local\n\n',
+    '✓ Ready in 2.7s',
   ];
 
   const [textElements, setTextElements] = useState<JSX.Element[]>([]);

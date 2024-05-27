@@ -2,14 +2,22 @@
   padding: 25px 50px;
 }
 
-.wrapper span {
+.wrapper {
   color: #acb2be;
   white-space: pre;
-  font-size: 20px;
+  font-size: 18px;
+}
+
+.terminal {
+  padding: 0 10px 0 5px;
+  background-color: #6b9dd2;
+  color: #000;
+  clip-path: polygon(0 0, 95% 0, 100% 50%, 95% 100%, 0 100%);
 }
 
 @media (max-width: 767px) {
   .wrapper {
     padding: 25px;
+    font-size: 14px;
   }
 }

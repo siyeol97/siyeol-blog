@@ -22,7 +22,7 @@ export default function Landing() {
     >
       <CodeAnimation
         canvasWidth={screenSize.width}
-        canvasHeight={screenSize.height - 380}
+        canvasHeight={464}
         isSmallScreen={screenSize.isSmallScreen}
         handleAnimationFlag={handleAnimationFlag}
       />

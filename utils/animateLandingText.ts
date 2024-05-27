@@ -5,6 +5,11 @@ import {
   DEFAULT_TEXT_LINE_HEIGHT,
   DEFAULT_TEXT_START_X,
   DEFAULT_TEXT_START_Y,
+  SMALL_FONT_SIZE,
+  SMALL_TEXT,
+  SMALL_TEXT_LINE_HEIGHT,
+  SMALL_TEXT_START_X,
+  SMALL_TEXT_START_Y,
 } from '@/constants/landingText';
 
 const SYNTAX_COLORS: { [key: string]: string } = {
@@ -61,34 +66,17 @@ const animateLandingText = (
   isSmallScreen: boolean,
   handleAnimationFlag: (flag: boolean) => void
 ): (() => void) => {
-  const TEXT_START_X = isSmallScreen ? 25 : DEFAULT_TEXT_START_X;
-  const TEXT_START_Y = isSmallScreen ? 25 : DEFAULT_TEXT_START_Y;
-  const TEXT_LINE_HEIGHT = isSmallScreen ? 20 : DEFAULT_TEXT_LINE_HEIGHT;
-  const FONT_SIZE = isSmallScreen ? 14 : DEFAULT_FONT_SIZE;
-  const TEXT = isSmallScreen
-    ? `class Developer {
-  constructor(name, techStack) {
-    this.name = name;
-    this.techStack = techStack;
-  }
-  
-  getGreetings() {
-    return 'Hello World!';
-  }
-}
-  
-const front_end_developer = new Developer(
-  '이시열',
-  [
-    'JavaScript',
-    'TypeScript',
-    'React',
-    'Next.js'
-  ]
-);
-  
-console.log(front_end_developer.getGreetings());`
-    : DEFAULT_TEXT;
+  const TEXT_START_X = isSmallScreen
+    ? SMALL_TEXT_START_X
+    : DEFAULT_TEXT_START_X;
+  const TEXT_START_Y = isSmallScreen
+    ? SMALL_TEXT_START_Y
+    : DEFAULT_TEXT_START_Y;
+  const TEXT_LINE_HEIGHT = isSmallScreen
+    ? SMALL_TEXT_LINE_HEIGHT
+    : DEFAULT_TEXT_LINE_HEIGHT;
+  const FONT_SIZE = isSmallScreen ? SMALL_FONT_SIZE : DEFAULT_FONT_SIZE;
+  const TEXT = isSmallScreen ? SMALL_TEXT : DEFAULT_TEXT;
   let index = 0;
   let animationFrameId: number;
 

@@ -26,6 +26,7 @@ export default function Greetings({ isAnimationFinished }: Props) {
   const [textElements, setTextElements] = useState<JSX.Element[]>([]);
   const [textIndex, setTextIndex] = useState<number>(0);
   const [charIndex, setCharIndex] = useState<number>(0);
+  const [isButtonShow, setIsButtonShow] = useState(false);
 
   useEffect(() => {
     if (!isAnimationFinished || textIndex >= greetings.length) {
@@ -59,6 +60,9 @@ export default function Greetings({ isAnimationFinished }: Props) {
 
     return () => {
       clearInterval(setTerminal);
+      if (textIndex >= greetings.length - 1) {
+        setIsButtonShow(true);
+      }
     };
   }, [isAnimationFinished, textIndex, charIndex, greetings]);
 
@@ -66,15 +70,17 @@ export default function Greetings({ isAnimationFinished }: Props) {
     isAnimationFinished && (
       <section className={styles.wrapper}>
         <div className={styles.container}>{textElements}</div>
-        <button className={styles.down_button}>
-          <Image
-            src={'/arrow.svg'}
-            alt='arrow-image'
-            width={32}
-            height={32}
-            className={styles.arrow_image}
-          />
-        </button>
+        {isButtonShow && (
+          <button className={styles.down_button}>
+            <Image
+              src={'/arrow.svg'}
+              alt='arrow-image'
+              width={32}
+              height={32}
+              className={styles.arrow_image}
+            />
+          </button>
+        )}
       </section>
     )
   );

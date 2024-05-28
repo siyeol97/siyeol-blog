@@ -26,7 +26,10 @@ export default function Landing() {
         isSmallScreen={screenSize.isSmallScreen}
         handleAnimationFlag={handleAnimationFlag}
       />
-      <Greetings isAnimationFinished={isAnimationFinished} />
+      <Greetings
+        isAnimationFinished={isAnimationFinished}
+        sectionRef={sectionRef}
+      />
     </section>
   );
 }

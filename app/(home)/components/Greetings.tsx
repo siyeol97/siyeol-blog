@@ -1,14 +1,15 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { RefObject, useEffect, useState } from 'react';
 import styles from '../css/Greetings.module.css';
 import Image from 'next/image';
 
 interface Props {
   isAnimationFinished: boolean;
+  sectionRef: RefObject<HTMLElement>;
 }
 
-export default function Greetings({ isAnimationFinished }: Props) {
+export default function Greetings({ isAnimationFinished, sectionRef }: Props) {
   const greetings = [
     'Hello World!\n',
     <span
@@ -67,8 +68,11 @@ export default function Greetings({ isAnimationFinished }: Props) {
   }, [isAnimationFinished, textIndex, charIndex, greetings]);
 
   const onClick = () => {
+    const scrollTo = sectionRef.current
+      ? sectionRef.current?.clientHeight - window.scrollY
+      : 0;
     window.scrollBy({
-      top: window.innerHeight,
+      top: scrollTo,
       behavior: 'smooth',
     });
   };

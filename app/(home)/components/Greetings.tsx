@@ -66,12 +66,22 @@ export default function Greetings({ isAnimationFinished }: Props) {
     };
   }, [isAnimationFinished, textIndex, charIndex, greetings]);
 
+  const onClick = () => {
+    window.scrollBy({
+      top: window.innerHeight,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     isAnimationFinished && (
       <section className={styles.wrapper}>
         <div className={styles.container}>{textElements}</div>
         {isButtonShow && (
-          <button className={styles.down_button}>
+          <button
+            className={styles.down_button}
+            onClick={onClick}
+          >
             <Image
               src={'/arrow.svg'}
               alt='arrow-image'

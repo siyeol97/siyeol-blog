@@ -13,6 +13,8 @@ export default function Header() {
 
   useEffect(() => {
     if (pathname !== '/') {
+      console.log(pathname);
+      setIsVisible(true);
       return;
     }
     const handleScroll = debounce(() => {

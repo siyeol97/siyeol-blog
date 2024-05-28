@@ -21,7 +21,7 @@ export default function Header() {
       } else {
         setIsVisible(true);
       }
-    }, 50);
+    }, 10);
 
     window.addEventListener('scroll', handleScroll);
 

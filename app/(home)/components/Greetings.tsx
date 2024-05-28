@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import styles from '../css/Greetings.module.css';
+import Image from 'next/image';
 
 interface Props {
   isAnimationFinished: boolean;
@@ -62,6 +63,19 @@ export default function Greetings({ isAnimationFinished }: Props) {
   }, [isAnimationFinished, textIndex, charIndex, greetings]);
 
   return (
-    isAnimationFinished && <div className={styles.wrapper}>{textElements}</div>
+    isAnimationFinished && (
+      <section className={styles.wrapper}>
+        <div className={styles.container}>{textElements}</div>
+        <button className={styles.down_button}>
+          <Image
+            src={'/arrow.svg'}
+            alt='arrow-image'
+            width={32}
+            height={32}
+            className={styles.arrow_image}
+          />
+        </button>
+      </section>
+    )
   );
 }

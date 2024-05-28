@@ -1,7 +1,6 @@
 .header {
   display: none;
   opacity: 0;
-  transition: opacity 0.5s ease-in-out;
 }
 
 .visible {
@@ -15,6 +14,7 @@
   box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
   z-index: 3;
+  transition: opacity 0.5s ease-in-out;
 }
 
 .header::before {

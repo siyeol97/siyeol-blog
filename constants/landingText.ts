@@ -1,4 +1,4 @@
-export const DEFAULT_TEXT_START_X = 50;
+export const DEFAULT_TEXT_START_X = 200;
 export const SMALL_TEXT_START_X = 25;
 export const DEFAULT_TEXT_START_Y = 50;
 export const SMALL_TEXT_START_Y = 25;

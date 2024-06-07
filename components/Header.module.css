@@ -1,11 +1,9 @@
 .header {
   display: none;
-  opacity: 0;
 }
 
 .visible {
   display: flex;
-  opacity: 1;
   position: sticky;
   top: 0;
   justify-content: center;

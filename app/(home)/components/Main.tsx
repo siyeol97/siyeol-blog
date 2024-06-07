@@ -5,6 +5,7 @@ import styles from '../css/Main.module.css';
 import Card from './Card';
 import useSearchPost from '@/hook/useSearchPost';
 import Image from 'next/image';
+import NoSearch from './NoSearch';
 
 export default function Main({ data }: { data: Post[] }) {
   const { searchValue, searchedData, onChange } = useSearchPost(data);
@@ -39,14 +40,18 @@ export default function Main({ data }: { data: Post[] }) {
             &nbsp;검색 결과입니다.
           </p>
         </div>
-        <ul className={styles.ul}>
-          {searchedData?.map((post) => (
-            <Card
-              key={post._id.toString()}
-              post={post}
-            />
-          ))}
-        </ul>
+        {searchedData.length === 0 ? (
+          <NoSearch />
+        ) : (
+          <ul className={styles.ul}>
+            {searchedData?.map((post) => (
+              <Card
+                key={post._id.toString()}
+                post={post}
+              />
+            ))}
+          </ul>
+        )}
       </div>
     </section>
   );

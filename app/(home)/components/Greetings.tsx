@@ -72,7 +72,7 @@ export default function Greetings({ isAnimationFinished, sectionRef }: Props) {
       ? sectionRef.current?.clientHeight - window.scrollY + 1
       : 0;
     window.scrollBy({
-      top: scrollTo,
+      top: window.innerWidth <= 767 ? scrollTo + 54 : scrollTo,
       behavior: 'smooth',
     });
   };

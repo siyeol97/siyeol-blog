@@ -49,7 +49,7 @@
 
 @media (max-width: 767px) {
   .wrapper {
-    padding: 25px;
+    padding: 10px 25px;
   }
   .container {
     font-size: 14px;

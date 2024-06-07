@@ -11,7 +11,7 @@ export default function Header() {
   const pathname = usePathname();
 
   useEffect(() => {
-    if (pathname !== '/') {
+    if (pathname !== '/' || window.innerWidth <= 767) {
       setIsVisible(true);
       return;
     }

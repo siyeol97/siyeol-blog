@@ -34,7 +34,7 @@ export const SMALL_TEXT = `class Developer {
   }
 }
   
-const front_end_developer = new Developer(
+const feDeveloper = new Developer(
   '이시열',
   [
     'JavaScript',
@@ -44,4 +44,4 @@ const front_end_developer = new Developer(
   ]
 );
   
-console.log(front_end_developer.getGreetings());`;
+console.log(feDeveloper.getGreetings());`;

@@ -4,7 +4,6 @@ import styles from './Header.module.css';
 import UserSession from './UserSession';
 import MainLogo from './MainLogo';
 import { useEffect, useState } from 'react';
-import { debounce } from 'lodash';
 import { usePathname } from 'next/navigation';
 
 export default function Header() {
@@ -13,22 +12,30 @@ export default function Header() {
 
   useEffect(() => {
     if (pathname !== '/') {
-      console.log(pathname);
       setIsVisible(true);
       return;
     }
-    const handleScroll = debounce(() => {
-      if (window.scrollY < window.innerHeight) {
-        setIsVisible(false);
-      } else {
-        setIsVisible(true);
-      }
-    }, 10);
 
-    window.addEventListener('scroll', handleScroll);
+    const observer = new IntersectionObserver((element) => {
+      element.forEach((landing) => {
+        if (landing.isIntersecting) {
+          setIsVisible(false);
+        } else {
+          setIsVisible(true);
+        }
+      });
+    });
+
+    const target = document.querySelector('#landing');
+    if (target) {
+      observer.observe(target);
+    }
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      if (target) {
+        observer.unobserve(target);
+      }
+      observer.disconnect();
     };
   }, [pathname]);
 

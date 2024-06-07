@@ -19,6 +19,7 @@ export default function Landing() {
     <section
       className={styles.wrapper}
       ref={sectionRef}
+      id='landing'
     >
       <CodeAnimation
         canvasWidth={screenSize.width}

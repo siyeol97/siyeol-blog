@@ -3,3 +3,9 @@
   min-height: 100vh;
   background-color: #292c33;
 }
+
+@media (max-width: 767px) {
+  .wrapper {
+    min-height: 100lvh;
+  }
+}

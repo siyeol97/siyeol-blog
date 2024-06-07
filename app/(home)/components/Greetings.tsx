@@ -69,7 +69,7 @@ export default function Greetings({ isAnimationFinished, sectionRef }: Props) {
 
   const onClick = () => {
     const scrollTo = sectionRef.current
-      ? sectionRef.current?.clientHeight - window.scrollY
+      ? sectionRef.current?.clientHeight - window.scrollY + 1
       : 0;
     window.scrollBy({
       top: scrollTo,

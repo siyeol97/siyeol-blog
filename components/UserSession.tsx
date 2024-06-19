@@ -1,21 +1,10 @@
-'use client';
-
-import { Session } from 'next-auth';
+import { getServerSession } from 'next-auth';
 import SignInUpButton from './SignInUpButton';
 import UserInfo from './UserInfo';
-import { useEffect, useState } from 'react';
-import serverSessionAction from '@/utils/serverSessionAction';
+import { authOptions } from '@/pages/api/auth/[...nextauth]';
 
-export default function UserSession() {
-  const [session, setSession] = useState<Session | null>(null);
-
-  useEffect(() => {
-    const getSession = async () => {
-      const result = await serverSessionAction();
-      setSession(result);
-    };
-    getSession();
-  }, []);
+export default async function UserSession() {
+  const session = await getServerSession(authOptions);
   return (
     <div>{session ? <UserInfo session={session} /> : <SignInUpButton />}</div>
   );

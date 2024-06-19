@@ -1,8 +1,4 @@
 .header {
-  display: none;
-}
-
-.visible {
   display: flex;
   position: sticky;
   top: 0;

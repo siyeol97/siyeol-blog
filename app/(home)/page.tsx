@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import Main from './components/Main';
 import getPostList from '@/utils/getPostList';
-import Landing from './components/Landing';
 
 export const metadata: Metadata = {
   title: 'Home',
@@ -16,7 +15,6 @@ export default async function HomePage() {
 
   return (
     <>
-      <Landing />
       <Main data={data} />
     </>
   );

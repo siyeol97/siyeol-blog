@@ -38,3 +38,9 @@
   color: var(--primary-color-4);
   font-weight: 700;
 }
+
+@media (max-width: 767px) {
+  .input_container {
+    width: 100%;
+  }
+}

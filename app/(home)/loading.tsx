@@ -1,4 +1,5 @@
 // import LoadingCard from './components/LoadingCard';
+import Image from 'next/image';
 import styles from './css/loading.module.css';
 
 export default function Loading() {
@@ -12,5 +13,13 @@ export default function Loading() {
   //     </ul>
   //   </section>
   // );
-  return <section className={styles.background} />;
+  return (
+    <Image
+      src={'/loading.gif'}
+      alt='loading-image'
+      width={40}
+      height={40}
+      className={styles.loading}
+    />
+  );
 }

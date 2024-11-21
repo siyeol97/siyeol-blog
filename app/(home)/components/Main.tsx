@@ -9,7 +9,6 @@ import PostList from './PostList';
 
 export default function Main({ data }: { data: Post[] }) {
   const { searchValue, searchedData, onChange } = useSearchPost(data);
-
   return (
     <section className={styles.section}>
       <div className={styles.wrapper}>

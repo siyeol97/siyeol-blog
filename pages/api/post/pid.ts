@@ -11,7 +11,7 @@ export default async function handler(
     const result = await db
       .collection('blog_post')
       .find()
-      .sort({ _id: -1 }) // 데이터베이스에 저장된 시간 역순으로 정렬
+      .sort({ _id: -1 }) // 데이터베이스에 저장된 시간 역순(최신순)으로 정렬
       .toArray();
 
     res.status(200).json(result);

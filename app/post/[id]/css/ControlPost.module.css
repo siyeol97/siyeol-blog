@@ -1,0 +1,13 @@
+.wrapper {
+  display: flex;
+  gap: 10px;
+}
+
+.button {
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+.button:hover {
+  background-color: #f0f0f0;
+}

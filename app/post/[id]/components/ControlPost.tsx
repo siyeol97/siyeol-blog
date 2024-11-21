@@ -4,11 +4,16 @@ import deletePost, { DeleteProp } from '@/utils/deletePost';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { MouseEvent } from 'react';
+import { MouseEvent, useState } from 'react';
+import styles from '../css/ControlPost.module.css';
+import Modal from '@/components/Modal';
 
 export default function ControlPost({ _id }: { _id: string }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const router = useRouter();
   const queryClient = useQueryClient();
+
+  const toggleModal = () => setIsModalOpen((prev) => !prev);
 
   const deletePostMutation = useMutation({
     mutationFn: (deleteProp: DeleteProp) => deletePost(deleteProp),
@@ -26,11 +31,21 @@ export default function ControlPost({ _id }: { _id: string }) {
   };
 
   return (
-    <div style={{ display: 'flex', gap: '10px' }}>
-      <button>
+    <div className={styles.wrapper}>
+      <button className={styles.button}>
         <Link href={`/edit/${_id}`}>수정</Link>
       </button>
-      <button onClick={handleReplySubmit}>삭제</button>
+      <button
+        className={styles.button}
+        onClick={toggleModal}
+      >
+        삭제
+      </button>
+      <Modal
+        isModalOpen={isModalOpen}
+        handleReplySubmit={handleReplySubmit}
+        toggleModal={toggleModal}
+      />
     </div>
   );
 }

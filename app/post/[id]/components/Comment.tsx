@@ -4,7 +4,8 @@ import { Reply } from '@/app/type';
 import styles from '../css/Comment.module.css';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import deleteReply from '@/utils/deleteReply';
-import { MouseEvent } from 'react';
+import { MouseEvent, useState } from 'react';
+import Modal from '@/components/Modal';
 
 interface Props {
   reply: Reply;
@@ -19,6 +20,9 @@ export default function Comment({
   isEditing,
   handleClick,
 }: Props) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const toggleModal = () => setIsModalOpen((prev) => !prev);
+
   const queryClient = useQueryClient();
 
   const uploadReplyMutation = useMutation({
@@ -32,7 +36,7 @@ export default function Comment({
     e.preventDefault();
     const reply_id = reply._id.toString();
     uploadReplyMutation.mutate(reply_id, {
-      onSuccess: () => console.log('댓글 삭제 성공'),
+      onSuccess: () => {},
     });
   };
 
@@ -48,11 +52,16 @@ export default function Comment({
             수정
           </button>
           <button
-            onClick={handleDeleteSubmit}
+            onClick={toggleModal}
             className={styles.button_text}
           >
             삭제
           </button>
+          <Modal
+            isModalOpen={isModalOpen}
+            handleDelete={handleDeleteSubmit}
+            toggleModal={toggleModal}
+          />
         </div>
       ) : null}
     </div>

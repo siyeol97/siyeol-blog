@@ -48,7 +48,7 @@ export default function ReplyWrite({
     }
     const newReply: NewReply = { comment: comment, post_id: post_id };
     uploadReplyMutation.mutate(newReply, {
-      onSuccess: () => console.log('댓글 등록 성공'),
+      onSuccess: () => {},
     });
     setComment('');
   };

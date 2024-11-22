@@ -43,7 +43,7 @@ export default function ControlPost({ _id }: { _id: string }) {
       </button>
       <Modal
         isModalOpen={isModalOpen}
-        handleReplySubmit={handleReplySubmit}
+        handleDelete={handleReplySubmit}
         toggleModal={toggleModal}
       />
     </div>

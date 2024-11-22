@@ -4,13 +4,13 @@ import styles from './Modal.module.css';
 interface Props {
   isModalOpen: boolean;
   toggleModal: () => void;
-  handleReplySubmit: (e: MouseEvent<HTMLButtonElement>) => void;
+  handleDelete: (e: MouseEvent<HTMLButtonElement>) => void;
 }
 
 export default function Modal({
   isModalOpen,
   toggleModal,
-  handleReplySubmit,
+  handleDelete,
 }: Props) {
   return (
     isModalOpen && (
@@ -20,7 +20,7 @@ export default function Modal({
           <div className={styles.modal_buttons}>
             <button
               className={`${styles.button} ${styles.confirm}`}
-              onClick={(e) => handleReplySubmit(e)}
+              onClick={(e) => handleDelete(e)}
             >
               삭제
             </button>

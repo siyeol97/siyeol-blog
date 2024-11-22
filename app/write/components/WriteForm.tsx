@@ -3,7 +3,7 @@
 import ReactTextareaAutosize from 'react-textarea-autosize';
 import styles from '../css/WriteForm.module.css';
 import { useRouter } from 'next/navigation';
-import { ChangeEvent, MouseEvent } from 'react';
+import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import writePost, { WritePostProp } from '@/utils/writePost';
 
@@ -12,6 +12,8 @@ interface Props {
   updateTitle: (title: string) => void;
   content: string;
   updateContent: (content: string) => void;
+  tags: string[];
+  updateTags: (newTag: string) => void;
   type: string;
   _id?: string;
 }
@@ -21,9 +23,12 @@ export default function WriteForm({
   updateTitle,
   content,
   updateContent,
+  tags,
+  updateTags,
   type,
   _id,
 }: Props) {
+  const [currentTag, setCurrentTag] = useState(tags.join(' ')); // 초기값은 tags에 들어있는 값들을 공백으로 합쳐서 string으로 넣어줌
   const router = useRouter();
   const queryClient = useQueryClient();
   const handleCancelClick = () => {
@@ -37,6 +42,15 @@ export default function WriteForm({
   const onChangeContent = (e: ChangeEvent<HTMLTextAreaElement>) => {
     updateContent(e.target.value);
   };
+
+  const onChangeTag = (e: ChangeEvent<HTMLInputElement>) => {
+    setCurrentTag(e.target.value);
+  };
+
+  useEffect(() => {
+    updateTags(currentTag);
+  }, [currentTag]);
+
   // eslint-disable-next-line
   const handleSetTab = (e: any) => {
     if (e.key === 'Tab') {
@@ -64,6 +78,7 @@ export default function WriteForm({
       post_id: _id,
       title: title,
       content: content,
+      tags: tags,
       type: type,
     };
     uploadPostMutation.mutate(writePostProp, {
@@ -76,8 +91,18 @@ export default function WriteForm({
     });
   };
 
+  // input 태그에서 Enter 입력 시 submit 방지
+  const handleTagKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+    }
+  };
+
   return (
-    <form className={styles.form}>
+    <form
+      className={styles.form}
+      onSubmit={(e) => e.preventDefault()}
+    >
       <textarea
         name='title'
         placeholder='제목을 작성해주세요.'
@@ -86,6 +111,14 @@ export default function WriteForm({
         value={title}
         onChange={onChangeTitle}
         maxLength={40}
+      />
+      <input
+        name='tags'
+        className={styles.input_tags}
+        placeholder='태그를 입력해주세요.'
+        value={currentTag}
+        onChange={onChangeTag}
+        onKeyDown={(e) => handleTagKeyDown(e)}
       />
       <hr className={styles.separator} />
       <label

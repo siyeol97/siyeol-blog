@@ -9,7 +9,8 @@ import styles from './UserInfo.module.css';
 import { useState } from 'react';
 
 export default function UserInfo({ session }: { session: Session }) {
-  const isAuthorized = session.user?.email === 'leesi2830@naver.com';
+  const isAuthorized =
+    session.user?.email === 'leesi2830@naver.com' || 'test1@naver.com';
   const [isToggle, setIsToggle] = useState(false);
 
   const handleClick = () => {

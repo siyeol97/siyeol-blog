@@ -17,7 +17,7 @@ export default function PostInfo({ post, isAuthor }: Props) {
         <b>{post.name}</b>ㆍ
         <span className={styles.created_at}>{createdAt}</span>
       </span>
-      <div>{isAuthor ? <ControlPost _id={post._id.toString()} /> : null}</div>
+      {isAuthor ? <ControlPost _id={post._id.toString()} /> : null}
     </div>
   );
 }

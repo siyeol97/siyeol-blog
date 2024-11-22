@@ -1,0 +1,50 @@
+.wrapper {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  width: 100%;
+  z-index: 900;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 32px 40px 24px;
+  border-radius: 8px;
+}
+
+.modal_header {
+  font-size: 18px;
+}
+
+.modal_buttons {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.button {
+  padding: 8px 12px;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.confirm {
+  background-color: red;
+  color: white;
+}
+
+.confirm:hover {
+  opacity: 0.8;
+}
+
+.cancel:hover {
+  background-color: #f0f0f0;
+}

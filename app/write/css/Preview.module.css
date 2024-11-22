@@ -40,3 +40,10 @@
 .preview_content::-webkit-scrollbar {
   display: none;
 }
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 4px;
+}

@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     template: "%s | Siyeol's dev-log",
     default: 'Loading...',
   },
-  description: "It's a blog for development study",
+  description: "It's a blog for Front-end",
 };
 
 export default function RootLayout({

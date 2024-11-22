@@ -28,7 +28,7 @@ export default function WriteForm({
   type,
   _id,
 }: Props) {
-  const [currentTag, setCurrentTag] = useState(tags.join(' ')); // 초기값은 tags에 들어있는 값들을 공백으로 합쳐서 string으로 넣어줌
+  const [currentTag, setCurrentTag] = useState((tags ?? []).join(' ')); // 초기값은 tags에 들어있는 값들을 공백으로 합쳐서 string으로 넣어줌
   const router = useRouter();
   const queryClient = useQueryClient();
   const handleCancelClick = () => {

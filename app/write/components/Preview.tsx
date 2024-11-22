@@ -9,7 +9,7 @@ interface Props {
   tags: string[];
 }
 
-export default function Preview({ title, content, tags }: Props) {
+export default function Preview({ title, content, tags = [] }: Props) {
   const scrollTitleRef = useRef<HTMLTextAreaElement>(null);
   const scrollContentRef = useRef<HTMLDivElement>(null);
 

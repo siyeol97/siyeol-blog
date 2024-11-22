@@ -91,8 +91,18 @@ export default function WriteForm({
     });
   };
 
+  // input 태그에서 Enter 입력 시 submit 방지
+  const handleTagKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+    }
+  };
+
   return (
-    <form className={styles.form}>
+    <form
+      className={styles.form}
+      onSubmit={(e) => e.preventDefault()}
+    >
       <textarea
         name='title'
         placeholder='제목을 작성해주세요.'
@@ -108,6 +118,7 @@ export default function WriteForm({
         placeholder='태그를 입력해주세요.'
         value={currentTag}
         onChange={onChangeTag}
+        onKeyDown={(e) => handleTagKeyDown(e)}
       />
       <hr className={styles.separator} />
       <label

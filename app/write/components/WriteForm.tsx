@@ -3,7 +3,7 @@
 import ReactTextareaAutosize from 'react-textarea-autosize';
 import styles from '../css/WriteForm.module.css';
 import { useRouter } from 'next/navigation';
-import { ChangeEvent, MouseEvent } from 'react';
+import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import writePost, { WritePostProp } from '@/utils/writePost';
 
@@ -12,6 +12,8 @@ interface Props {
   updateTitle: (title: string) => void;
   content: string;
   updateContent: (content: string) => void;
+  tags: string[];
+  updateTags: (newTag: string) => void;
   type: string;
   _id?: string;
 }
@@ -21,9 +23,11 @@ export default function WriteForm({
   updateTitle,
   content,
   updateContent,
+  updateTags,
   type,
   _id,
 }: Props) {
+  const [currentTag, setCurrentTag] = useState(''); // 태그 추가 시 사용
   const router = useRouter();
   const queryClient = useQueryClient();
   const handleCancelClick = () => {
@@ -37,6 +41,15 @@ export default function WriteForm({
   const onChangeContent = (e: ChangeEvent<HTMLTextAreaElement>) => {
     updateContent(e.target.value);
   };
+
+  const onChangeTag = (e: ChangeEvent<HTMLInputElement>) => {
+    setCurrentTag(e.target.value);
+  };
+
+  useEffect(() => {
+    updateTags(currentTag);
+  }, [currentTag]);
+
   // eslint-disable-next-line
   const handleSetTab = (e: any) => {
     if (e.key === 'Tab') {
@@ -86,6 +99,13 @@ export default function WriteForm({
         value={title}
         onChange={onChangeTitle}
         maxLength={40}
+      />
+      <input
+        name='tags'
+        className={styles.input_tags}
+        placeholder='태그를 입력해주세요.'
+        value={currentTag}
+        onChange={onChangeTag}
       />
       <hr className={styles.separator} />
       <label

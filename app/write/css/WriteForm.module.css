@@ -14,8 +14,13 @@
   border-top: 1px solid var(--primary-color-4);
 }
 
+.input_tags {
+  padding: 0.5rem;
+}
+
 .input_title,
-.input_content {
+.input_content,
+.input_tags {
   width: 100%;
   -ms-overflow-style: none;
 }
@@ -37,7 +42,9 @@
   min-height: 145px;
 }
 
-.input_title:focus {
+.input_title:focus,
+.input_tags:focus,
+.input_content:focus {
   outline: none;
 }
 
@@ -52,10 +59,6 @@
   resize: none;
   border: none;
   font-size: 1rem;
-}
-
-.input_content:focus {
-  outline: none;
 }
 
 .button_area {

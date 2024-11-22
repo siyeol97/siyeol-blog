@@ -4,6 +4,7 @@ export interface Post extends WithId<Document> {
   _id: ObjectId;
   title: string;
   content: string;
+  tags: string[];
   name: string;
   author: string;
   author_image: string | null;

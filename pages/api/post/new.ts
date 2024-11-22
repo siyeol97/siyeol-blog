@@ -15,12 +15,15 @@ export default async function handler(
     if (req.body.title === '' || req.body.content === '') {
       throw new Error();
     }
+
     req.body = JSON.parse(req.body);
     const session = await getServerSession(req, res, authOptions);
     const client = await connectDB;
     const db = client.db('siyeol_blog');
     const data = {
-      ...req.body,
+      title: req.body.title,
+      content: req.body.content,
+      tags: req.body.tags,
       name: session?.user?.name,
       author: session?.user?.email,
       author_image: session?.user?.image,

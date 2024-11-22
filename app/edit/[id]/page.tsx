@@ -35,6 +35,7 @@ export default async function EditPage({
   const post = {
     title: result.title,
     content: result.content,
+    tags: result.tags,
   };
 
   return (

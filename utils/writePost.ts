@@ -3,6 +3,7 @@ export interface WritePostProp {
   title: string;
   content: string;
   type: string;
+  tags: string[];
 }
 
 const writePost = async (writePostProp: WritePostProp) => {

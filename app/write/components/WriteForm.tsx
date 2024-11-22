@@ -23,11 +23,12 @@ export default function WriteForm({
   updateTitle,
   content,
   updateContent,
+  tags,
   updateTags,
   type,
   _id,
 }: Props) {
-  const [currentTag, setCurrentTag] = useState(''); // 태그 추가 시 사용
+  const [currentTag, setCurrentTag] = useState(tags.join(' ')); // 초기값은 tags에 들어있는 값들을 공백으로 합쳐서 string으로 넣어줌
   const router = useRouter();
   const queryClient = useQueryClient();
   const handleCancelClick = () => {
@@ -77,6 +78,7 @@ export default function WriteForm({
       post_id: _id,
       title: title,
       content: content,
+      tags: tags,
       type: type,
     };
     uploadPostMutation.mutate(writePostProp, {

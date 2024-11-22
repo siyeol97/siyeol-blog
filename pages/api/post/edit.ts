@@ -15,7 +15,11 @@ export default async function handler(
         return;
       }
       req.body = JSON.parse(req.body);
-      const changedPost = { title: req.body.title, content: req.body.content };
+      const changedPost = {
+        title: req.body.title,
+        content: req.body.content,
+        tags: req.body.tags,
+      };
       const client = await connectDB;
       const db = client.db('siyeol_blog');
       const session = await getServerSession(req, res, authOptions);

@@ -5,6 +5,13 @@
   overflow: hidden;
 }
 
+.tags {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
 .separator {
   width: 100%;
   height: 1px;
@@ -34,8 +41,9 @@
 }
 
 .article_title {
-  margin-bottom: 7px;
-  -webkit-line-clamp: 1;
+  margin-bottom: 8px;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
   color: #000;
   font-weight: 600;
   font-size: 28px;
@@ -46,7 +54,8 @@
 }
 
 .article_body {
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
   color: #000;
   font-size: 14px;
   font-weight: 400;
@@ -113,13 +122,5 @@
   .thumbnail {
     width: 105px;
     height: 105px;
-  }
-
-  .article_body {
-    -webkit-line-clamp: 2;
-  }
-
-  .article_title {
-    -webkit-line-clamp: 2;
   }
 }

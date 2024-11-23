@@ -31,5 +31,5 @@
     "_next/types/**/*.ts",
     "pages/api/auth/[...nextauth].js"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "_next"]
 }

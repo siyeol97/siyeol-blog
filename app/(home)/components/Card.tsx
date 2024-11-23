@@ -5,6 +5,7 @@ import filterText from '@/utils/filterText';
 import Link from 'next/link';
 import styles from '../css/Card.module.css';
 import { Post } from '@/app/type';
+import Tag from '@/components/Tag';
 
 interface Props {
   post: Post;
@@ -23,6 +24,14 @@ export default function Card({ post }: Props) {
               <h2 className={`${styles.card_article} ${styles.article_title} `}>
                 {post.title}
               </h2>
+              <div className={styles.tags}>
+                {post.tags?.map((tag) => (
+                  <Tag
+                    tag={tag}
+                    key={tag}
+                  />
+                ))}
+              </div>
               <p className={`${styles.card_article} ${styles.article_body}`}>
                 {content}
               </p>

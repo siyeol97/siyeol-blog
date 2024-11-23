@@ -13,8 +13,6 @@ export default async function HomePage() {
     throw new Error('에러가 발생했습니다.');
   }
 
-  console.log(data[0].title);
-
   return (
     <>
       <Main data={data} />

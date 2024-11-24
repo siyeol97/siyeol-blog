@@ -70,6 +70,10 @@
   line-height: 1.5;
 }
 
+.author_avatar {
+  border-radius: 50%;
+}
+
 .writer {
   display: flex;
   align-items: baseline;

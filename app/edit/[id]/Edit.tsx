@@ -18,7 +18,9 @@ interface Props {
 export default function Edit({ post, _id }: Props) {
   const [title, setTitle] = useState(post.title);
   const [content, setContent] = useState(post.content);
-  const [tags, setTags] = useState<string[]>(post.tags.map((tag) => tag.tag));
+  const [tags, setTags] = useState<string[]>(
+    post.tags?.map((tag) => tag.tag) ?? []
+  );
 
   const updateTitle = (title: string) => {
     setTitle(title);

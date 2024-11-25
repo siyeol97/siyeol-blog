@@ -28,9 +28,9 @@ export default async function handler(
       }
 
       // 수정 전 태그
-      const originalTags: string[] = post.tags.map(
-        (item: { tag: string; color: string }) => item.tag
-      );
+      const originalTags: string[] =
+        post.tags?.map((item: { tag: string; color: string }) => item.tag) ??
+        [];
 
       // 수정 후 태그 중 새로 추가된 태그
       const newTags: string[] = req.body.tags.filter((tag: string) => {
@@ -112,6 +112,6 @@ export default async function handler(
       throw new Error('잘못된 접근입니다.');
     }
   } catch (error) {
-    res.status(500).json({ error: 'failed to load' });
+    res.status(500).json({ error: (error as Error).message });
   }
 }

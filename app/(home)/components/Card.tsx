@@ -6,6 +6,8 @@ import Link from 'next/link';
 import styles from '../css/Card.module.css';
 import { Post } from '@/app/type';
 import Tag from '@/components/Tag';
+import Image from 'next/image';
+import DefaultAvatar from '@/components/DefaultAvatar';
 
 interface Props {
   post: Post;
@@ -25,10 +27,11 @@ export default function Card({ post }: Props) {
                 {post.title}
               </h2>
               <div className={styles.tags}>
-                {post.tags?.map((tag) => (
+                {post.tags?.map((item) => (
                   <Tag
-                    tag={tag}
-                    key={tag}
+                    tag={item.tag}
+                    color={item.color}
+                    key={item.tag}
                   />
                 ))}
               </div>
@@ -39,6 +42,17 @@ export default function Card({ post }: Props) {
           </div>
         </Link>
         <div className={styles.card_bottom}>
+          {post.author_image ? (
+            <Image
+              src={post.author_image}
+              alt='user-avatar'
+              width={30}
+              height={30}
+              className={styles.author_avatar}
+            />
+          ) : (
+            <DefaultAvatar name={post.name.slice(-2)} />
+          )}
           <span className={styles.writer}>
             by <b>{post.name}</b>ㆍ<span>{createdAt}</span>
           </span>

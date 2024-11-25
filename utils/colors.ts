@@ -30,6 +30,15 @@ const colors = [
   '#E1ACAC',
   '#FFC94A',
   '#E1F0DA',
+  '#D3F1DF',
+  '#B3C8CF',
+  '#E6E9AF',
+  '#B6A28E',
+  '#A6AEBF',
+  '#FCF596',
+  '#FFE31A',
+  '#B6FFA1',
+  '#FFAD60',
 ];
 
 export default colors;

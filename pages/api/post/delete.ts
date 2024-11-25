@@ -21,6 +21,19 @@ export default async function handler(
       }
 
       if (post.author === session?.user?.email) {
+        await Promise.all(
+          // tag collection에서 해당 post를 제거
+          post.tags.map(async (item: { tag: string; color: string }) => {
+            await db.collection('tag').updateOne(
+              { tag: item.tag },
+              {
+                $pull: {
+                  posts: new ObjectId(req.body),
+                },
+              }
+            );
+          })
+        );
         await db
           .collection('blog_post')
           .deleteOne({ _id: new ObjectId(req.body) });

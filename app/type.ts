@@ -4,7 +4,7 @@ export interface Post extends WithId<Document> {
   _id: ObjectId;
   title: string;
   content: string;
-  tags: string[];
+  tags: TagType[];
   name: string;
   author: string;
   author_image: string | null;
@@ -20,4 +20,17 @@ export interface Reply {
   author_image: string;
   name: string;
   created_at: Date;
+}
+
+export interface TagType {
+  tag: string;
+  color: string;
+}
+
+export type TagFieldPosts = ObjectId[];
+
+export interface TagField {
+  tag: string;
+  color: string;
+  posts: TagFieldPosts;
 }

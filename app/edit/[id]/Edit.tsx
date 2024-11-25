@@ -4,12 +4,13 @@ import { useState } from 'react';
 import styles from './Edit.module.css';
 import WriteForm from '@/app/write/components/WriteForm';
 import Preview from '@/app/write/components/Preview';
+import { TagType } from '@/app/type';
 
 interface Props {
   post: {
     title: string;
     content: string;
-    tags: string[];
+    tags: TagType[];
   };
   _id: string;
 }
@@ -17,7 +18,7 @@ interface Props {
 export default function Edit({ post, _id }: Props) {
   const [title, setTitle] = useState(post.title);
   const [content, setContent] = useState(post.content);
-  const [tags, setTags] = useState<string[]>(post.tags);
+  const [tags, setTags] = useState<string[]>(post.tags.map((tag) => tag.tag));
 
   const updateTitle = (title: string) => {
     setTitle(title);

@@ -27,10 +27,11 @@ export default function Card({ post }: Props) {
                 {post.title}
               </h2>
               <div className={styles.tags}>
-                {post.tags?.map((tag) => (
+                {post.tags?.map((item) => (
                   <Tag
-                    tag={tag}
-                    key={tag}
+                    tag={item.tag}
+                    color={item.color}
+                    key={item.tag}
                   />
                 ))}
               </div>

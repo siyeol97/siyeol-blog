@@ -12,6 +12,7 @@ function Tag({ tag, color }: Props) {
       className={styles.tag}
       style={{
         border: color ?? '1px solid #121212',
+        color: color ? '#fff' : '#121212',
         backgroundColor: color && color,
       }}
     >

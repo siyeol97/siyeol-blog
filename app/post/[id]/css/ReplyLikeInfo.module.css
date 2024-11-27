@@ -13,13 +13,13 @@
 
 .count {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   gap: 0.125rem;
 }
 
 .like_icon {
   width: 24px;
-  height: 24px;
+  height: 27px;
   cursor: pointer;
 }

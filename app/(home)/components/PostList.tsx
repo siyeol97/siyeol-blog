@@ -4,13 +4,13 @@ import Card from './Card';
 import { Post } from '@/app/type';
 
 interface Props {
-  searchedData: Post[];
+  data: Post[];
 }
 
-const PostList = memo(({ searchedData }: Props) => {
+const PostList = memo(({ data }: Props) => {
   return (
     <ul className={styles.ul}>
-      {searchedData?.map((post) => (
+      {data?.map((post) => (
         <Card
           key={post._id.toString()}
           post={post}

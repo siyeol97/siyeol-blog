@@ -8,7 +8,11 @@ export default async function handler(
   try {
     const client = await connectDB;
     const db = client.db('siyeol_blog');
-    const result = await db.collection('blog_post').find().toArray();
+    const result = await db
+      .collection('blog_post')
+      .find()
+      .sort({ _id: -1 })
+      .toArray();
 
     res.status(200).json(result);
   } catch (error) {

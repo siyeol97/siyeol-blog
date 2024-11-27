@@ -3,7 +3,13 @@ import { ChangeEvent, useEffect, useState } from 'react';
 
 const useSearchPost = (data: Post[]) => {
   const [searchValue, setSearchValue] = useState('');
-  const [searchedData, setSearchedData] = useState<Post[]>(data);
+  const [searchedData, setSearchedData] = useState<Post[]>([]);
+
+  useEffect(() => {
+    if (data.length > 0) {
+      setSearchedData(data);
+    }
+  }, [data]);
 
   useEffect(() => {
     const timer = setTimeout(() => {

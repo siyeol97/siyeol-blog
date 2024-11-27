@@ -1,14 +1,23 @@
 'use client';
 
-import { Post } from '@/app/type';
 import styles from '../css/Main.module.css';
 import useSearchPost from '@/hook/useSearchPost';
-import NoSearch from './NoSearch';
 import SearchInput from './SearchInput';
 import PostList from './PostList';
+import { useQuery } from '@tanstack/react-query';
+import getPostList from '@/utils/getPostList';
+import { Post } from '@/app/type';
+import Loading from '../loading';
+import NoSearch from './NoSearch';
 
-export default function Main({ data }: { data: Post[] }) {
-  const { searchValue, searchedData, onChange } = useSearchPost(data);
+export default function Main() {
+  const { data, isLoading } = useQuery<Post[]>({
+    queryKey: ['post-list'],
+    queryFn: () => getPostList(),
+  });
+
+  const { searchValue, searchedData, onChange } = useSearchPost(data ?? []);
+
   return (
     <section className={styles.section}>
       <div className={styles.wrapper}>
@@ -16,10 +25,12 @@ export default function Main({ data }: { data: Post[] }) {
           searchValue={searchValue}
           onChange={onChange}
         />
-        {searchedData.length === 0 ? (
+        {isLoading ? (
+          <Loading />
+        ) : searchedData?.length === 0 ? (
           <NoSearch />
         ) : (
-          <PostList searchedData={searchedData} />
+          <PostList data={searchedData ?? []} />
         )}
       </div>
     </section>

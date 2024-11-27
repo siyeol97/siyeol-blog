@@ -10,7 +10,8 @@ import { useState } from 'react';
 
 export default function UserInfo({ session }: { session: Session }) {
   const isAuthorized =
-    session.user?.email === 'leesi2830@naver.com' || 'test1@naver.com';
+    session.user?.email === 'leesi2830@naver.com' ||
+    session.user?.email === 'test1@naver.com';
   const [isToggle, setIsToggle] = useState(false);
 
   const handleClick = () => {

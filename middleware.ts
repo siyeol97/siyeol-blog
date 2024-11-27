@@ -8,7 +8,8 @@ export async function middleware(request: NextRequest) {
   ) {
     const session = await getToken({ req: request });
     const isAuthorized =
-      session?.email === 'leesi2830@naver.com' || 'test1@naver.com';
+      session?.email === 'leesi2830@naver.com' ||
+      session?.email === 'test1@naver.com';
     if (!isAuthorized) {
       return NextResponse.redirect('https://siyeol-blog.vercel.app/');
     }

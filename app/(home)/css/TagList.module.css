@@ -4,3 +4,12 @@
   justify-content: flex-start;
   gap: 5px;
 }
+
+@media (max-width: 768px) {
+  .wrapper {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    /* Hide scrollbar */
+    scrollbar-width: none;
+  }
+}

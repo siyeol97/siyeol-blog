@@ -69,6 +69,7 @@ export default function WriteForm({
     mutationFn: (writePostProp: WritePostProp) => writePost(writePostProp),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['post-list'] });
+      queryClient.invalidateQueries({ queryKey: ['tag-list'] });
     },
   });
 

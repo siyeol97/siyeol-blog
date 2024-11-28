@@ -19,6 +19,7 @@ export default function ControlPost({ _id }: { _id: string }) {
     mutationFn: (deleteProp: DeleteProp) => deletePost(deleteProp),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['post-list'] });
+      queryClient.invalidateQueries({ queryKey: ['tag-list'] });
     },
   });
 
@@ -26,7 +27,7 @@ export default function ControlPost({ _id }: { _id: string }) {
     e.preventDefault();
     const deleteProp = { _id, router };
     deletePostMutation.mutate(deleteProp, {
-      onSuccess: () => console.log('글 삭제 성공'),
+      onSuccess: () => {},
     });
   };
 

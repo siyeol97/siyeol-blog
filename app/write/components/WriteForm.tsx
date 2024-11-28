@@ -69,6 +69,7 @@ export default function WriteForm({
     mutationFn: (writePostProp: WritePostProp) => writePost(writePostProp),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['post-list'] });
+      queryClient.invalidateQueries({ queryKey: ['tag-list'] });
     },
   });
 
@@ -115,7 +116,7 @@ export default function WriteForm({
       <input
         name='tags'
         className={styles.input_tags}
-        placeholder='태그를 입력해주세요.'
+        placeholder='태그를 입력해주세요. 공백으로 구분됩니다.'
         value={currentTag}
         onChange={onChangeTag}
         onKeyDown={(e) => handleTagKeyDown(e)}

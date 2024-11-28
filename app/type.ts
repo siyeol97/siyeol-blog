@@ -30,6 +30,7 @@ export interface TagType {
 export type TagFieldPosts = ObjectId[];
 
 export interface TagField {
+  _id?: ObjectId;
   tag: string;
   color: string;
   posts: TagFieldPosts;

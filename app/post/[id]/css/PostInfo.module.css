@@ -20,3 +20,8 @@
 .created_at {
   font-size: 0.875rem;
 }
+
+.author_avatar {
+  border-radius: 50%;
+  margin-right: 4px;
+}

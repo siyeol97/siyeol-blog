@@ -14,6 +14,7 @@ export default function PostTag({ tags }: Props) {
           tag={item.tag}
           color={item.color}
           key={item.tag}
+          selected={true}
         />
       ))}
     </div>

@@ -43,7 +43,7 @@ export default function ReplyWrite({
   const handleReplySubmit = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (!session) {
-      alert('로그인필요');
+      alert('로그인이 필요합니다.');
       return;
     }
     const newReply: NewReply = { comment: comment, post_id: post_id };

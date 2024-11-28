@@ -7,50 +7,42 @@ const useSearchPost = (data: Post[]) => {
   const [searchedTagData, setSearchedTagData] = useState<string>('');
 
   useEffect(() => {
-    if (searchedTagData === '') {
-      // 검색어가 없을 때 전체 데이터를 보여줌
+    if (searchedTagData === '' && searchValue === '') {
+      // 태그가 선택되지 않았을 시 전체 데이터를 보여줌
+      if (data.length === 0) {
+        // 데이터가 없을 때 무한 루프 방지
+        return;
+      }
       setSearchedData(data);
       return;
     }
 
     const timer = setTimeout(() => {
-      // 검색어가 있을 때 태그로 검색
-      const filteredPosts = data.filter((post) => {
-        if (!post.tags) {
-          return false;
-        }
-        const searchedPost = post.tags.some(
-          (item) => item.tag === searchedTagData
-        );
+      let filteredPosts = data;
 
-        return searchedPost;
-      });
+      if (searchValue !== '') {
+        filteredPosts = filteredPosts.filter((post) =>
+          post.title
+            .replace(/\s/g, '')
+            .toLowerCase()
+            .includes(searchValue.replace(/\s/g, '').toLowerCase())
+        );
+      }
+
+      if (searchedTagData !== '') {
+        filteredPosts = filteredPosts.filter((post) => {
+          if (!post.tags) {
+            return false;
+          }
+          return post.tags.some((item) => item.tag === searchedTagData);
+        });
+      }
 
       setSearchedData(filteredPosts);
-    }, 400);
+    }, 300);
 
     return () => clearTimeout(timer); // 타이머 해제
-  }, [searchedTagData]);
-
-  useEffect(() => {
-    if (data.length > 0) {
-      setSearchedData(data);
-    }
-  }, [data]);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      const filteredPosts = data.filter((post) =>
-        post.title
-          .replace(/\s/g, '')
-          .toLowerCase()
-          .includes(searchValue.replace(/\s/g, '').toLowerCase())
-      );
-      setSearchedData(filteredPosts);
-    }, 400);
-
-    return () => clearTimeout(timer);
-  }, [searchValue, data]);
+  }, [searchValue, searchedTagData, data]);
 
   const onSearchValueChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
@@ -59,11 +51,6 @@ const useSearchPost = (data: Post[]) => {
     },
     [searchValue]
   );
-
-  // const onSearchValueChange = (e: ChangeEvent<HTMLInputElement>) => {
-  //   const value = e.target.value;
-  //   setSearchValue(value);
-  // };
 
   const onTagValueChange = useCallback(
     // searchedTagData가 변경될 때만 호출

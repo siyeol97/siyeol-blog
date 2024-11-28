@@ -23,16 +23,26 @@ export default function Main() {
     queryFn: () => getTagList(),
   });
 
-  const { searchValue, searchedData, onChange } = useSearchPost(data ?? []);
+  const {
+    searchValue,
+    searchedData,
+    onSearchValueChange,
+    searchedTagData,
+    onTagValueChange,
+  } = useSearchPost(data ?? []);
 
   return (
     <section className={styles.section}>
       <div className={styles.wrapper}>
         <SearchInput
           searchValue={searchValue}
-          onChange={onChange}
+          onChange={onSearchValueChange}
         />
-        <TagList tags={tagData ?? []} />
+        <TagList
+          tags={tagData ?? []}
+          searchedTagData={searchedTagData}
+          onClick={onTagValueChange}
+        />
         {isLoading ? (
           <Loading />
         ) : searchedData?.length === 0 ? (

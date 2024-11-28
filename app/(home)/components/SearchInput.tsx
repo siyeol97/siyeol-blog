@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, memo } from 'react';
 import styles from '../css/SearchInput.module.css';
 import Image from 'next/image';
 
@@ -7,7 +7,7 @@ interface Props {
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export default function SearchInput({ searchValue, onChange }: Props) {
+function SearchInput({ searchValue, onChange }: Props) {
   return (
     <div className={styles.search_section}>
       <div className={styles.input_container}>
@@ -36,3 +36,5 @@ export default function SearchInput({ searchValue, onChange }: Props) {
     </div>
   );
 }
+
+export default memo(SearchInput);

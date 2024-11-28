@@ -1,12 +1,15 @@
 import { TagField } from '@/app/type';
 import Tag from '@/components/Tag';
 import styles from '../css/TagList.module.css';
+import { memo } from 'react';
 
 interface Props {
   tags: TagField[];
+  searchedTagData: string;
+  onClick: (tag: string) => void;
 }
 
-export default function TagList({ tags }: Props) {
+function TagList({ tags, searchedTagData, onClick }: Props) {
   return (
     <section className={styles.wrapper}>
       {tags.map((item) => {
@@ -19,9 +22,19 @@ export default function TagList({ tags }: Props) {
             tag={item.tag}
             color={item.color}
             postCount={item.posts.length}
+            onClick={() => onClick(item.tag)}
+            selected={(() => {
+              if (searchedTagData === '') {
+                return true;
+              } else {
+                return searchedTagData === item.tag;
+              }
+            })()}
           />
         );
       })}
     </section>
   );
 }
+
+export default memo(TagList);

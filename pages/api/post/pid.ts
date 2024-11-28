@@ -16,6 +16,6 @@ export default async function handler(
 
     res.status(200).json(result);
   } catch (error) {
-    res.status(500).send({ error: 'failed to load' });
+    res.status(500).send({ error: 'failed to load post list' });
   }
 }

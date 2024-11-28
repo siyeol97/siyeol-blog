@@ -6,14 +6,21 @@ import SearchInput from './SearchInput';
 import PostList from './PostList';
 import { useQuery } from '@tanstack/react-query';
 import getPostList from '@/utils/getPostList';
-import { Post } from '@/app/type';
+import { Post, TagField } from '@/app/type';
 import Loading from '../loading';
 import NoSearch from './NoSearch';
+import getTagList from '@/utils/getTagList';
+import TagList from './TagList';
 
 export default function Main() {
   const { data, isLoading } = useQuery<Post[]>({
     queryKey: ['post-list'],
     queryFn: () => getPostList(),
+  });
+
+  const { data: tagData } = useQuery<TagField[]>({
+    queryKey: ['tag-list'],
+    queryFn: () => getTagList(),
   });
 
   const { searchValue, searchedData, onChange } = useSearchPost(data ?? []);
@@ -25,6 +32,7 @@ export default function Main() {
           searchValue={searchValue}
           onChange={onChange}
         />
+        <TagList tags={tagData ?? []} />
         {isLoading ? (
           <Loading />
         ) : searchedData?.length === 0 ? (

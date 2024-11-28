@@ -10,7 +10,7 @@ const getPostList = async (): Promise<Post[]> => {
     const response = await fetch(`${apiUrl}/api/post/pid`);
     const data: Post[] = await response.json();
 
-    console.log(`전체 글목록 fetch 소요 시간: ${Date.now() - startTime}ms`);
+    console.log(`post list fetch time: ${Date.now() - startTime}ms`);
     return data;
   } catch (error) {
     console.log(error);

@@ -1,7 +1,21 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  white-space: nowrap;
+}
+
 .tag {
   font-size: 14px;
   font-weight: 600;
   padding: 4px 10px;
   border-radius: 10px;
+  line-height: 1;
+  letter-spacing: 0.3px;
+}
+
+.count {
+  font-weight: 600;
   line-height: 1;
 }

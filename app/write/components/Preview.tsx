@@ -46,6 +46,7 @@ export default function Preview({ title, content, tags = [] }: Props) {
           <Tag
             tag={tag}
             key={tag}
+            selected={true}
           />
         ))}
       </div>

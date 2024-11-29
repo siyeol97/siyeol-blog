@@ -2,7 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  gap: 5px;
+  gap: 8px;
 }
 
 @media (max-width: 768px) {
@@ -11,5 +11,6 @@
     overflow-x: auto;
     /* Hide scrollbar */
     scrollbar-width: none;
+    gap: 4px;
   }
 }

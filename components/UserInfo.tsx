@@ -9,9 +9,6 @@ import styles from './UserInfo.module.css';
 import { useState } from 'react';
 
 export default function UserInfo({ session }: { session: Session }) {
-  const isAuthorized =
-    session.user?.email === 'leesi2830@naver.com' ||
-    session.user?.email === 'test1@naver.com';
   const [isToggle, setIsToggle] = useState(false);
 
   const handleClick = () => {
@@ -20,14 +17,12 @@ export default function UserInfo({ session }: { session: Session }) {
 
   return (
     <div className={styles.wrapper}>
-      {isAuthorized && (
-        <Link
-          href={'/write'}
-          className={styles.write_button}
-        >
-          새 글 쓰기
-        </Link>
-      )}
+      <Link
+        href={'/write'}
+        className={styles.write_button}
+      >
+        새 글 쓰기
+      </Link>
       <div className={styles.user_session}>
         {session.user?.image ? (
           <div

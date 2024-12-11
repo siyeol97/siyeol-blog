@@ -84,7 +84,7 @@ export default function WriteForm({
     };
     uploadPostMutation.mutate(writePostProp, {
       onSuccess: (data) => {
-        router.push(`/post/${data.post_id}`);
+        router.replace(`/post/${data.post_id}`);
         if (type === 'edit') {
           router.refresh();
         }
@@ -149,7 +149,12 @@ export default function WriteForm({
           취소
         </button>
         <button
-          disabled={!title || !content || uploadPostMutation.isPending}
+          disabled={
+            !title ||
+            !content ||
+            uploadPostMutation.isPending ||
+            uploadPostMutation.isSuccess
+          }
           className={styles.submit_button}
           onClick={handlePostSubmit}
         >

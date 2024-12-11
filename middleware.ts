@@ -2,11 +2,10 @@ import { getToken } from 'next-auth/jwt';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function middleware(request: NextRequest) {
-  if (
-    request.nextUrl.pathname.startsWith('/write') ||
-    request.nextUrl.pathname.startsWith('/edit')
-  ) {
-    const session = await getToken({ req: request });
+  const session = await getToken({ req: request });
+  const pathname = request.nextUrl.pathname;
+
+  if (pathname.startsWith('/write') || pathname.startsWith('/edit')) {
     if (!session) {
       return NextResponse.redirect(
         'https://siyeol-blog.vercel.app/auth/signin'
@@ -14,8 +13,7 @@ export async function middleware(request: NextRequest) {
     }
   }
 
-  if (request.nextUrl.pathname.startsWith('/auth/signin')) {
-    const session = await getToken({ req: request });
+  if (pathname.startsWith('/auth/signin') || pathname.startsWith('/register')) {
     if (session) {
       return NextResponse.redirect('https://siyeol-blog.vercel.app/');
     }

@@ -132,13 +132,14 @@ export default function WriteForm({
           placeholder='Markdown 문법을 지원합니다.'
           className={styles.input_content}
           minRows={3}
-          maxLength={6000}
+          maxLength={10000}
           maxRows={26}
           required
           value={content}
           onChange={onChangeContent}
           onKeyDown={(e) => handleSetTab(e)}
         />
+        <span className={styles.length_limit}>{content.length} / 10000</span>
       </label>
       <div className={styles.button_area}>
         <button

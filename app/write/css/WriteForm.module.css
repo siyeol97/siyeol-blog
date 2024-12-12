@@ -49,6 +49,7 @@
 }
 
 .content_label {
+  position: relative;
   width: 100%;
   height: 100%;
   padding: 1rem;
@@ -106,4 +107,12 @@
 
 .hide_id {
   display: none;
+}
+
+.length_limit {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  font-size: 14px;
+  color: gray;
 }

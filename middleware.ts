@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const BASE_URL = process.env.API_URL;
 const LOGIN_URL = `${BASE_URL}/auth/signin`;
+const LOGIN_PATH = `/auth/signin`;
 const REGISTER_PATH = `/register`;
 const WRITE_PATH = `/write`;
 const EDIT_PATH = `/edit`;
@@ -30,7 +31,7 @@ export async function middleware(request: NextRequest) {
 
   // 로그인한 사용자는 접근 불가능한 페이지
   if (
-    (pathname.startsWith(LOGIN_URL) || pathname.startsWith(REGISTER_PATH)) &&
+    (pathname.startsWith(LOGIN_PATH) || pathname.startsWith(REGISTER_PATH)) &&
     session
   ) {
     return NextResponse.redirect(HOME_URL);
